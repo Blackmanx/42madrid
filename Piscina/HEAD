@@ -1,0 +1,9 @@
+'use strict'
+
+alert('Hola buenos dias.');
+
+let result = confirm('¿Hace un buen dia?');
+// True or false.
+
+let datos = prompt('¿Qué edad tienes?', 18);
+
