@@ -6,109 +6,78 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 11:52:43 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/09/21 13:04:06 by prodrigo         ###   ########.fr       */
+/*   Updated: 2020/09/21 14:21:29 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void			ft_strdel(char **del)
+char				*ft_buffering(char *sarr, char **line, int bytes)
 {
-	if (del && *del)
+	unsigned int	i;
+	char			*aux;
+
+	i = 0;
+	while (sarr[i])
 	{
-		free(*del);
-		*del = NULL;
+		if (sarr[i] == '\n')
+			break ;
+		i++;
 	}
+	if (i < ft_strlen(sarr))
+	{
+		*line = ft_substr(sarr, 0, i);
+		aux = ft_substr(sarr, i + 1, ft_strlen(sarr));
+		free(sarr);
+		sarr = ft_strdup(aux);
+		free(aux);
+	}
+	else if (bytes == 0)
+	{
+		*line = sarr;
+		sarr = NULL;
+	}
+	return (sarr);
 }
 
-/*
-** * DESCRIPTION
-** Description of function
-** * @param myParam
-** Description of params
-** * RETURN VALUE
-** Restored string with the static variable.
-*/
-
-char			*ft_restore(char *s1, char *s2)
+char				*ft_replace(char *buf, char *sarr)
 {
-	char		*aux;
-	size_t		s1_len;
-	size_t		s2_len;
+	char			*aux;
 
-	s1_len = 0;
-	s2_len = ft_strlen(s2);
-	if (s1)
-		s1_len = ft_strlen(s1);
-	if (!(aux = (char *)malloc((s1_len + s2_len + 1) * sizeof(char))))
-		return (NULL);
-	if (s1)
+	if (sarr)
 	{
-		ft_strlcpy(aux, s1, (s1_len + 1));
-		ft_strdel(&s1);
+		aux = ft_strjoin(sarr, buf);
+		free(sarr);
+		sarr = ft_strdup(aux);
+		free(aux);
 	}
-	ft_strlcpy(aux + s1_len, s2, s2_len + 1);
-}
-
-/*
-** * DESCRIPTION
-** Determines if we find a new line in the static variable
-** * @param myParam
-** Description of params
-** * RETURN VALUE
-** Explain what do you return
-*/
-
-int				ft_findline(char **lock, char **line)
-{
-	char		*newline;
-	size_t		pos;
-	size_t		len;
-
-	len = 0;
-	newline = NULL;
-	if ((newline = ft_strchr(*lock, '\n')))
-	{
-		pos = newline - *lock;
-		len = ft_strlen(newline);
-		*line = ft_substr(*lock, 0, pos);
-		ft_strlcpy(*lock, (newline + 1), (len + 1));
-		return (1);
-	}
-	return (0);
-}
-
-/*
-** * DESCRIPTION
-** Description of function
-** * @param myParam
-** Description of params
-** * RETURN VALUE
-** Explain what do you return
-*/
-
-int				get_next_line(int fd, char **line)
-{
-	int			bytes;
-	char		buf[BUFFER_SIZE + 1];
-	static char	*lock;
-
-	if (!line || fd < 0 || BUFFER_SIZE < 1)
-		return (-1);
-	if (lock && ft_findline(&lock, line) == 1)
-		return (1);
-	while ((bytes = read(fd, buf, BUFFER_SIZE)) > 0)
-	{
-		buf[bytes] = '\0';
-		if (!(lock = ft_restore(lock, buf)))
-			return (-1);
-		if (ft_findline(&lock, line) == 1)
-			return (1);
-	}
-	if (lock && *lock)
-		*line = ft_strdup(lock);
 	else
+		sarr = ft_strdup(buf);
+	return (sarr);
+}
+
+int					get_next_line(int fd, char **line)
+{
+	static char		*sarr[4096];
+	char			buf[BUFFER_SIZE + 1];
+	int				bytes;
+
+	while ((bytes = read(fd, buf, BUFFER_SIZE)))
+	{
+		if (bytes == -1)
+			return (-1);
+		buf[bytes] = '\0';
+		sarr[fd] = ft_replace(buf, sarr[fd]);
+		if (ft_strchr(buf, '\n'))
+			break ;
+	}
+	if (bytes <= 0 && !sarr[fd])
+	{
 		*line = ft_strdup("");
-	ft_strdel(&lock);
-	return (bytes);
+		return (bytes);
+	}
+	sarr[fd] = ft_buffering(sarr[fd], line, bytes);
+	if (bytes <= 0 && !sarr[fd])
+		return (bytes);
+	return (1);
 }

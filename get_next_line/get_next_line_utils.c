@@ -6,13 +6,13 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:43:56 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/09/21 13:04:37 by prodrigo         ###   ########.fr       */
+/*   Updated: 2020/09/21 14:05:32 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strdup(const char *s1)
+char		*ft_strdup(const char *s1)
 {
 	char	*aux;
 	int		i;
@@ -29,9 +29,9 @@ char	*ft_strdup(const char *s1)
 	return (aux);
 }
 
-size_t	ft_strlen(const char *s)
+size_t		ft_strlen(const char *s)
 {
-	size_t len;
+	size_t	len;
 
 	len = 0;
 	while (s[len] != '\0')
@@ -39,21 +39,33 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char		*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*aux;
+	size_t	max_len;
+	size_t	i;
+	size_t	j;
 
 	if (!s)
 		return (NULL);
-	if (!(aux = (char *)malloc(sizeof(char) * ((int)len + 1))))
+	max_len = ft_strlen(s);
+	if (start >= max_len)
+		return (ft_strdup(""));
+	if (!(aux = (char *)malloc(sizeof(char) * len + 1)))
 		return (NULL);
-	ft_bzero(aux, len);
-	if (start <= (unsigned int)ft_strlen(s))
-		ft_strlcpy(aux, s + start, len + 1);
+	i = start;
+	j = 0;
+	while (j < len && s[i] != '\0')
+	{
+		aux[j] = s[i];
+		j++;
+		i++;
+	}
+	aux[j] = '\0';
 	return (aux);
 }
 
-char	*ft_strchr(const char *s, int c)
+char		*ft_strchr(const char *s, int c)
 {
 	char	aux;
 	int		n;
@@ -71,20 +83,30 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t i;
+	char	*s;
+	int		i;
+	int		j;
 
+	if (!s1 || !s2)
+		return (NULL);
+	s = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!s)
+		return (NULL);
 	i = 0;
-	if (!dst || !src)
-		return (0);
-	if (dstsize == 0)
-		return (ft_strlen(src));
-	while (i < dstsize - 1 && src[i])
+	while (s1[i])
 	{
-		dst[i] = src[i];
+		s[i] = s1[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	j = 0;
+	while (s2[j])
+	{
+		s[i] = s2[j];
+		i++;
+		j++;
+	}
+	s[i] = '\0';
+	return (s);
 }
