@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <prodrigo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 11:52:43 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/09/18 02:25:29 by prodrigo         ###   ########.fr       */
+/*   Updated: 2020/09/21 13:04:06 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void				ft_strdel(char **del)
+void			ft_strdel(char **del)
 {
 	if (del && *del)
 	{
@@ -40,15 +40,14 @@ char			*ft_restore(char *s1, char *s2)
 	s2_len = ft_strlen(s2);
 	if (s1)
 		s1_len = ft_strlen(s1);
-	aux = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
-	if (!result)
+	if (!(aux = (char *)malloc((s1_len + s2_len + 1) * sizeof(char))))
 		return (NULL);
 	if (s1)
 	{
 		ft_strlcpy(aux, s1, (s1_len + 1));
 		ft_strdel(&s1);
 	}
-	ft_strlcpy(aux + s1_len, s2, s2len + 1);
+	ft_strlcpy(aux + s1_len, s2, s2_len + 1);
 }
 
 /*
@@ -60,7 +59,7 @@ char			*ft_restore(char *s1, char *s2)
 ** Explain what do you return
 */
 
-int		ft_findline(char **lock, char **line)
+int				ft_findline(char **lock, char **line)
 {
 	char		*newline;
 	size_t		pos;
