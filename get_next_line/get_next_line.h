@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 12:36:58 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/09/21 13:32:58 by prodrigo         ###   ########.fr       */
+/*   Updated: 2020/09/23 13:34:47 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 512
 # endif
 
 # include <stdlib.h>

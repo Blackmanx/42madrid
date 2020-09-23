@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 11:52:43 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/09/21 14:21:29 by prodrigo         ###   ########.fr       */
+/*   Updated: 2020/09/23 13:36:37 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,8 @@ char				*ft_buffering(char *sarr, char **line, int bytes)
 	char			*aux;
 
 	i = 0;
-	while (sarr[i])
-	{
-		if (sarr[i] == '\n')
-			break ;
+	while (sarr[i] && sarr[i] != '\n')
 		i++;
-	}
 	if (i < ft_strlen(sarr))
 	{
 		*line = ft_substr(sarr, 0, i);
@@ -62,10 +58,10 @@ int					get_next_line(int fd, char **line)
 	char			buf[BUFFER_SIZE + 1];
 	int				bytes;
 
-	while ((bytes = read(fd, buf, BUFFER_SIZE)))
+	if (fd < 0 || !line || BUFFER_SIZE <= 0)
+		return (-1);
+	while ((bytes = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
-		if (bytes == -1)
-			return (-1);
 		buf[bytes] = '\0';
 		sarr[fd] = ft_replace(buf, sarr[fd]);
 		if (ft_strchr(buf, '\n'))
