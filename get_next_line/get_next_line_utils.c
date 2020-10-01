@@ -6,13 +6,13 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:43:56 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/09/21 14:05:32 by prodrigo         ###   ########.fr       */
+/*   Updated: 2020/09/28 13:41:22 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char		*ft_strdup(const char *s1)
+char			*ft_strdup(const char *s1)
 {
 	char	*aux;
 	int		i;
@@ -29,9 +29,9 @@ char		*ft_strdup(const char *s1)
 	return (aux);
 }
 
-size_t		ft_strlen(const char *s)
+size_t			ft_strlen(const char *s)
 {
-	size_t	len;
+	size_t		len;
 
 	len = 0;
 	while (s[len] != '\0')
@@ -39,51 +39,40 @@ size_t		ft_strlen(const char *s)
 	return (len);
 }
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+void			ft_bzero(void *s, size_t n)
 {
 	char	*aux;
-	size_t	max_len;
 	size_t	i;
-	size_t	j;
 
-	if (!s)
-		return (NULL);
-	max_len = ft_strlen(s);
-	if (start >= max_len)
-		return (ft_strdup(""));
-	if (!(aux = (char *)malloc(sizeof(char) * len + 1)))
-		return (NULL);
-	i = start;
-	j = 0;
-	while (j < len && s[i] != '\0')
+	aux = (char *)s;
+	i = 0;
+	while (i < n)
 	{
-		aux[j] = s[i];
-		j++;
+		aux[i] = 0;
 		i++;
 	}
-	aux[j] = '\0';
-	return (aux);
 }
 
-char		*ft_strchr(const char *s, int c)
+void			*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	aux;
-	int		n;
+	unsigned char	*daux;
+	unsigned char	*saux;
+	size_t			i;
 
-	aux = (char)c;
-	n = 0;
-	while (s[n])
+	daux = (unsigned char *)dst;
+	saux = (unsigned char *)src;
+	i = 0;
+	if (!dst && !src)
+		return (dst);
+	while (i < n)
 	{
-		if (s[n] == aux)
-			return ((char *)&s[n]);
-		n++;
+		daux[i] = saux[i];
+		i++;
 	}
-	if (!s[n] && aux == '\0')
-		return ((char *)&s[n]);
-	return (NULL);
+	return (dst);
 }
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char			*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*s;
 	int		i;
