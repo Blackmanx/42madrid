@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:11:25 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/07/27 13:29:57 by prodrigo         ###   ########.fr       */
+/*   Updated: 2020/10/07 14:29:40 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_isflag(int c)
 	return ((c == '.') || (c == '*') || (c == '0') || (c == '-') || (c == ' '));
 }
 
-int	ft_handle(int c, t_flags f, va_list args)
+int	ft_flaghandle(int c, t_flags f, va_list args)
 {
 	int handletype;
 
