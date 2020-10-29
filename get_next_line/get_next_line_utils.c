@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:43:56 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/09/28 13:41:22 by prodrigo         ###   ########.fr       */
+/*   Updated: 2020/10/14 13:29:24 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,6 @@ void			ft_bzero(void *s, size_t n)
 		aux[i] = 0;
 		i++;
 	}
-}
-
-void			*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	unsigned char	*daux;
-	unsigned char	*saux;
-	size_t			i;
-
-	daux = (unsigned char *)dst;
-	saux = (unsigned char *)src;
-	i = 0;
-	if (!dst && !src)
-		return (dst);
-	while (i < n)
-	{
-		daux[i] = saux[i];
-		i++;
-	}
-	return (dst);
 }
 
 char			*ft_strjoin(char const *s1, char const *s2)

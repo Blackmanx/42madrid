@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 12:36:58 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/10/01 09:09:14 by prodrigo         ###   ########.fr       */
+/*   Updated: 2020/10/14 13:29:34 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int			get_next_line(int fd, char **line);
 size_t		ft_strlen(const char *s);
 void		ft_bzero(void *s, size_t n);
 char		*ft_strjoin(char const *s1, char const *s2);
-void		*ft_memcpy(void *dst, const void *src, size_t n);
 char		*ft_strdup(const char *s1);
 
 #endif

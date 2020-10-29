@@ -6,11 +6,11 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 12:10:57 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/10/07 14:08:27 by prodrigo         ###   ########.fr       */
+/*   Updated: 2020/10/29 14:23:06 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 static t_flags	ft_initialize(void)
 {
@@ -56,29 +56,29 @@ t_flags *f, va_list args)
 static int		ft_handle_input(const char *format, va_list args)
 {
 	int			i;
-	int			count;
+	int			n;
 	t_flags		flags;
 
 	i = 0;
-	count = 0;
+	n = 0;
 	while (!0)
 	{
 		flags = ft_initialize();
 		if (!format[i])
 			break ;
 		else if (format[i] != '%')
-			count += ft_putchar(format[i]);
+			n += ft_putchar(format[i]);
 		else if (format[i] == '%' && format[i + 1])
 		{
 			i = ft_flags(format, ++i, &flags, args);
 			if (ft_symbol(format[i]))
-				count += ft_flaghandle((char)flags.type, flags, args);
+				n += ft_flaghandle((char)flags.type, flags, args);
 			else if (format[i])
-				count += ft_putchar(format[i]);
+				n += ft_putchar(format[i]);
 		}
 		i++;
 	}
-	return (count);
+	return (n);
 }
 
 /*
@@ -90,11 +90,11 @@ static int		ft_handle_input(const char *format, va_list args)
 
 int				ft_printf(const char *format, ...)
 {
-	va_list		arg;
-	int			exitcode;
+	va_list		args;
+	int			size;
 
-	va_start(arg, format);
-	exitcode = ft_handleinput(format, arg);
-	va_end(arg);
-	return (exitcode);
+	va_start(args, format);
+	size = ft_handleinput(format, args);
+	va_end(args);
+	return (size);
 }
