@@ -6,13 +6,13 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 12:10:57 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/10/29 14:23:06 by prodrigo         ###   ########.fr       */
+/*   Updated: 2020/11/25 13:48:28 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static t_flags	ft_initialize(void)
+static t_flags	pf_initialize(void)
 {
 	t_flags		flags;
 
@@ -25,25 +25,25 @@ static t_flags	ft_initialize(void)
 	return (flags);
 }
 
-static int		ft_flags(const char *str, int i,
+static int		pf_flags(const char *str, int i,
 t_flags *f, va_list args)
 {
 	while (str[i])
 	{
-		if (!ft_symbol(str[i]) && !ft_isflag(str[i])
+		if (!pf_symbol(str[i]) && !pf_isflag(str[i])
 		&& !ft_isdigit(str[i]))
 			break ;
 		if (str[i] == '0' && f->width == 0 && f->minus == 0)
 			f->zero = 1;
 		if (str[i] == '*')
-			*f = ft_width_flag(args, *f);
+			*f = pf_width_flag(args, *f);
 		if (str[i] == '.')
-			i = ft_dot_flag(str, i, f, args);
+			i = pf_dot_flag(str, i, f, args);
 		if (str[i] == '-')
-			*f = ft_minus_flag(*f);
+			*f = pf_minus_flag(*f);
 		if (ft_isdigit(str[i]))
-			*f = ft_digit_flag(str[i], *f);
-		if (ft_symbol(str[i]))
+			*f = pf_digit_flag(str[i], *f);
+		if (pf_symbol(str[i]))
 		{
 			f->type = str[i];
 			break ;
@@ -53,7 +53,7 @@ t_flags *f, va_list args)
 	return (i);
 }
 
-static int		ft_handle_input(const char *format, va_list args)
+static int		pf_handle_input(const char *format, va_list args)
 {
 	int			i;
 	int			n;
@@ -63,16 +63,16 @@ static int		ft_handle_input(const char *format, va_list args)
 	n = 0;
 	while (!0)
 	{
-		flags = ft_initialize();
+		flags = pf_initialize();
 		if (!format[i])
 			break ;
 		else if (format[i] != '%')
 			n += ft_putchar(format[i]);
 		else if (format[i] == '%' && format[i + 1])
 		{
-			i = ft_flags(format, ++i, &flags, args);
-			if (ft_symbol(format[i]))
-				n += ft_flaghandle((char)flags.type, flags, args);
+			i = pf_flags(format, ++i, &flags, args);
+			if (pf_symbol(format[i]))
+				n += pf_flaghandle((char)flags.type, flags, args);
 			else if (format[i])
 				n += ft_putchar(format[i]);
 		}
@@ -94,7 +94,7 @@ int				ft_printf(const char *format, ...)
 	int			size;
 
 	va_start(args, format);
-	size = ft_handleinput(format, args);
+	size = pf_handle_input(format, args);
 	va_end(args);
 	return (size);
 }
