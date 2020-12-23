@@ -5,44 +5,46 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/14 12:11:16 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/11/25 14:21:39 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/12/18 20:59:54 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/12/23 01:26:59 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include "./libft/libft.h"
 # include <stdarg.h>
-# include "../libft/libft.h"
+# include <stdio.h>
 
 typedef struct	s_flags
 {
-	int		pointer;
-	int		width;
-	int		zero;
-	int		minus;
-	int		type;
-	int		dot;
+	int			fminus;
+	int			fpoint;
+	int			fzero;
+	int			falign;
+	int			fplus;
+	int			fll;
+	int			fhash;
+	int			fhh;
+	int			fspace;
+	int			fwidth;
 }				t_flags;
 
-int				pf_isflag(int c);
-int				pf_symbol(int c);
-int				pf_handle_char(char c, t_flags f);
-t_flags			pf_minus_flag(t_flags f);
-t_flags			pf_digit_flag(char c, t_flags f);
-t_flags			pf_width_flag(va_list args, t_flags f);
-int				pf_handle_dot(const char *str, int start,
-t_flags *f, va_list args);
-int				pf_handle_hex(unsigned int number,
-int lowercase, t_flags f);
-int				pf_handle_int(int i, t_flags f);
-int				pf_handle_percent(t_flags f);
-int				pf_handle_pointer(unsigned long long num, t_flags f);
-int				pf_handle_string(char *str, t_flags f);
-int				pf_handle_uint(unsigned int number, t_flags f);
-int				pf_handle_width(int width, int minus, int zero);
-int				pf_flaghandle(int c, t_flags f, va_list args);
-int				ft_printf(const char *fmt, ...);
+void			fminus_handle(char **str, t_flags *flags, va_list al);
+void			fempty_handle(char **str, t_flags *flags, va_list al);
+void			fpoint_handle(char **str, t_flags *flags, va_list al);
+
+int				handle(char *str, t_flags *flags, int *size);
+static	void	handle_align(int *str, t_flags *flags, int *size, int n);
+static	void	handle_zero(char **str, t_flags *flags, int *size, int *n);
+static	void	handle_int(t_flags *flags, va_list al, int *size);
+void			handle_empty(va_list al, int *size);
+void			handle_types(char **str, t_flags *flags, va_list al, int *size);
+static	void	handle_hex(char **str, t_flags *flags, va_list al, int *size);
+void			handle_float(t_flags *flags, va_list al, int *size);
+void			handle_unsigned(va_list ap, int *size, t_flags *flags);
+
+int				ft_printf(const char *format, ...);
 
 #endif

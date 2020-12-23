@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_helpers.c                                       :+:      :+:    :+:   */
+/*   handle_align.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 13:54:39 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/11/25 13:54:39 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/12/22 17:51:17 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/12/23 00:01:58 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-int	pf_putsp(char *str, int precision)
+static	void	handle_align(int *str, t_flags *flags, int *size, int n)
 {
-	int i;
-
-	i = 0;
-	while (str[i] && i < precision)
+	if (flags->fwidth >= n)
 	{
-		ft_putchar(str[i]);
-		i++;
+		flags->fspace -= flags->fwidth;
+		if (*str == '+' || *str == '-')
+			flags->fspace -= 1;
 	}
-	return (i);
+	else
+		flags->fspace -= n;
+	while (flags->fspace > 0)
+	{
+		ft_putstr_fd(" ", 1);
+		(*size)++;
+		flags->fspace -= 1;
+	}
 }
