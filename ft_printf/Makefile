@@ -3,63 +3,53 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: sfournio <sfournio@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/12/21 17:37:34 by prodrigo          #+#    #+#              #
-#    Updated: 2020/12/25 02:32:07 by prodrigo         ###   ########.fr        #
+#    Created: 2020/11/28 01:12:19 by sfournio          #+#    #+#              #
+#    Updated: 2020/12/11 02:10:12 by sfournio         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libftprintf.a
+SRCS = 	srcs/basic_printers.c \
+		srcs/ft_printf.c \
+		srcs/checks.c \
+		srcs/put_d_i.c \
+		srcs/put_u.c \
+		srcs/put_c.c \
+		srcs/put_s.c \
+		srcs/put_x.c \
+		srcs/put_p.c \
+		srcs/mini_lib.c \
+		srcs/utils.c
 
-LIBFT_A		= libft.a
+OBJS = ${SRCS:.c=.o}
 
-INC_PATH	= inc/
-SRCS_PATH	= src
-OBJ_PATH	= obj/
-LIBFT_PATH	= ./libft/
+HEADERF = includes
 
-CC		= gcc
-FLAGS		= -Wall -Werror -Wextra
+HEADER = ft_printf.h
 
+NAME = libftprintf.a
 
-FTPRINTF_H	= -I ./inc/
-LIBFT_H		= -I ./$(LIBFT_PATH)
+CC = gcc
 
-SRCS_NAME	=	ft_printf.c \
-				check_flags.c\
-				conversors.c\
-				identify.c\
-				put_hex.c\
-				put_nums.c\
-				put_pointer.c\
-				put_text.c
+RM = rm -f
 
-OBJ		= $(addprefix $(OBJ_PATH)/, $(SRCS_NAME:%.c=%.o))
+FLAGS = -Wall -Wextra -Werror
 
+%.o:	%.c ${HEADERF}/${HEADER}
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o} -I${HEADERF}
 
-LIBFT		= $(LIBFT_PATH) -lft
+$(NAME):	${OBJS}
+			ar rc ${NAME} ${OBJS}
 
+all:		${NAME}
+			
+clean:
+			${RM} ${OBJS} ${OBJBONUS}
 
-all:	$(NAME)
+fclean:		clean
+			${RM} ${NAME}
 
-$(NAME):	$(OBJ)
-		@make all -C $(LIBFT_PATH)/
-		@ar rc $(NAME) $(OBJ) $(LIBFT_PATH)/*.o
-		@ranlib $(NAME)
+re: fclean all
 
-$(OBJ_PATH)/%.o: $(SRCS_PATH)/%.c
-	@mkdir	-p $(OBJ_PATH)
-	@$(CC) $(FLAGS) -I $(INC_PATH) -o $@ -c $<
-
-clean	:
-	@make -C $(LIBFT_PATH)/ clean
-	@/bin/rm -rf $(OBJ_PATH)
-
-fclean	: clean
-	@make -C $(LIBFT_PATH)/ fclean
-	@/bin/rm -rf $(NAME)
-
-re:	fclean all
-
-.PHONY:	all, clean, fclean, re
+.PHONY: all bonus clean fclean re
