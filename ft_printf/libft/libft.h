@@ -6,13 +6,13 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 04:08:40 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/12/22 21:07:23 by prodrigo         ###   ########.fr       */
+/*   Updated: 2020/12/25 02:35:21 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stddef.h>
+# include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
@@ -66,6 +66,7 @@ void				ft_lstadd_back(t_list **alst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
+char				*ft_strnew(size_t size);
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 

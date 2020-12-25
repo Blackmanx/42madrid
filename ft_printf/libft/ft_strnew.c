@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 12:28:36 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/07/23 12:30:10 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/12/25 02:00:48 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/12/25 02:22:05 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(int c)
+char	*ft_strnew(size_t size)
 {
-	write(1, &c, 1);
+	char *str;
+
+	if (!(str = (char *)ft_memalloc(size + 1)))
+		return (NULL);
+	str[size] = '\0';
+	return (str);
 }
