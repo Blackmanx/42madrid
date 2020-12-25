@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 03:18:24 by sfournio          #+#    #+#             */
-/*   Updated: 2020/12/25 04:47:49 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/12/25 13:56:10 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/12/25 14:09:38 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ int					ft_putchar(char c);
 int					ft_putnbr(int n);
 int					ft_putstr(char *s);
 int					ft_putpercent(char c, t_flags flags);
-t_flags			check_flags(const char *str, t_flags flags, va_list va,
-					int *ix);
-t_flags			init_flags(t_flags flags, int reinit);
-t_flags			check_prec(const char *str, t_flags flags, va_list va,
-					int *ix);
 int					check_type(const char *str, t_flags flags, va_list va,
 					int *ix);
 int					put_fnbr(t_flags flags, va_list va);
@@ -55,5 +50,10 @@ char				*to_ucase(char *s);
 char				*str_reverse(char *src);
 int					fptlen(int j, t_flags flags);
 char				*tonull(char *nbr, int i, int *ix);
+t_flags				check_flags(const char *str, t_flags flags, va_list va,
+					int *ix);
+t_flags				init_flags(t_flags flags, int reinit);
+t_flags				check_prec(const char *str, t_flags flags, va_list va,
+					int *ix);
 
 #endif
