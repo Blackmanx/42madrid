@@ -6,7 +6,7 @@
 #    By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/03 04:22:05 by prodrigo          #+#    #+#              #
-#    Updated: 2020/03/03 04:47:07 by prodrigo         ###   ########.fr        #
+#    Updated: 2020/12/25 02:48:21 by prodrigo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ ft_strmapi.c \
 ft_putchar_fd.c \
 ft_putstr_fd.c \
 ft_putendl_fd.c \
+ft_strnew.c \
 ft_putnbr_fd.c
 
 OBJ = ${SRC:.c=.o}
