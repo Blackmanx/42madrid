@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfournio <sfournio@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:18:24 by sfournio          #+#    #+#             */
-/*   Updated: 2020/12/17 13:41:23 by sfournio         ###   ########lyon.fr   */
+/*   Updated: 2020/12/25 04:47:49 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,76 +17,43 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef	struct		s_global
+typedef	struct		s_flags
 {
-	int		length;
-	int		flagp;
-	int		flagz;
-	int		flagm;
-	int		precision;
-}					t_global;
+	int		len;
+	int		fpoint;
+	int		fzero;
+	int		fminus;
+	int		prec;
+}					t_flags;
 
-int					ft_printf(const char *str,
-					...) __attribute__((format(printf,1,2)));
-
-/*
-**			Basic printers
-*/
+int					ft_printf(const char *format, ...);
 int					ft_putchar(char c);
 int					ft_putnbr(int n);
 int					ft_putstr(char *s);
-int					ft_putchar_pourcent(char c, t_global infos);
-
-/*
-**			Main functions
-*/
-t_global			check_flags(const char *str, t_global infos, int *ind,
-					va_list va);
-t_global			init_global(t_global infos, int reset);
-t_global			check_prec(const char *str, t_global infos, int *ind,
-					va_list va);
-int					check_type(const char *str, t_global infos, va_list va,
-					int *ind);
-
-/*
-**			%d %i and %u
-*/
-int					ft_put_d_i(t_global infos, va_list va);
-int					ft_put_u(t_global infos, va_list va);
+int					ft_putpercent(char c, t_flags flags);
+t_flags			check_flags(const char *str, t_flags flags, va_list va,
+					int *ix);
+t_flags			init_flags(t_flags flags, int reinit);
+t_flags			check_prec(const char *str, t_flags flags, va_list va,
+					int *ix);
+int					check_type(const char *str, t_flags flags, va_list va,
+					int *ix);
+int					put_fnbr(t_flags flags, va_list va);
+int					put_uint(t_flags flags, va_list va);
 int					ft_putnbr_u(int n);
-int					intlen(int nb);
-
-/*
-**			%s and %c
-*/
-int					ft_putchar_c(char c, t_global infos);
-int					ft_putstr_prec(char *s, t_global infos);
-
-/*
-**			%x and %X
-*/
-int					ft_putstr_hex(char *s, t_global infos);
-char				*ft_itoa_base(int value);
-
-/*
-**			%p flag
-*/
-int					f_p(char *s, t_global infos);
-char				*ft_itoa_b_a(unsigned long long value, t_global infos);
-
-/*
-**			Mini lib
-*/
+int					numlen(int nb);
+int					ft_putchar_c(char c, t_flags flags);
+int					ft_putstr_prec(char *s, t_flags flags);
+int					ft_putstr_hex(char *s, t_flags flags);
+char				*ft_itoa_base(int nval);
+int					f_p(char *s, t_flags flags);
+char				*ft_itoa_b_a(unsigned long long nval, t_flags flags);
 int					ft_atoi(const char *str);
-char				*ft_strdup(const char *src);
+char				*ft_strdup(const char *str);
 int					ft_strlen(const char *str);
-
-/*
-**			Others
-*/
-char				*ft_tolow(char *s);
-char				*ft_strrev(char *src);
-int					pointlen(int j, t_global infos);
-char				*little(char *nbr, int i, int *ind);
+char				*to_ucase(char *s);
+char				*str_reverse(char *src);
+int					fptlen(int j, t_flags flags);
+char				*tonull(char *nbr, int i, int *ix);
 
 #endif

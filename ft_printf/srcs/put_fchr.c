@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_c.c                                            :+:      :+:    :+:   */
+/*   put_fchr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfournio <sfournio@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/03 00:45:26 by sfournio          #+#    #+#             */
-/*   Updated: 2020/12/17 13:00:03 by sfournio         ###   ########lyon.fr   */
+/*   Created: 2020/12/25 03:47:42 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/12/25 04:34:53 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_putchar_c(char c, t_global infos)
+int		ft_putchar_c(char c, t_flags flags)
 {
 	int i;
 
 	i = -1;
-	if (infos.flagm)
+	if (flags.fminus)
 	{
 		ft_putchar(c);
-		while (++i < infos.precision - 1)
+		while (++i < flags.prec - 1)
 			ft_putchar(' ');
 		return (i + 1);
 	}
-	else if (infos.precision > 0 && !infos.flagm)
+	else if (flags.prec > 0 && !flags.fminus)
 	{
-		while (++i < infos.precision - 1)
+		while (++i < flags.prec - 1)
 			ft_putchar(' ');
 		ft_putchar(c);
 		return (i + 1);
@@ -34,28 +34,28 @@ int		ft_putchar_c(char c, t_global infos)
 	return (ft_putchar(c));
 }
 
-int		ft_putchar_pourcent(char c, t_global infos)
+int		ft_putpercent(char c, t_flags flags)
 {
 	int i;
 
 	i = -1;
-	if (infos.flagm)
+	if (flags.fminus)
 	{
 		ft_putchar(c);
-		while (++i < infos.precision - 1)
+		while (++i < flags.prec - 1)
 			ft_putchar(' ');
 		return (i + 1);
 	}
-	else if (infos.precision > 0 && infos.flagz)
+	else if (flags.prec > 0 && flags.fzero)
 	{
-		while (++i < infos.precision - 1)
+		while (++i < flags.prec - 1)
 			ft_putchar('0');
 		ft_putchar(c);
 		return (i + 1);
 	}
-	else if (infos.precision > 0 && !infos.flagm)
+	else if (flags.prec > 0 && !flags.fminus)
 	{
-		while (++i < infos.precision - 1)
+		while (++i < flags.prec - 1)
 			ft_putchar(' ');
 		ft_putchar(c);
 		return (i + 1);

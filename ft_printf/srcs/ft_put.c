@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   basic_printers.c                                   :+:      :+:    :+:   */
+/*   ft_put.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfournio <sfournio@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 07:14:43 by sfournio          #+#    #+#             */
-/*   Updated: 2020/12/17 13:00:07 by sfournio         ###   ########lyon.fr   */
+/*   Created: 2020/12/25 03:47:53 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/12/25 04:45:29 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,50 +20,50 @@ int		ft_putchar(char c)
 
 int		ft_putnbr(int n)
 {
-	long	nb;
+	long	num;
 	int		i;
-	int		save;
-	char	c[10];
+	int		aux;
+	char	arr[10];
 
-	nb = n;
-	if (nb == 0)
+	num = n;
+	if (num == 0)
 		return (ft_putchar('0'));
-	if (nb < 0)
-		nb = -nb;
+	if (num < 0)
+		num = -num;
 	i = 0;
-	while (nb > 0)
+	while (num > 0)
 	{
-		c[i] = nb % 10 + '0';
-		nb = nb / 10;
+		arr[i] = num % 10 + '0';
+		num = num / 10;
 		i++;
 	}
-	save = i;
+	aux = i;
 	while (--i >= 0)
-		ft_putchar(c[i]);
-	return (save);
+		ft_putchar(arr[i]);
+	return (aux);
 }
 
 int		ft_putnbr_u(int n)
 {
-	unsigned int	nb;
+	unsigned int	num;
 	int				i;
-	int				save;
-	char			c[10];
+	int				aux;
+	char			arr[10];
 
-	nb = n;
-	if (nb == 0)
+	num = n;
+	if (num == 0)
 		return (ft_putchar('0'));
 	i = 0;
-	while (nb > 0)
+	while (num > 0)
 	{
-		c[i] = nb % 10 + '0';
-		nb = nb / 10;
+		arr[i] = num % 10 + '0';
+		num = num / 10;
 		i++;
 	}
-	save = i;
+	aux = i;
 	while (--i >= 0)
-		ft_putchar(c[i]);
-	return (save);
+		ft_putchar(arr[i]);
+	return (aux);
 }
 
 int		ft_putstr(char *s)

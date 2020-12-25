@@ -3,56 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfournio <sfournio@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 03:06:28 by sfournio          #+#    #+#             */
-/*   Updated: 2020/12/17 13:38:57 by sfournio         ###   ########lyon.fr   */
+/*   Created: 2020/12/25 03:48:02 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/12/25 04:48:38 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_global	main_while(const char *str, t_global infos, va_list va)
+t_flags		flags_handle(const char *str, t_flags flags, va_list va)
 {
-	int index;
+	int i;
 
-	index = 0;
-	while (str[index])
+	i = 0;
+	while (str[i])
 	{
-		infos = init_global(infos, 0);
-		if (str[index] == '%')
+		flags = init_flags(flags, 0);
+		if (str[i] == '%')
 		{
-			infos = check_flags(&str[index + 1], infos, &index, va);
-			infos.length += check_type(&str[index + 1], infos, va, &index);
+			flags = check_flags(&str[i + 1], flags, va, &i);
+			flags.len += check_type(&str[i + 1], flags, va, &i);
 		}
 		else
-			infos.length += ft_putchar(str[index]);
-		if (str[index])
-			index++;
+			flags.len += ft_putchar(str[i]);
+		if (str[i])
+			i++;
 	}
-	return (infos);
+	return (flags);
 }
 
-t_global	init_global(t_global infos, int reset)
+t_flags		init_flags(t_flags flags, int reinit)
 {
-	if (reset == 1)
-		infos.length = 0;
-	infos.precision = -1;
-	infos.flagp = -1;
-	infos.flagm = 0;
-	infos.flagz = 0;
-	return (infos);
+	if (reinit == 1)
+		flags.len = 0;
+	flags.prec = -1;
+	flags.fpoint = -1;
+	flags.fminus = 0;
+	flags.fzero = 0;
+	return (flags);
 }
 
-int			ft_printf(const char *str, ...)
+int			ft_printf(const char *format, ...)
 {
-	va_list		va;
-	t_global	infos;
+	va_list	va;
+	t_flags	flags;
 
-	infos.length = 0;
-	infos = init_global(infos, 1);
-	va_start(va, str);
-	infos = main_while(str, infos, va);
+	flags.len = 0;
+	flags = init_flags(flags, 1);
+	va_start(va, format);
+	flags = flags_handle(format, flags, va);
 	va_end(va);
-	return (infos.length);
+	return (flags.len);
 }

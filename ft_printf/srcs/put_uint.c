@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_u.c                                            :+:      :+:    :+:   */
+/*   put_uint.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfournio <sfournio@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/03 00:45:26 by sfournio          #+#    #+#             */
-/*   Updated: 2020/12/17 12:59:58 by sfournio         ###   ########lyon.fr   */
+/*   Created: 2020/12/25 03:56:05 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/12/25 04:42:43 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,21 @@ int	u_len(int nb)
 	}
 }
 
-int	ft_put_u_2(t_global infos, int nb, int l, int type)
+int	put_u_prec(t_flags flags, int nb, int l, int type)
 {
 	int	max;
 
 	max = 0;
 	if (type == 1)
 	{
-		while (l++ < infos.precision)
+		while (l++ < flags.prec)
 			max += ft_putchar('0');
 		max += ft_putnbr_u(nb);
 		return (max);
 	}
 	else if (type == 2)
 	{
-		while (l++ < infos.precision)
+		while (l++ < flags.prec)
 			max += ft_putchar(' ');
 		if (nb != 0)
 			max += ft_putnbr_u(nb);
@@ -50,14 +50,14 @@ int	ft_put_u_2(t_global infos, int nb, int l, int type)
 			max += ft_putchar(' ');
 		return (max);
 	}
-	while (l++ < infos.flagp)
+	while (l++ < flags.fpoint)
 		max += ft_putchar('0');
-	while (l++ <= infos.precision + 1)
+	while (l++ <= flags.prec + 1)
 		max += ft_putchar(' ');
 	return (max);
 }
 
-int	ft_put_u_1(t_global infos, int nb, int l, int type)
+int	put_u_point(t_flags flags, int nb, int l, int type)
 {
 	int max;
 	int i;
@@ -66,24 +66,24 @@ int	ft_put_u_1(t_global infos, int nb, int l, int type)
 	max = 0;
 	if (type == 1)
 	{
-		while (++i < infos.precision - pointlen(l, infos))
+		while (++i < flags.prec - fptlen(l, flags))
 			max += ft_putchar(' ');
-		while (l++ < infos.flagp)
+		while (l++ < flags.fpoint)
 			max += ft_putchar('0');
 		max += ft_putnbr_u(nb);
 	}
 	else
 	{
-		while (l++ < infos.flagp)
+		while (l++ < flags.fpoint)
 			max += ft_putchar('0');
 		max += ft_putnbr_u(nb);
-		while (l++ <= infos.precision)
+		while (l++ <= flags.prec)
 			max += ft_putchar(' ');
 	}
 	return (max);
 }
 
-int	ft_put_u(t_global infos, va_list va)
+int	put_uint(t_flags flags, va_list va)
 {
 	int nb;
 	int l;
@@ -93,19 +93,19 @@ int	ft_put_u(t_global infos, va_list va)
 	nb = va_arg(va, int);
 	if (nb < 0)
 		nb = nb + 4294967296;
-	if (nb == 0 && (infos.flagp == 0 && infos.precision <= 0))
+	if (nb == 0 && (flags.fpoint == 0 && flags.prec <= 0))
 		return (0);
 	l = u_len(nb);
-	if (infos.flagz && (infos.flagp == -1 && !infos.flagm))
-		print += ft_put_u_2(infos, nb, l, 1);
-	else if (!infos.flagm && infos.flagp == 0 && infos.precision)
-		print += ft_put_u_2(infos, nb, l, 2);
-	else if (!infos.flagm && (infos.precision >= 0 || infos.flagp >= 0))
-		print += ft_put_u_1(infos, nb, l, 1);
-	else if (infos.flagm && nb == 0 && infos.flagp == 0)
-		print += ft_put_u_2(infos, nb, l, 0);
-	else if (infos.flagm)
-		print += ft_put_u_1(infos, nb, l, 0);
+	if (flags.fzero && (flags.fpoint == -1 && !flags.fminus))
+		print += put_u_prec(flags, nb, l, 1);
+	else if (!flags.fminus && flags.fpoint == 0 && flags.prec)
+		print += put_u_prec(flags, nb, l, 2);
+	else if (!flags.fminus && (flags.prec >= 0 || flags.fpoint >= 0))
+		print += put_u_point(flags, nb, l, 1);
+	else if (flags.fminus && nb == 0 && flags.fpoint == 0)
+		print += put_u_prec(flags, nb, l, 0);
+	else if (flags.fminus)
+		print += put_u_point(flags, nb, l, 0);
 	else
 		print += ft_putnbr_u(nb);
 	return (print);

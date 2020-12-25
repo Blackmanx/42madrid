@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfournio <sfournio@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 08:52:42 by sfournio          #+#    #+#             */
-/*   Updated: 2020/12/17 13:00:09 by sfournio         ###   ########lyon.fr   */
+/*   Created: 2020/12/25 03:56:51 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/12/25 04:08:19 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_tolow(char *s)
+char	*to_ucase(char *s)
 {
 	int i;
 
@@ -25,7 +25,7 @@ char	*ft_tolow(char *s)
 	return (s);
 }
 
-char	*ft_strrev(char *src)
+char	*str_reverse(char *src)
 {
 	int		length;
 	int		i;
@@ -42,16 +42,16 @@ char	*ft_strrev(char *src)
 	return (src);
 }
 
-int		pointlen(int j, t_global infos)
+int		fptlen(int j, t_flags flags)
 {
-	if (infos.flagp > -1)
+	if (flags.fpoint > -1)
 	{
-		if (infos.flagp == 0)
+		if (flags.fpoint == 0)
 			return (0);
 		else
 		{
-			if (infos.flagp >= j)
-				return (infos.flagp);
+			if (flags.fpoint >= j)
+				return (flags.fpoint);
 			return (j);
 		}
 	}
@@ -59,9 +59,9 @@ int		pointlen(int j, t_global infos)
 		return (j);
 }
 
-char	*little(char *nbr, int i, int *ind)
+char	*tonull(char *nbr, int i, int *ix)
 {
 	nbr[i] = '\0';
-	*ind += i;
+	*ix += i;
 	return (nbr);
 }

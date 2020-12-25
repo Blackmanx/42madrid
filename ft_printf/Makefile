@@ -3,23 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sfournio <sfournio@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/28 01:12:19 by sfournio          #+#    #+#              #
-#    Updated: 2020/12/11 02:10:12 by sfournio         ###   ########lyon.fr    #
+#    Updated: 2020/12/25 04:37:59 by prodrigo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = 	srcs/basic_printers.c \
+SRCS = 	srcs/ft_put.c \
 		srcs/ft_printf.c \
-		srcs/checks.c \
-		srcs/put_d_i.c \
-		srcs/put_u.c \
-		srcs/put_c.c \
-		srcs/put_s.c \
-		srcs/put_x.c \
-		srcs/put_p.c \
-		srcs/mini_lib.c \
+		srcs/check_flags.c \
+		srcs/put_fnbr.c \
+		srcs/put_uint.c \
+		srcs/put_fchr.c \
+		srcs/put_fstr.c \
+		srcs/put_fhex.c \
+		srcs/put_fptr.c \
+		srcs/utils_ft.c \
 		srcs/utils.c
 
 OBJS = ${SRCS:.c=.o}
@@ -43,7 +43,7 @@ $(NAME):	${OBJS}
 			ar rc ${NAME} ${OBJS}
 
 all:		${NAME}
-			
+
 clean:
 			${RM} ${OBJS} ${OBJBONUS}
 
