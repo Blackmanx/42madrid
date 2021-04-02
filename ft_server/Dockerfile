@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: blackman <blackman@student.42.fr>          +#+  +:+       +#+         #
+#    By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 17:12:35 by prodrigo          #+#    #+#              #
-#    Updated: 2021/03/08 17:05:11 by blackman         ###   ########.fr        #
+#    Updated: 2021/03/22 16:39:57 by prodrigo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,10 @@ RUN 	apt-get update && apt-get install -y \
 		wget \
 		nginx \
 		mariadb-server \
-		php-fpm php-mysql php-mbstring \
+		php-fpm php-mysql php-mbstring php-xml \
 		&& rm -rf /var/lib/apt/lists/*
 # Web files are located in /var/www/html
-RUN		echo "daemon off;" >> /etc/nginx/nginx.conf && \
-		rm var/www/html/index.nginx-debian.html
+RUN		rm var/www/html/index.nginx-debian.html
 COPY	srcs/nginx/*.conf /tmp/
 
 RUN		wget https://files.phpmyadmin.net/phpMyAdmin/5.1.0/phpMyAdmin-5.1.0-english.tar.gz && \
@@ -44,4 +43,9 @@ RUN		mkdir ~/mkcert && cd ~/mkcert && \
 
 RUN		chown -R www-data:www-data /var/www/html/*
 
+COPY srcs/*.sh ./
+
 EXPOSE 	80 443
+
+CMD bash script.sh && tail -f /dev/null
+
