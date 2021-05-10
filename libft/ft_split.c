@@ -6,20 +6,20 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 03:54:35 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/03/05 17:45:04 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/04/27 18:35:22 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char			**resmem(char const *s, char c)
+static char	**resmem(char const *s, char c)
 {
 	char	*tab;
 	char	**aux;
 	int		i;
 
 	i = 0;
-	tab = (char*)s;
+	tab = (char *)s;
 	while (*tab)
 	{
 		while (*tab == c)
@@ -29,14 +29,14 @@ static char			**resmem(char const *s, char c)
 		while (*tab != c && *tab)
 			tab++;
 	}
-	aux = (char**)malloc((i + 1) * sizeof(char*));
+	aux = (char **)malloc((i + 1) * sizeof(char *));
 	if (aux == NULL)
 		return (NULL);
 	aux[i] = NULL;
 	return (aux);
 }
 
-static char			**copydata(const char *s, char c)
+static char	**copydata(const char *s, char c)
 {
 	size_t	len;
 	char	**aux;
@@ -64,9 +64,9 @@ static char			**copydata(const char *s, char c)
 	return (aux);
 }
 
-char				**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char **res;
+	char	**res;
 
 	if (!s)
 		return (NULL);

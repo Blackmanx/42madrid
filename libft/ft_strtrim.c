@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 03:45:49 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/03/04 17:09:55 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/04/27 18:53:49 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static int	getword(char c, const char *set)
 {
-	int x;
-	int len;
+	int	x;
+	int	len;
 
 	x = 0;
 	len = ft_strlen(set);
@@ -29,7 +29,7 @@ static int	getword(char c, const char *set)
 	return (0);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	j;
@@ -47,7 +47,7 @@ char		*ft_strtrim(char const *s1, char const *set)
 		len--;
 	if (len < i)
 		len = i;
-	dst = (char*)malloc(sizeof(char) * (len - i + 1));
+	dst = (char *)malloc(sizeof(char) * (len - i + 1));
 	if (!dst)
 		return (NULL);
 	while (i < len)

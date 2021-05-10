@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 04:20:43 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/03/03 04:21:27 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/04/21 17:11:08 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int nb, int fd)
 {
-	long int i;
+	long int	i;
 
 	i = nb;
 	if (i < 0)

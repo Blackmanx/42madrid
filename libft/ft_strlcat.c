@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 01:34:28 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/03/03 03:23:24 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/04/21 19:27:01 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t n;
-	size_t m;
+	size_t	n;
+	size_t	m;
 
 	n = 0;
 	if (dstsize < ft_strlen(dst))

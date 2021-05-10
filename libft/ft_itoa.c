@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 04:00:59 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/03/04 16:20:02 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/04/27 18:51:49 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,23 @@ static	void	boolneg(int *n, int *neg)
 	}
 }
 
-char			*ft_itoa(int n)
+void	assign_vars(int *aux, int *len, int *neg, int *n)
+{
+	*aux = *n;
+	*len = 1;
+	*neg = 0;
+}
+
+void	aux_handler(int *aux, int *len)
+{
+	while (aux > 0)
+	{
+		*aux /= 10;
+		*len += 1;
+	}
+}
+
+char	*ft_itoa(int n)
 {
 	int		aux;
 	int		len;
@@ -30,14 +46,12 @@ char			*ft_itoa(int n)
 
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	aux = n;
-	len = 1;
-	neg = 0;
+	assign_vars(&aux, &len, &neg, &n);
 	boolneg(&n, &neg);
-	while (aux /= 10)
-		len++;
+	aux_handler(&aux, &len);
 	len += neg;
-	if ((str = (char*)malloc(sizeof(char) * len + 1)) == NULL)
+	str = (char *)malloc(sizeof(char) * len + 1);
+	if (!str)
 		return (NULL);
 	str[len] = '\0';
 	while (len--)

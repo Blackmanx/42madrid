@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 03:31:05 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/03/03 03:34:26 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/04/21 19:29:37 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (!(aux = (char *)malloc(sizeof(char) * ((int)len + 1))))
+	aux = (char *)malloc(sizeof(char) * ((int)len + 1));
+	if (!aux)
 		return (NULL);
 	ft_bzero(aux, len);
 	if (start <= (unsigned int)ft_strlen(s))

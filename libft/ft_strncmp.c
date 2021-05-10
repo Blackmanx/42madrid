@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 02:34:58 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/03/03 04:42:51 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/04/21 19:25:50 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	unsigned char		*aux2;
 
 	i = 0;
-	aux = (unsigned char*)s1;
-	aux2 = (unsigned char*)s2;
+	aux = (unsigned char *)s1;
+	aux2 = (unsigned char *)s2;
 	while (aux[i] && aux2[i] && (i < n - 1) && aux[i] == aux2[i])
 		i++;
 	if (!(n <= 0))
