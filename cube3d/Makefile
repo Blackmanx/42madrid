@@ -6,7 +6,7 @@
 #    By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/10 17:24:30 by prodrigo          #+#    #+#              #
-#    Updated: 2021/05/10 17:33:32 by prodrigo         ###   ########.fr        #
+#    Updated: 2021/05/10 19:11:55 by prodrigo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME = cub3D
 
 SRCS = cub3D.c
-
+# TODO: Rest of C files.
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc

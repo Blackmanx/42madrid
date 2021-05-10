@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 17:44:16 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/10 18:35:44 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/10 19:11:55 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_rend
 	int	x;
 	int	y;
 }	t_rend;
+
 
 typedef struct s_rgb
 {
