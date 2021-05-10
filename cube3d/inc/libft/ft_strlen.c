@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 16:29:21 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/10 19:09:37 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 01:26:14 by prodrigo          #+#    #+#             */
+/*   Updated: 2021/04/21 19:28:08 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
-int	main(void)
-{
-	void	*mlx_win;
-	void	*mlx;
+#include "libft.h"
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+size_t	ft_strlen(const char *s)
+{
+	size_t	len;
+
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
 }

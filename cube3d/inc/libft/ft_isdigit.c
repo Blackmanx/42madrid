@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 16:29:21 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/10 19:09:37 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 03:07:02 by prodrigo          #+#    #+#             */
+/*   Updated: 2021/04/21 19:27:46 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
-int	main(void)
+int	ft_isdigit(int c)
 {
-	void	*mlx_win;
-	void	*mlx;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+	if (c >= 48 && c <= 57)
+		return (1);
+	else
+		return (0);
 }

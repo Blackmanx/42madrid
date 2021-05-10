@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 16:29:21 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/10 19:09:37 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 01:16:51 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/03/03 03:22:24 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
-int	main(void)
-{
-	void	*mlx_win;
-	void	*mlx;
+#include "libft.h"
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	unsigned char	*str;
+	unsigned char	aux;
+	size_t			i;
+
+	str = (unsigned char *)s;
+	aux = (unsigned char)c;
+	i = 0;
+	while (i < n)
+	{
+		if (str[i] == aux)
+			return (&str[i]);
+		i++;
+	}
+	return (NULL);
 }

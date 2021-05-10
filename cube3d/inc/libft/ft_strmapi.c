@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 16:29:21 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/10 19:09:37 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/02/19 21:28:26 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/03/03 03:23:31 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
-int	main(void)
-{
-	void	*mlx_win;
-	void	*mlx;
+#include "libft.h"
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char			*aux;
+	unsigned int	n;
+
+	if (!s)
+		return (NULL);
+	aux = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!aux)
+		return (NULL);
+	n = 0;
+	while (s[n])
+	{
+		aux[n] = f(n, s[n]);
+		n++;
+	}
+	aux[n] = '\0';
+	return (aux);
 }

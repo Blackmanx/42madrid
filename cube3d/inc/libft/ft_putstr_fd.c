@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 16:29:21 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/10 19:09:37 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 04:18:26 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/03/03 04:19:12 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
-int	main(void)
-{
-	void	*mlx_win;
-	void	*mlx;
+#include "libft.h"
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	if (s != NULL)
+	{
+		while (s[i])
+		{
+			write(fd, &s[i], 1);
+			i++;
+		}
+	}
 }

@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 16:29:21 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/10 19:09:37 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 01:11:38 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/03/04 16:25:51 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
-int	main(void)
-{
-	void	*mlx_win;
-	void	*mlx;
+#include "libft.h"
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	unsigned char	*daux;
+	unsigned char	*saux;
+
+	daux = (unsigned char *)dst;
+	saux = (unsigned char *)src;
+	if ((!dst && !src) || len < 1)
+		return (dst);
+	if (saux < daux)
+	{
+		while (len != 0)
+		{
+			len--;
+			daux[len] = saux[len];
+		}
+	}
+	else
+		ft_memcpy(daux, saux, len);
+	return (dst);
 }

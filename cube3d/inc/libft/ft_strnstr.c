@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 16:29:21 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/10 19:09:37 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 02:23:23 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/03/03 04:46:54 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
-int	main(void)
-{
-	void	*mlx_win;
-	void	*mlx;
+#include "libft.h"
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t l)
+{
+	size_t	len;
+	size_t	n;
+
+	n = 0;
+	len = ft_strlen(needle);
+	if (ft_strlen(haystack) < len)
+		return (NULL);
+	if (!needle[0])
+		return ((char *)haystack);
+	while ((n + len) <= l && *haystack)
+	{
+		if (ft_strncmp(haystack, needle, len) == 0)
+			return ((char *)haystack);
+		haystack++;
+		n++;
+	}
+	return (NULL);
 }

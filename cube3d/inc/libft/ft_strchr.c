@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 16:29:21 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/10 19:09:37 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 01:45:50 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/03/03 03:22:48 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
-int	main(void)
-{
-	void	*mlx_win;
-	void	*mlx;
+#include "libft.h"
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+char	*ft_strchr(const char *s, int c)
+{
+	char	aux;
+	int		n;
+
+	aux = (char)c;
+	n = 0;
+	while (s[n])
+	{
+		if (s[n] == aux)
+			return ((char *)&s[n]);
+		n++;
+	}
+	if (!s[n] && aux == '\0')
+		return ((char *)&s[n]);
+	return (NULL);
 }

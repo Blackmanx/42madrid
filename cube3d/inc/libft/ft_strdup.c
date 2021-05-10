@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 16:29:21 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/10 19:09:37 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 03:17:11 by prodrigo          #+#    #+#             */
+/*   Updated: 2021/04/21 19:31:04 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
-int	main(void)
-{
-	void	*mlx_win;
-	void	*mlx;
+#include "libft.h"
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+char	*ft_strdup(const char *s1)
+{
+	char	*aux;
+	int		i;
+
+	aux = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (!aux)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		aux[i] = s1[i];
+		i++;
+	}
+	aux[i] = '\0';
+	return (aux);
 }
