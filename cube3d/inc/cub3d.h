@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 17:44:16 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/10 19:11:55 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/11 18:27:42 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,41 @@
 # define CUB3D_H
 
 # include "./inc/libft/libft.h"
-# include "./inc/lib/mlx.h"
+# include "./lib/mlx.h"
 # include <math.h>
 # include <fcntl.h>
+# include <stdio.h>
 
-# define PI 3.141592654
+# define SPACE	' '
+# define EMPTY	'0'
+# define WALL	'1'
+# define OBJECT	'2'
+# define NORTH	'N'
+# define WEST	'W'
+# define SOUTH	'S'
+# define EAST	'E'
+# define BYTE	256
 
 /*
-**	TODO: Rest of paths
+**	Texture paths
 */
 typedef struct s_tex
 {
-	char	*no;
-	char	*so;
+	char	*n;
+	char	*s;
+	char	*w;
+	char	*e;
+	char	*sp;
 }	t_tex;
 
+/*
+** Render Coordinates
+*/
 typedef struct s_rend
 {
 	int	x;
 	int	y;
 }	t_rend;
-
 
 typedef struct s_rgb
 {
@@ -42,18 +56,147 @@ typedef struct s_rgb
 	int	rgb_f[3];
 }	t_rgb;
 
-/*
-**	TODO: Rest of structs.
-*/
-typedef struct s_cub
+typedef struct s_mlx
 {
-	int		rows;
-	int		bmp;
-	char	*line;
-	char	**map;
-	t_tex	tex;
-	t_rgb	rgb;
-	t_rend	res;
-}	t_cub;
+	void	*mlx;
+	void	*mlx_win;
+}	t_mlx;
+
+typedef struct s_img
+{
+	void	*img;
+	int		*dir;
+	int		width;
+	int		height;
+	int		sz;
+	int		endian;
+	int		bpp;
+}	t_img;
+
+typedef struct s_spr
+{
+	void	*img;
+	int		*dir;
+	int		width;
+	int		height;
+	int		sz;
+	int		endian;
+	int		bpp;
+	double	x;
+	double	y;
+	int		beg_x;
+	int		beg_y;
+	int		end_x;
+	int		end_y;
+	int		h;
+	int		w;
+	int		screen;
+	int		rgb;
+	double	*buf;
+
+}	t_spr;
+
+typedef struct s_sprpos
+{
+	double	x;
+	double	y;
+	int		len;
+}	t_sprpos;
+
+typedef struct s_mov
+{
+	int		map_x;
+	int		map_y;
+	double	x;
+	double	y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	int		up;
+	int		down;
+	int		left;
+	int		right;
+}	t_mov;
+
+typedef struct s_view
+{
+	int		left;
+	int		right;
+	double	x;
+}	t_view;
+
+typedef struct s_draw
+{
+	double	x;
+	double	y;
+	int		start;
+	int		end;
+	int		draw;
+}	t_draw;
+
+typedef struct s_trig
+{
+	int	res;
+	int	map;
+	int	floor;
+	int	sky;
+	int	player;
+	int	tex_n;
+	int	tex_w;
+	int	tex_s;
+	int	tex_e;
+	int	tex_sp;
+}	t_trig;
+
+typedef struct s_ray
+{
+	int		x;
+	int		y;
+	double	pos;
+	double	dir_x;
+	double	dir_y;
+	double	side_x;
+	double	side_y;
+	double	delta_x;
+	double	delta_y;
+	double	view;
+	double	step;
+	int		step_x;
+	int		step_y;
+	int		col;
+	int		side;
+	int		lh;
+	int		tex;
+}	t_ray;
+
+typedef struct s_read {
+	char		*b;
+	char		*l;
+	char		*stc;
+}	t_read;
+
+typedef struct s_cube
+{
+	char		**map;
+	char		*l;
+	int			rows;
+	int			bmp;
+	t_trig		trig;
+	t_rend		render;
+	t_tex		tex;
+	t_mlx		lib;
+	t_spr		spr;
+	t_sprpos	*spr_pos;
+	t_mov		mov;
+	t_view		cam;
+	t_ray		ray;
+	t_read		read;
+	t_draw		draw;
+	t_img		win;
+	t_img		wall[4];
+}	t_cube;
+
+void			init_lib(t_cube *c);
 
 #endif
