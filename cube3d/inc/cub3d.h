@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define SPACE	' '
+# define EMPTY_SPACE	' '
 # define EMPTY	'0'
 # define WALL	'1'
 # define OBJECT	'2'
@@ -170,7 +170,8 @@ typedef struct s_ray
 	int		tex;
 }	t_ray;
 
-typedef struct s_read {
+typedef struct s_read
+{
 	char		*b;
 	char		*l;
 	char		*stc;
@@ -181,7 +182,7 @@ typedef struct s_cube
 	char		**map;
 	char		*l;
 	int			rows;
-	int			bmp;
+	int			bg;
 	t_trig		trig;
 	t_rend		render;
 	t_tex		tex;
