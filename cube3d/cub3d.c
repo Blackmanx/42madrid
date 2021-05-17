@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 16:29:21 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/10 19:11:54 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/17 16:25:01 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static	void	check_argc(t_cube *cube, int i, char *str)
 		clean_exit(cube, "Too many arguments");
 	if (i == 3 && flag == 0 && str[6] <= EMPTY_SPACE)
 		cube->bg = 1;
-	else if (n == 3)
+	else if (i == 3)
 		clean_exit(cube, "Invalid save");
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
 	t_cube	cube;
 

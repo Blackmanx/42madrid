@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 17:44:16 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/11 18:27:42 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/17 18:00:34 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ typedef struct s_cube
 	t_rend		render;
 	t_tex		tex;
 	t_mlx		lib;
+	t_rgb		colors;
 	t_spr		spr;
 	t_sprpos	*spr_pos;
 	t_mov		mov;
