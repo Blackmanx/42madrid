@@ -18,6 +18,10 @@
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <sys/uio.h>
+# include <stdio.h>
+# include <string.h>
+# include <sys/types.h>
 
 # define EMPTY_SPACE	' '
 # define EMPTY	'0'
@@ -135,19 +139,19 @@ typedef struct s_draw
 	int		draw;
 }	t_draw;
 
-typedef struct s_trig
+typedef struct s_flag
 {
 	int	res;
 	int	map;
 	int	floor;
-	int	sky;
+	int	roof;
 	int	player;
 	int	tex_n;
 	int	tex_w;
 	int	tex_s;
 	int	tex_e;
 	int	tex_sp;
-}	t_trig;
+}	t_flag;
 
 typedef struct s_ray
 {
@@ -183,7 +187,7 @@ typedef struct s_cube
 	char		*l;
 	int			rows;
 	int			bg;
-	t_trig		trig;
+	t_flag		flag;
 	t_rend		render;
 	t_tex		tex;
 	t_mlx		lib;
@@ -191,7 +195,7 @@ typedef struct s_cube
 	t_spr		spr;
 	t_sprpos	*spr_pos;
 	t_mov		mov;
-	t_view		cam;
+	t_view		view;
 	t_ray		ray;
 	t_read		read;
 	t_draw		draw;
