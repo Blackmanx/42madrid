@@ -203,6 +203,6 @@ typedef struct s_cube
 	t_img		wall[4];
 }	t_cube;
 
-void			init_lib(t_cube *c);
+void	set_struct(t_cube *cube);
 
 #endif

@@ -12,7 +12,7 @@
 
 #include "../inc/cub3d.h"
 
-static	void	set_file(t_cube *cube)
+static void	set_file(t_cube *cube)
 {
 	cube->render.x = 0;
 	cube->render.y = 0;
@@ -32,7 +32,7 @@ static	void	set_file(t_cube *cube)
 	ft_bzero(cube->colors.rgb_f, 3);
 }
 
-static	void	set_mov(t_cube *cube)
+static void	set_mov(t_cube *cube)
 {
 	cube->mov.left = 0;
 	cube->mov.right = 0;
@@ -79,10 +79,10 @@ void	set_raycast(t_cube *cube)
 	cube->view.x = 0.0;
 }
 
-static	void	set_textures(t_cube *cube)
+static void	set_textures(t_cube *cube)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < 4)
 	{
@@ -98,12 +98,12 @@ static	void	set_textures(t_cube *cube)
 	set_sp(cube);
 }
 
- void	set_struct(t_cube *cube)
- {
- 	set_file(cube);
- 	set_mov(cube);
- 	set_raycast(cube);
- 	set_textures(cube);
+void	set_struct(t_cube *cube)
+{
+	set_file(cube);
+	set_mov(cube);
+	set_raycast(cube);
+	set_textures(cube);
 	cube->rows = 0;
 	cube->draw.draw = 1;
 	cube->mlx.mlx = NULL;

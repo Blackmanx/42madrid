@@ -34,7 +34,7 @@ int	main(int argc, char *argv[])
 	init_struct(&cube);
 	check_argc(&cube, argc, argv[2]);
 	check_extension(argv[1]);
-	read_map(&cube, argv[1]);
+	get_map(&cube, argv[1]);
 	fill_map(&cube);
 	check_walls(&cube);
 	search_player(&cube);
