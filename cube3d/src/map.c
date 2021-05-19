@@ -15,8 +15,8 @@
 int	check_chars(char s)
 {
 	return (s == NORTH || s == EAST || s == SOUTH || s == WEST || s == WALL
-	|| s == EMPTY_SPACE || s == '\t' || s == EMPTY || s == WALL
-	|| s == OBJECT);
+		|| s == EMPTY_SPACE || s == '\t' || s == EMPTY || s == WALL
+		|| s == OBJECT);
 }
 
 static int	get_line_len(char *l)
@@ -27,10 +27,12 @@ static int	get_line_len(char *l)
 	i = -1;
 	n = 0;
 	while (l[++i])
+	{
 		if (check_chars([l[i]]))
 			n++;
 		else
 			return (-1);
+	}
 	return (n);
 }
 
@@ -47,9 +49,9 @@ static char	*fill_map(char *l)
 	if (i == -1)
 		return (NULL);
 	if (len == i)
-		return (ft_strdup(l);
+		return (ft_strdup(l));
 	else
-		aux = (char *)malloc(sizeof(char)*(i + 1));
+		aux = (char *)malloc(sizeof(char) * (i + 1));
 	i = -1;
 	j = -1;
 	while (l[++j])

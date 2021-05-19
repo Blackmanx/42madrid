@@ -60,7 +60,7 @@ void	set_raycast(t_cube *cube)
 	cube->ray.dir_y = 0.0;
 	cube->ray.side_x = 0.0;
 	cube->ray.side_y = 0.0;
-	cube->ray.delta_x= 0.0;
+	cube->ray.delta_x = 0.0;
 	cube->ray.delta_y = 0.0;
 	cube->ray.view = 0.0;
 	cube->ray.step = 0.0;
