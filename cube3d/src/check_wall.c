@@ -23,6 +23,15 @@ static int	is_space(t_cube *cube, int x, int y)
 		|| c == '\f' || c == '\r' || c == SPACE || !cube->map[x][y]);
 }
 
+int	check_surroundings(t_cube *cube, int x, int y)
+{
+	if (is_space(cube, x - 1, y) || is_space(cube, x - 1, y - 1 ) || is_space(cube, x - 1, y + 1)
+		|| is_space(cube, x, y - 1) || is_space(cube, x, y + 1) || is_space(cube, x + 1, y - 1,)
+		|| is_space(cube, x + 1, y) || is_space(cube, x + 1, y + 1))
+		return (1);
+	return (0);
+}
+
 void	check_walls(t_cube *cube)
 {
 	int	x;
@@ -38,7 +47,12 @@ void	check_walls(t_cube *cube)
 				|| cube->map[x][y] == WEST || cube->map[x][y] == EAST
 				|| cube->map[x][y] == EMPTY || cube->map[x][y] == OBJECT)
 			{
-				if (is_space())
+				if (check_surroundings(cube, x, y) == 1)
+				{
+					if (cube->map[x][y] == EMPTY || cube->map[x][y] == OBJECT)
+						exit_program(cube, get_error_msg(-1));
+					exit_program(cube, get_error_msg(-2));
+				}
 			}
 		}
 	}
