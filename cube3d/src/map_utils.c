@@ -12,6 +12,23 @@
 
 #include "../inc/cub3d.h"
 
+void	free_map(t_cube *cube)
+{
+	int	i;
+
+	i = cube->rows + 1;
+	if (cube->map)
+	{
+		while (--i >= 0)
+		{
+			free(cube->map[i]);
+			cube->map[i] = NULL;
+		}
+		free(cube->map);
+		cube->map = NULL;
+	}
+}
+
 int	get_mapdim(t_cube *cube)
 {
 	int	i;
