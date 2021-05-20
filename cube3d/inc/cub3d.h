@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 17:44:16 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/17 18:00:34 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/20 21:48:05 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define SOUTH	'S'
 # define EAST	'E'
 # define BYTE	256
-
+# define ANGLE	32.5
 /*
 **	Texture paths
 */
@@ -204,5 +204,6 @@ typedef struct s_cube
 }	t_cube;
 
 void	set_struct(t_cube *cube);
+int		check_direction(t_cube *cube, int i, int j);
 
 #endif

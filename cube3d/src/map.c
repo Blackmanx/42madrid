@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 20:58:33 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/18 20:58:33 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/20 20:13:27 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	get_line_len(char *l)
 	n = 0;
 	while (l[++i])
 	{
-		if (check_chars([l[i]]))
+		if (check_chars(l[i]))
 			n++;
 		else
 			return (-1);

@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 21:01:37 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/17 18:47:52 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/20 20:13:25 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ void	set_struct(t_cube *cube)
 	set_textures(cube);
 	cube->rows = 0;
 	cube->draw.draw = 1;
-	cube->mlx.mlx = NULL;
-	cube->mlx.mlx_win = NULL;
+	cube->lib.mlx = NULL;
+	cube->lib.mlx_win = NULL;
 	cube->win.img = NULL;
 	cube->flag.tex_n = 0;
 	cube->flag.tex_e = 0;

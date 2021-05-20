@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 19:54:03 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/18 19:54:03 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/20 20:13:30 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,12 @@ void	get_map(t_cube *cube)
 	{
 		map[i] = (char *)malloc((j + 1) * sizeof(char));
 		n = ft_strlen(cube->map[i]);
-		ft_memcpy(map[i], cube->map[i], len);
+		ft_memcpy(map[i], cube->map[i], n);
 		if (n < j)
 			ft_memset(&map[i][n], ' ', j - n);
 		map[i][j] = '\0';
 	}
 	map[i] = NULL;
 	free_map(cube);
+	cube->map = map;
 }
