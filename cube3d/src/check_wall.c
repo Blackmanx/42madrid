@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 20:44:02 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/20 21:48:28 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/20 21:57:40 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	check_walls(t_cube *cube)
 		y = -1;
 		while (cube->map[x][++y])
 		{
-			if (check_direction([cube, x, y) == 1 || cube->map[x][y] == EMPTY
+			if (check_direction(cube, x, y) == 1 || cube->map[x][y] == EMPTY
 			|| cube->map[x][y] == OBJECT)
 			{
 				if (check_surroundings(cube, x, y) == 1)
