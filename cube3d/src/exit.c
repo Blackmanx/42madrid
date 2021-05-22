@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 21:57:06 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/20 21:57:09 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/22 20:06:41 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,10 @@ void	exit_program(t_cube *cube, char *str, int error)
 			free(cube->read.l);
 	}
 	exit(error);
+}
+
+int	exit_success(t_cube *cube)
+{
+	exit_program(cube, "Closing program...\n", EXIT_SUCCESS);
+	return (0);
 }

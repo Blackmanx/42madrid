@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 21:01:37 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/20 20:13:25 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/22 21:09:40 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	set_file(t_cube *cube)
 	cube->tex.s = NULL;
 	cube->tex.e = NULL;
 	cube->tex.w = NULL;
-	cube->tex.sp = NULL;
+	cube->tex.spr = NULL;
 	cube->map = NULL;
 	cube->l = NULL;
 	cube->spr_pos = NULL;
@@ -62,7 +62,7 @@ void	set_raycast(t_cube *cube)
 	cube->ray.side_y = 0.0;
 	cube->ray.delta_x = 0.0;
 	cube->ray.delta_y = 0.0;
-	cube->ray.view = 0.0;
+	cube->ray.len = 0.0;
 	cube->ray.step = 0.0;
 	cube->ray.step_x = 0;
 	cube->ray.step_y = 0;
@@ -104,6 +104,7 @@ void	set_struct(t_cube *cube)
 	set_mov(cube);
 	set_raycast(cube);
 	set_textures(cube);
+	set_sprites(cube);
 	cube->rows = 0;
 	cube->draw.draw = 1;
 	cube->lib.mlx = NULL;
@@ -113,7 +114,7 @@ void	set_struct(t_cube *cube)
 	cube->flag.tex_e = 0;
 	cube->flag.tex_s = 0;
 	cube->flag.tex_w = 0;
-	cube->flag.tex_sp = 0;
+	cube->flag.tex_spr = 0;
 	cube->flag.floor = 0;
 	cube->flag.roof = 0;
 	cube->flag.res = 0;

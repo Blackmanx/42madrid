@@ -6,23 +6,36 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 17:44:16 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/20 21:48:05 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/22 21:14:04 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "./inc/libft/libft.h"
-# include "./lib/mlx.h"
+# ifdef MAC_OS_DETECTED
+#  include "./lib/mlx.h"
+# elif XUBUNTU_DETECTED
+#  include "../lib-xubuntu/mlx.h"
+# endif
+
+# ifdef MAC_OS_DETECTED
+#  include "keycodes.h"
+# elif XUBUNTU_DETECTED
+#  include "keycodes_xubuntu.h"
+# endif
+
+# include "./libft/libft.h"
 # include <math.h>
 # include <fcntl.h>
+# include <stdlib.h>
 # include <stdio.h>
 # include <sys/uio.h>
 # include <stdio.h>
 # include <string.h>
 # include <sys/types.h>
 
+# define GREY	8355711
 # define EMPTY_SPACE	' '
 # define EMPTY	'0'
 # define WALL	'1'
@@ -33,6 +46,9 @@
 # define EAST	'E'
 # define BYTE	256
 # define ANGLE	32.5
+# define PI		3.14159265358979323846
+# define RAD	0.03
+# define SQUARE_RAD 0.09
 /*
 **	Texture paths
 */
@@ -42,7 +58,7 @@ typedef struct s_tex
 	char	*s;
 	char	*w;
 	char	*e;
-	char	*sp;
+	char	*spr;
 }	t_tex;
 
 /*
@@ -150,7 +166,7 @@ typedef struct s_flag
 	int	tex_w;
 	int	tex_s;
 	int	tex_e;
-	int	tex_sp;
+	int	tex_spr;
 }	t_flag;
 
 typedef struct s_ray
@@ -164,7 +180,7 @@ typedef struct s_ray
 	double	side_y;
 	double	delta_x;
 	double	delta_y;
-	double	view;
+	double	len;
 	double	step;
 	int		step_x;
 	int		step_y;
@@ -203,7 +219,25 @@ typedef struct s_cube
 	t_img		wall[4];
 }	t_cube;
 
+/*
+** .c
+*/
 void	set_struct(t_cube *cube);
 int		check_direction(t_cube *cube, int i, int j);
 
+/*
+** keys.c
+*/
+int		key_release(int key, t_cube *cube);
+int		key_press(int key, t_cube *cube);
+
+/*
+** exit.c
+*/
+int		exit_success(t_cube *cube);
+
+/*
+** win.c
+*/
+int		img_draw(t_cube *cube);
 #endif

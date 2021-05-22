@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 16:29:21 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/20 21:58:44 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/22 20:24:38 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	main(int argc, char *argv[])
 	set_spr(&cube);
 	if (cube.bg)
 		save_bg(&cube);
-	init_mlx(&cube);
-	mlx_hook(cube.lib.mlx_win, 2, 1, key_press_handler, &cube);
-	mlx_hook(cube.lib.mlx_win, 3, 2, key_release_handler, &cube);
-	mlx_hook(cube.lib.mlx_win, 17, (1U << 17), exit_handler, &cube);
+	start_lib(&cube);
+	mlx_hook(cube.lib.mlx_win, 2, 1, key_press, &cube);
+	mlx_hook(cube.lib.mlx_win, 3, 2, key_release, &cube);
+	mlx_hook(cube.lib.mlx_win, 17, (1U << 17), exit_success, &cube);
 	mlx_loop_hook(cube.lib.mlx, img_draw, &cube);
 	mlx_loop(cube.lib.mlx);
 }

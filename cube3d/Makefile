@@ -6,7 +6,7 @@
 #    By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/10 17:24:30 by prodrigo          #+#    #+#              #
-#    Updated: 2021/05/10 19:11:55 by prodrigo         ###   ########.fr        #
+#    Updated: 2021/05/22 20:52:47 by prodrigo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,34 +16,40 @@ NAME = cub3D
 
 SRCS = cub3D.c
 # TODO: Rest of C files.
-OBJS = $(SRCS:.c=.o)
 
-CC = gcc
+OBJ = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Werror -Wextra
+OS  = $(shell uname -s)
 
-LIBS = -L./inc/libft/ -lft -L -lmlx
+ifeq ($(OS), Darwin)
+	LIB = lib/libmlx.a
+    MINILIB = -framework OpenGL -framework AppKit
+else
+	LIB = lib-xubuntu/libmlx.a
+    MINILIB = -lm -lz -lXext -lX11 -L ./minilibx-Linux -pthread
+endif
 
-FRAMES = -framework OpenGl -framework AppKit
+ifeq ($(OS), Darwin)
+    SYSTEM = -D MAC_OS_DETECTED=1
+else
+    SYSTEM = -D XUBUNTU_DETECTED=1
+endif
 
-MLX = libmlx.dylib
+%.o: %.c
+	gcc $(SYSTEM) -Wall -Werror -Wextra -g -I /usr/local/include -c $< -o $@
 
-$(NAME): $(OBJS)
-	make -C ./inc/libft/
-	make -C ./inc/lib/
-	cp ./inc/lib/$(MLX) .
-	$(CC) $(CFLAGS) $(LIBS) $(FRAMES) $(OBJS) -o $(NAME)
+all: $(NAME)
 
-all:	$(NAME)
+$(NAME): $(OBJ)
+		$(MAKE) -C minilibx-$(OS)/
+		gcc -Wall -Werror -Wextra -g $(OBJ) -I /usr/local/include $(LIB) $(MINILIB) -o $(NAME)
 
 clean:
-	make clean -C ./inc/libft/
-	make clean -C ./inc/lib/
-	rm -f $(OBJS)
+		make -C minilibx-$(OS) clean
+		rm -rf $(OBJ)
 
-fclean:		clean
-	make fclean -C ./inc/libft/
-	rm -f $(NAME) $(MLX)
+fclean: clean
+		make -C minilibx-$(OS) clean
+		rm -rf $(NAME)
 
-
-re:			fclean $(NAME)
+re : fclean all

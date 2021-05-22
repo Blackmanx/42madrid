@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_handler.c                                      :+:      :+:    :+:   */
+/*   keycodes_xubuntu.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 21:10:26 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/20 21:26:58 by prodrigo         ###   ########.fr       */
+/*   Created: 2021/05/22 16:30:34 by prodrigo          #+#    #+#             */
+/*   Updated: 2021/05/22 20:47:31 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#ifndef KEYCODES_XUBUNTU_H
+# define KEYCODES_XUBUNTU_H
 
-void	read_
+# define KEY_A	'a'
+# define KEY_S	's'
+# define KEY_D	'd'
+# define KEY_W	'w'
+# define KEY_LEFT	65361
+# define KEY_RIGHT	65363
+# define KEY_ESCAPE	65307
 
-void	init_mlx(t_cube *cube)
-{
-	cube->lib.mlx = mlx_init();
-	if (!cube->lib.mlx)
-		exit_program(cube, -8);
-}
+#endif
