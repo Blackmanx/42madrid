@@ -6,7 +6,7 @@
 #    By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/10 17:24:30 by prodrigo          #+#    #+#              #
-#    Updated: 2021/05/22 20:52:47 by prodrigo         ###   ########.fr        #
+#    Updated: 2021/05/23 14:39:30 by prodrigo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = cub3D
 
-SRCS = cub3D.c
+SRCS = cub3d.c
 # TODO: Rest of C files.
 
 OBJ = $(SRC:.c=.o)
@@ -22,10 +22,10 @@ OBJ = $(SRC:.c=.o)
 OS  = $(shell uname -s)
 
 ifeq ($(OS), Darwin)
-	LIB = lib/libmlx.a
+	LIB = lib-Darwin/libmlx.a
     MINILIB = -framework OpenGL -framework AppKit
 else
-	LIB = lib-xubuntu/libmlx.a
+	LIB = lib-Linux/libmlx.a
     MINILIB = -lm -lz -lXext -lX11 -L ./minilibx-Linux -pthread
 endif
 
@@ -41,15 +41,15 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		$(MAKE) -C minilibx-$(OS)/
+		$(MAKE) -C lib-$(OS)/
 		gcc -Wall -Werror -Wextra -g $(OBJ) -I /usr/local/include $(LIB) $(MINILIB) -o $(NAME)
 
 clean:
-		make -C minilibx-$(OS) clean
+		make -C lib-$(OS) clean
 		rm -rf $(OBJ)
 
 fclean: clean
-		make -C minilibx-$(OS) clean
+		make -C lib-$(OS) clean
 		rm -rf $(NAME)
 
 re : fclean all
