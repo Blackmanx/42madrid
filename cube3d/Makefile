@@ -6,7 +6,7 @@
 #    By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/10 17:24:30 by prodrigo          #+#    #+#              #
-#    Updated: 2021/05/23 14:39:30 by prodrigo         ###   ########.fr        #
+#    Updated: 2021/05/23 14:58:35 by prodrigo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,18 +14,35 @@
 
 NAME = cub3D
 
-SRCS = cub3d.c
-# TODO: Rest of C files.
+SRCS = cub3d.c \
+src/bmp_bg.c\
+src/check_wall.c\
+src/draw_sprites.c\
+src/exit.c\
+src/keys.c\
+src/lib.c\
+src/map_utils.c\
+src/map.c\
+src/movement.c\
+src/player.c\
+src/raycasting.c\
+src/sets_extra.c\
+src/sets.c\
+src/sprite_utils.c\
+src/win.c\
+inc/get_next_line_utils.c\
+inc/get_next_line.c\
+inc/libft/*.c
+
+LIB = lib-$(OS)/libmlx.a
 
 OBJ = $(SRC:.c=.o)
 
 OS  = $(shell uname -s)
 
 ifeq ($(OS), Darwin)
-	LIB = lib-Darwin/libmlx.a
     MINILIB = -framework OpenGL -framework AppKit
 else
-	LIB = lib-Linux/libmlx.a
     MINILIB = -lm -lz -lXext -lX11 -L ./minilibx-Linux -pthread
 endif
 
