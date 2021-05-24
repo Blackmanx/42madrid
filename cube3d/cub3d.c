@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 18:52:45 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/05/24 20:57:26 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/05/24 21:20:23 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	main(int argc, char *argv[])
 	check_argc(&cube, argc, argv[2]);
 	check_ext(argv[1]);
 	read_map(argv[1], &cube);
-	printf("%s", "test");
 	refill_map(&cube);
 	check_wall(&cube);
 	search_player(&cube);
