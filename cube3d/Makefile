@@ -5,51 +5,51 @@
 #                                                     +:+ +:+         +:+      #
 #    By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/05/10 17:24:30 by prodrigo          #+#    #+#              #
-#    Updated: 2021/05/23 14:58:35 by prodrigo         ###   ########.fr        #
+#    Created: 2020/02/06 15:29:03 by prodrigo          #+#    #+#              #
+#    Updated: 2021/05/24 21:02:12 by prodrigo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all clean fclean re
-
 NAME = cub3D
 
-SRCS = cub3d.c \
-src/bmp_bg.c\
-src/check_wall.c\
-src/draw_sprites.c\
-src/exit.c\
-src/keys.c\
-src/lib.c\
-src/map_utils.c\
-src/map.c\
-src/movement.c\
-src/player.c\
-src/raycasting.c\
-src/sets_extra.c\
-src/sets.c\
-src/sprite_utils.c\
-src/win.c\
-inc/get_next_line_utils.c\
-inc/get_next_line.c\
-inc/libft/*.c
+SRC = cub3d.c				\
+	  src/read_map.c	\
+	  src/init.c		\
+	  src/init_mlx.c	\
+	  src/save_info.c	\
+	  src/read_textures.c	\
+	  src/save_map.c	\
+	  src/handler.c		\
+	  src/move.c		\
+	  src/raycaster.c	\
+	  src/window.c		\
+	  src/save_dt.c	\
+	  src/sprites.c		\
+	  src/check_info.c	\
+	  src/check_elements.c \
+	  src/aux_read.c \
+	  src/cb_split.c \
+	  src/get_next_line.c \
+	  src/utils.c	\
+	  src/utils_aux.c	\
+	  src/utils_aux_aux.c
 
 LIB = lib-$(OS)/libmlx.a
 
-OBJ = $(SRC:.c=.o)
-
 OS  = $(shell uname -s)
+
+OBJ = $(SRC:.c=.o)
 
 ifeq ($(OS), Darwin)
     MINILIB = -framework OpenGL -framework AppKit
 else
-    MINILIB = -lm -lz -lXext -lX11 -L ./minilibx-Linux -pthread
+    MINILIB = -lm -lz -lXext -lX11 -L ./lib-Linux -pthread
 endif
 
 ifeq ($(OS), Darwin)
-    SYSTEM = -D MAC_OS_DETECTED=1
+    SYSTEM = -D MAC_SYSTEM=1
 else
-    SYSTEM = -D XUBUNTU_DETECTED=1
+    SYSTEM = -D LINUX_SYSTEM=1
 endif
 
 %.o: %.c
