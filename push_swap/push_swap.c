@@ -6,13 +6,13 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:40:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/06/08 19:14:21 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/06/22 19:42:16 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	exit_program(t_game *game, char *str, int error)
+void	exit_program(t_stack *stack, char *str, int error)
 {
 	int	len;
 
@@ -26,17 +26,17 @@ void	exit_program(t_game *game, char *str, int error)
 	exit(1);
 }
 
-static void	check_argc(t_game *game, int n, char *str)
+static void	check_argc(t_stack *stack, int n, char *str)
 {
 	if (n < 2 || n > 3)
-		exit_program(game, "Invalid number of arguments\n", 1);
+		exit_program(stack, "Invalid number of arguments\n", 1);
 	else if (n == 3)
-		exit_program(game, "Invalid save argument\n", 1);
+		exit_program(stack, "Invalid save argument\n", 1);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_game	game;
+	t_stack	stack;
 
-	check_argc(&game, argc, argv[2]);
+	check_argc(&stack, argc, argv[2]);
 }
