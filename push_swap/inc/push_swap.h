@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:40:51 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/08/04 19:15:38 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/09/20 12:49:04 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,20 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct s_stack
+typedef struct s_elem
 {
 	int				data;
-	struct s_stack	*next;
-	struct s_stack	*prev;
-}	t_stack;
+	ssize_t			index;
+	struct s_elem	*next;
+	struct s_elem	*prev;
+}	t_elem;
 
-typedef struct s_table
+typedef struct s_stack
 {
-	int			*sorted;
-	int			len;
-	int			aux;
-	int			temp;
-	t_stack		*stack_a;
-	t_stack		*stack_b;
-}	t_table;
+	t_elem			*head;
+	size_t			size;
+
+}	t_stack;
 
 int		sa(t_stack *a);
 int		sb(t_stack *b);
