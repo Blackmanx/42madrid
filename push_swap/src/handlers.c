@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   handlers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 17:40:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/09/27 15:15:07 by prodrigo         ###   ########.fr       */
+/*   Created: 2021/10/18 15:33:21 by prodrigo          #+#    #+#             */
+/*   Updated: 2021/10/18 15:33:30 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,3 @@ static void	check_argc(t_stack *stack, int n, char *str)
 			exit_program(stack, "Invalid argument\n", 1);
 		}
 	}
-}
-
-int	main(int argc, char *argv[])
-{
-	t_stack	stack;
-
-	check_argc(&stack, argc, argv[2]);
-}
