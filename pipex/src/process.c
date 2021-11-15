@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 17:51:26 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/13 18:44:20 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/11/15 15:22:43 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // fd: File Descriptor
 //
 
-void	child_process(char **argv, char **envp, int *fd)
+void	p_child(char **argv, char **envp, int *fd)
 {
 	int		filein;
 
@@ -27,14 +27,14 @@ void	child_process(char **argv, char **envp, int *fd)
 	dup2(fd[1], STDOUT_FILENO);
 	dup2(filein, STDIN_FILENO);
 	close(fd[0]);
-	execute(argv[2], envp);
+	exec(argv[2], envp);
 }
 
 // argv: Argument of main(). String pointer that contains program parameters.
 // envp: Pointer matrix that points to env paths. It's an argument of main().
 // fd: File Descriptor
 
-void	parent_process(char **argv, char **envp, int *fd)
+void	p_parent(char **argv, char **envp, int *fd)
 {
 	int		fileout;
 
@@ -44,5 +44,5 @@ void	parent_process(char **argv, char **envp, int *fd)
 	dup2(fd[0], STDIN_FILENO);
 	dup2(fileout, STDOUT_FILENO);
 	close(fd[1]);
-	execute(argv[3], envp);
+	exec(argv[3], envp);
 }

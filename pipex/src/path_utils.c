@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 18:52:13 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/13 18:36:05 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/11/15 15:27:46 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	error(void)
 // To add multiple entries to path, we add two points
 // Example:  PATH=~/opt/bin:$PATH
 
-char	*find_path(char *cmd, char **envp)
+char	*parse_path(char *cmd, char **envp)
 {
 	char	**env_paths;
 	char	*path;
-	int		i;
 	char	*slasher;
+	int		i;
 
 	i = 0;
 	while (ft_strnstr(envp[i], "PATH", 4) == 0)
@@ -55,6 +55,6 @@ void	exec(char *argv, char **envp)
 	char	**cmd;
 
 	cmd = ft_split(argv, ' ');
-	if (execve(find_path(cmd[0], envp), cmd, envp) == -1)
+	if (execve(parse_path(cmd[0], envp), cmd, envp) == -1)
 		error();
 }

@@ -14,19 +14,19 @@ CFLAGS 	= -Wall -Wextra -Werror -g
 					@gcc ${CFLAGS} ${HEADER} -c $< -o $(<:.c=.o)
 
 $(NAME):	${OBJS}
-					@make re -C ./src/libft
-					@cp src/libft/libft.a ./$(NAME)
+					@make re -C ./libft
+					@cp ./libft/libft.a ./$(NAME)
 					@ar -rcs ${NAME} ${OBJS}
 					@$(CC) $(NAME) ${MAIN} -o ${OBJF}
 
 all: 		${NAME}
 
 clean:
-					@make clean -C ./src/libft
+					@make clean -C ./libft
 					@rm -f ${OBJS} ${OBJS_B}
 
 fclean: 	clean
-					@make fclean -C ./src/libft
+					@make fclean -C ./libft
 					@rm -f $(NAME)
 					@rm -f ${OBJF}
 

@@ -6,11 +6,11 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:53:07 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/13 18:36:02 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/11/15 15:25:38 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/pipex.h"
+#include "../inc/pipex.h"
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -25,9 +25,9 @@ int	main(int argc, char **argv, char **envp)
 		if (pid == -1)
 			error();
 		if (pid == 0)
-			child_process(argv, envp, fd);
+			p_child(argv, envp, fd);
 		waitpid(pid, NULL, 0);
-		parent_process(argv, envp, fd);
+		p_parent(argv, envp, fd);
 		close(fd[0]);
 		close(fd[1]);
 	}
