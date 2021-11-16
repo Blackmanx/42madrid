@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 18:52:13 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/15 15:27:46 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/11/16 00:10:10 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 // Self-explanatory, I believe.
 
-void	error(void)
+void	error(char *str)
 {
-	perror("Error");
+	perror(str);
 	exit(EXIT_FAILURE);
 }
 
@@ -56,5 +56,5 @@ void	exec(char *argv, char **envp)
 
 	cmd = ft_split(argv, ' ');
 	if (execve(parse_path(cmd[0], envp), cmd, envp) == -1)
-		error();
+		error("Error while executing command.");
 }

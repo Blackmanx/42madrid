@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:51:52 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/15 15:26:44 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/11/15 23:45:18 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 
 void	p_parent(char **argv, char **envp, int *fd);
 void	p_child(char **argv, char **envp, int *fd);
-void	error(void);
+void	error(char *str);
 char	*parse_path(char *cmd, char **envp);
 void	exec(char *argv, char **envp);
 
