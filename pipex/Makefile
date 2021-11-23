@@ -7,11 +7,11 @@ MAIN	= src/pipex.c
 
 HEADER	= -I./inc/
 
-CC 		= gcc-11
+CC 		= gcc
 CFLAGS 	= -Wall -Wextra -Werror -g
 
 .c.o:		%.o : %.c
-					@gcc-11 ${CFLAGS} ${HEADER} -c $< -o $(<:.c=.o)
+					@gcc ${CFLAGS} ${HEADER} -c $< -o $(<:.c=.o)
 
 $(NAME):	${OBJS}
 					@make re -C ./libft
