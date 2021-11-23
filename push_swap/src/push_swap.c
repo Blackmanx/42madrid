@@ -6,45 +6,40 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:40:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/09/27 15:15:07 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:08:11 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
-void	exit_program(t_stack *stack, char *str, int error)
+int	check_argc(int argc, char *argv[])
 {
-	int	len;
-
-	len = ft_strlen(str);
-	if (error)
-		write(1, "Error\n", 6);
-	if (!str)
-		write(1, "No error string found\n", 22);
-	else
-		write(1, str, len);
-	exit(1);
-}
-
-static void	check_argc(t_stack *stack, int n, char *str)
-{
-	int		i;
-
-	if (n < 1)
-		exit_program(stack, "Invalid number of arguments\n", 1);
-	i = 0;
-	while (!str[i])
-	{
-		if (!ft_isdigit(str[i]) || !ft_isspace(str[i]))
-		{
-			exit_program(stack, "Invalid argument\n", 1);
-		}
-	}
+	if (argc > 1)
+		fd_error("Not enough args.");
+	return (1);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_stack	stack;
+	int		i;
+	t_table	table;
+	int		len;
 
-	check_argc(&stack, argc, argv[2]);
+	i = 0;
+	if (check_argc(argc, argv) == 1)
+	{
+		init_table(argc, argv, &table);
+		table.s_len = get_stacklen(table.a);
+		len = get_stacklen(table.a);
+		if (!deplicat_nbr(&table, table.sorted, len))
+		{
+			return (fd_error("Error"));
+		}
+		if (check_sort(table.a))
+			quick_sort(table.a, 0, len);
+		free_stack(table.a);
+		free(table.sorted);
+	}
+	return (0);
 }
+

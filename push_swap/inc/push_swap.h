@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:40:51 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/10/18 15:51:09 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/11/23 15:28:59 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,39 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct s_elem
-{
-	int				data;
-	ssize_t			index;
-	struct s_elem	*next;
-	struct s_elem	*prev;
-}	t_elem;
-
 typedef struct s_stack
 {
-	t_elem			*elem;
-	t_elem			*head;
-
+	int				elem;
+	struct s_stack	*next;
+	struct s_stack	*prev;
 }	t_stack;
 
-int		sa(t_elem *a);
-int		sb(t_elem *b);
-int		ss(t_stack *table);
-int		pa(t_stack *table);
-int		pb(t_stack *table);
-int		ra(t_elem *a);
-int		rb(t_elem *b);
-int		rr(t_stack *table);
-int		rra(t_elem *a);
-int		rrb(t_elem *b);
-int		rrr(t_stack *table);
-void	free_elem(t_elem *elem);
-void	quick_sort(int arr[], int low, int high);
-void	free_tab(char **tab);
-void	free_stack(t_stack *a);
+typedef struct s_table
+{
+	t_stack			*a;
+	t_stack			*b;
+	int		*sorted;
+	int		s_len;
+	int		wait_two;
+
+}	t_table;
+
+int				sa(t_stack *a);
+int				sb(t_stack *b);
+int				ss(t_table *table);
+int				pa(t_table *table);
+int				pb(t_table *table);
+int				ra(t_stack *a);
+int				rb(t_stack *b);
+int				rr(t_table *table);
+int				rra(t_stack *a);
+int				rrb(t_stack *b);
+int				rrr(t_table *table);
+void			free_elem(t_stack *stack);
+int				get_stacklen(t_stack *stack);
+static void		quick_sort(t_table *table);
+void			free_tab(char **tab);
+void			free_stack(t_stack *stack);
+void			init_table(int argc, char **argv, t_table *table);
+
 #endif
