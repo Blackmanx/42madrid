@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:40:51 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/23 15:28:59 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/11/29 17:25:39 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include "../libft/libft.h"
 
 typedef struct s_stack
 {
@@ -27,9 +28,9 @@ typedef struct s_table
 {
 	t_stack			*a;
 	t_stack			*b;
-	int		*sorted;
-	int		s_len;
-	int		wait_two;
+	int				*sorted;
+	int				s_len;
+	int				wait_two;
 
 }	t_table;
 
@@ -46,9 +47,10 @@ int				rrb(t_stack *b);
 int				rrr(t_table *table);
 void			free_elem(t_stack *stack);
 int				get_stacklen(t_stack *stack);
-static void		quick_sort(t_table *table);
-void			free_tab(char **tab);
+void			choose_sort(t_table *table);
+void			free_tab(char **aux);
 void			free_stack(t_stack *stack);
 void			init_table(int argc, char **argv, t_table *table);
+int				find_dup(t_table *table, int *stack, int len);
 
 #endif

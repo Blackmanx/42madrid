@@ -6,13 +6,30 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:22:13 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/23 15:27:12 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/11/29 17:01:51 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static void	quick_sort(t_table *table)
+int	check_sort(t_stack *stack)
+{
+	int	len;
+
+	len = get_stacklen(stack);
+	while (stack->prev)
+		stack = stack->prev;
+	while (len > 1)
+	{
+		if (stack->elem > stack->next->elem)
+			return (1);
+		stack = stack->next;
+		len--;
+	}
+	return (0);
+}
+
+void	choose_sort(t_table *table)
 {
 	if (table->s_len == 2 || table->s_len == 1)
 	{
