@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 18:55:39 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/29 17:14:50 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:35:13 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	init_table(int argc, char **argv, t_table *table)
 			fd_error("Invalid number in args.");
 		i++;
 	}
-	table->a = get_stack_a(aux, table->a);
+	table->a = get_stack(aux, table->a);
 	free_aux(aux);
 	table->sorted = sort_table(table->sorted, argc);
 }

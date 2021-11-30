@@ -6,46 +6,44 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:25:13 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/29 18:50:45 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:35:01 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-t_stack	*new_stack_a(void)
+t_stack	*add_stack(void)
 {
-	t_stack	*stack_a;
+	t_stack	*stack;
 
-	stack_a = malloc(sizeof(t_stack));
-	stack_a->next = NULL;
-	stack_a->prev = NULL;
-	return (stack_a);
+	stack = malloc(sizeof(t_stack));
+	stack->next = NULL;
+	stack->prev = NULL;
+	return (stack);
 }
 
 t_stack	*add_list(t_stack *stack)
 {
-	t_stack	*new_stack;
+	t_stack	*new;
 
-	new_stack = new_stack_a();
-	stack->next = new_stack;
-	new_stack->prev = stack;
-	return (new_stack);
+	new = add_stack();
+	stack->next = new;
+	new->prev = stack;
+	return (new);
 }
 
-t_stack	*get_stack_a( char **new_argv, t_stack *stack_a)
+t_stack	*get_stack(char **aux, t_stack *stack)
 {
 	int	i;
-	int	check;
 
-	stack_a = new_stack_a();
 	i = 0;
-	check = 0;
-	while (new_argv[i])
+	stack = add_stack();
+	while (aux[i])
 	{
-		stack_a->next = ft_atoi(new_argv[i]);
-		if (new_argv[i + 1] != NULL)
-			stack_a = add_list(stack_a);
+		stack->next = ft_atoi(aux[i]);
+		if (aux[i + 1] != NULL)
+			stack = add_list(stack);
 		i++;
 	}
-	return (stack_a);
+	return (stack);
 }
