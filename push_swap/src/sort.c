@@ -12,6 +12,20 @@
 
 #include "../inc/push_swap.h"
 
+t_stack	*get_head(t_stack *stack)
+{
+	while (stack->prev)
+		stack = stack->prev;
+	return (stack);
+}
+
+t_stack *get_tail(t_stack *stack)
+{
+	while (stack->next)
+		stack = stack->prev;
+	return (stack);
+}
+
 int	check_sort(t_stack *stack)
 {
 	int	len;
@@ -31,17 +45,16 @@ int	check_sort(t_stack *stack)
 
 void	choose_sort(t_table *table)
 {
-	if (table->s_len == 2 || table->s_len == 1)
+	if (table->s_len < 3)
 	{
-		table->a = get_head(table->a);
-		if (table->a->elem > table->a->next->elem)
-			table->a = ft_sa(table->a);
+		sort_few(table);
 	}
 	else if (table->s_len == 3)
-		table->a = sort3element(table->a);
+		table->a = sort_three(table->a);
 	else if (table->s_len > 3 && table->s_len <= 5)
-		table->a = sort5element(table);
+		table->a = sort_five(table);
 	else if (table->s_len > 5 && table->s_len <= 100)
 		sort100element(table);
 	else
 		above_100element(table);
+}
