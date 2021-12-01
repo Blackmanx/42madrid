@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 20:52:35 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/30 12:35:16 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 00:28:15 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	free_stack(t_stack *stack)
 {
 	int		i;
 	int		len;
-	t_stack	*tmp;
 
 	i = 0;
 	len = get_stacklen(stack);
