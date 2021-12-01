@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_algo.c                                        :+:      :+:    :+:   */
+/*   r_ops.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 21:32:12 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/30 21:32:57 by prodrigo         ###   ########.fr       */
+/*   Created: 2021/11/30 21:57:44 by prodrigo          #+#    #+#             */
+/*   Updated: 2021/11/30 22:08:45 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	sort_few(t_table *table)
+int	ra(t_stack *a)
 {
-	table->a = get_head(table->a);
-	if (table->a->elem > table->a->next->elem)
-		table->a = sa(table->a);
+
+}
+
+int	rb(t_stack *b)
+{
+
+}
+
+int	rr(t_table *table)
+{
+
 }
