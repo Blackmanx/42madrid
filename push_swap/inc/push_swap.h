@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:40:51 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/30 21:57:03 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/01 18:51:37 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ typedef struct s_table
 	t_stack			*b;
 	int				*sorted;
 	int				s_len;
-	int				wait_two;
+	int				split_one;
+	int				split_two;
 
 }	t_table;
 

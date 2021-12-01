@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:22:13 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/29 17:01:51 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/01 18:51:39 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_stack	*get_head(t_stack *stack)
 	return (stack);
 }
 
-t_stack *get_tail(t_stack *stack)
+t_stack	*get_tail(t_stack *stack)
 {
 	while (stack->next)
 		stack = stack->prev;
@@ -46,15 +46,13 @@ int	check_sort(t_stack *stack)
 void	choose_sort(t_table *table)
 {
 	if (table->s_len < 3)
-	{
 		sort_few(table);
-	}
 	else if (table->s_len == 3)
 		table->a = sort_three(table->a);
 	else if (table->s_len > 3 && table->s_len <= 5)
 		table->a = sort_five(table);
 	else if (table->s_len > 5 && table->s_len <= 100)
-		sort100element(table);
+		sort_hundred(table);
 	else
-		above_100element(table);
+		sort_fivehundred(table);
 }

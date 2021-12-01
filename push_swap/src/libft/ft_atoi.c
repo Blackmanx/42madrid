@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 19:40:10 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/24 18:58:52 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/01 18:51:40 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	ft_atoi(const char *str)
 	{
 		num = num * 10 + (int)(str[x] - '0');
 		if (num * neg > 2147483647)
-			return (-1);
+			fd_error("Max int reached");
 		if (num * neg < -2147483648)
-			return (0);
+			fd_error("Min int reached");
 		x++;
 	}
 	return (num * neg);
