@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 18:55:39 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 00:28:16 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:18:14 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	*sort_table(int	*table, int len)
 
 static char	**split_table(int argc, char **argv, char **aux)
 {
-	char	**spacetab;
+	char	**spaced_argv;
 	int		i;
 	int		j;
 	int		x;
@@ -76,10 +76,10 @@ static char	**split_table(int argc, char **argv, char **aux)
 		if (ft_strchr(argv[i], ' ') && argv[i][0])
 		{
 			x = 0;
-			spacetab = ft_split(argv[i], ' ');
-			while (spacetab[x])
-				aux[j++] = ft_strdup(spacetab[x++]);
-			free_tab(spacetab);
+			spaced_argv = ft_split(argv[i], ' ');
+			while (spaced_argv[x])
+				aux[j++] = ft_strdup(spaced_argv[x++]);
+			free_tab(spaced_argv);
 		}
 		else if (argv[i][0])
 			aux[j++] = ft_strdup(argv[i]);
@@ -113,6 +113,6 @@ void	init_table(int argc, char **argv, t_table *table)
 		i++;
 	}
 	table->a = get_stack(aux, table->a);
-	free_aux(aux);
+	free_tab(aux);
 	table->sorted = sort_table(table->sorted, argc);
 }

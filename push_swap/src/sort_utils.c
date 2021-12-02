@@ -6,13 +6,13 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 18:51:23 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 00:28:27 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:52:39 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static int	if_in_chunk(t_table *table, int start, int end, int elem)
+static int	check_split(t_table *table, int start, int end, int elem)
 {
 	while (start < end)
 		if (elem == table->sorted[start++])
@@ -20,7 +20,7 @@ static int	if_in_chunk(t_table *table, int start, int end, int elem)
 	return (0);
 }
 
-int	ft_scan_from_top(t_table *table, int start, int end)
+int	scan_top(t_table *table, int start, int end)
 {
 	int		moves;
 
@@ -29,7 +29,7 @@ int	ft_scan_from_top(t_table *table, int start, int end)
 		table->a = table->a->prev;
 	while (table->a->next)
 	{
-		if (if_in_chunk(table, start, end, table->a->elem))
+		if (check_split(table, start, end, table->a->elem))
 		{
 			table->split_one = table->a->elem;
 			return (moves);
@@ -40,7 +40,7 @@ int	ft_scan_from_top(t_table *table, int start, int end)
 	return (moves);
 }
 
-int	ft_scan_from_bottom(t_table *table, int start, int end)
+int	scan_bottom(t_table *table, int start, int end)
 {
 	int		moves;
 
@@ -49,7 +49,7 @@ int	ft_scan_from_bottom(t_table *table, int start, int end)
 		table->a = table->a->next;
 	while (table->a->prev)
 	{
-		if (if_in_chunk(table, start, end, table->a->elem))
+		if (check_split(table, start, end, table->a->elem))
 		{
 			table->split_two = table->a->elem;
 			return (moves);
@@ -60,7 +60,7 @@ int	ft_scan_from_bottom(t_table *table, int start, int end)
 	return (moves);
 }
 
-int	ft_get_biggest(t_table table)
+int	get_largest(t_table table)
 {
 	int		var_to_push;
 	int		inc;
@@ -84,4 +84,9 @@ int	ft_get_biggest(t_table table)
 	return (pos);
 }
 
-i
+void	sort_few(t_table *table)
+{
+	table->a = get_head(table->a);
+	if (table->a->elem > table->a->next->elem)
+		table->a = sa(table->a);
+}

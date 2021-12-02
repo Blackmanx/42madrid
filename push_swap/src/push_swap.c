@@ -6,13 +6,13 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:40:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 00:28:20 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:29:11 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	check_argc(int argc, char *argv[])
+static int	check_argc(int argc, char *argv[])
 {
 	if (argc > 1)
 		fd_error("Not enough args.");
@@ -42,7 +42,6 @@ void	check_argv(char **aux)
 		}
 		i++;
 	}
-	return (1);
 }
 
 int	main(int argc, char *argv[])
