@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 18:55:39 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 17:38:19 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 22:56:21 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	get_tablelen(char **argv, int argc)
 {
 	int		j;
-	int		i;
 	char	**tab;
 	int		count;
 
@@ -24,7 +23,6 @@ static int	get_tablelen(char **argv, int argc)
 	j = 1;
 	while (argv[j])
 	{
-		i = 0;
 		count = 0;
 		if (ft_strchr(argv[j], ' '))
 		{
@@ -92,26 +90,16 @@ static char	**split_table(int argc, char **argv, char **aux)
 void	init_table(int argc, char **argv, t_table *table)
 {
 	char	**aux;
-	int		flag;
 	int		i;
-	int		j;
 
-	i = 0;
-	j = 0;
-	flag = 0;
+	i = -1;
 	aux = NULL;
 	argc = get_tablelen(argv, argc);
-	i = 0;
 	aux = split_table(argc, argv, aux);
 	check_argv(aux);
 	table->sorted = malloc(sizeof(int) * argc);
-	while (aux[i])
-	{
+	while (aux[++i])
 		table->sorted[i] = ft_atoi(aux[i]);
-		if (table->sorted[i] == -1 || table->sorted[i] == 0)
-			fd_error("Invalid number in args.");
-		i++;
-	}
 	table->a = get_stack(aux, table->a);
 	free_tab(aux);
 	table->sorted = sort_table(table->sorted, argc);

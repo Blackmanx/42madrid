@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 21:32:12 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 17:50:08 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 22:57:53 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,10 @@ static void	sorted_b_to_a(t_table *table)
 t_stack	*sort_five(t_table *table)
 {
 	int		median;
-	t_stack	*aux;
 
 	median = table->sorted[table->s_len / 2];
 	while (table->a->prev)
 		table->a = table->a->prev;
-	aux = table->a;
 	under_mid_point(table, median);
 	table->s_len = get_stacklen(table->a);
 	if (table->s_len == 3)

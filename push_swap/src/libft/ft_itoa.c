@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 04:00:59 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/04/27 18:51:49 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 22:58:36 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	assign_vars(int *aux, int *len, int *neg, int *n)
 
 void	aux_handler(int *aux, int *len)
 {
-	while (aux > 0)
+	while (*aux > 0)
 	{
 		*aux /= 10;
 		*len += 1;

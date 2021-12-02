@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:40:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 18:59:49 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 22:56:52 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,9 @@ void	check_argv(char **aux)
 
 int	main(int argc, char *argv[])
 {
-	int		i;
 	t_table	table;
 	int		len;
 
-	i = 0;
 	if (check_argc(argc) == 1)
 	{
 		init_table(argc, argv, &table);
