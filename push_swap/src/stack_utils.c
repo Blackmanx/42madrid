@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:25:13 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 00:28:28 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:38:47 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_stack	*get_stack(char **aux, t_stack *stack)
 	stack = add_stack();
 	while (aux[i])
 	{
-		stack->next = ft_atoi(aux[i]);
+		stack->elem = ft_atoi(aux[i]);
 		if (aux[i + 1] != NULL)
 			stack = add_list(stack);
 		i++;

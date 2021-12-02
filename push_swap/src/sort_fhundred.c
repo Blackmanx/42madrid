@@ -6,11 +6,18 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:32:50 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 15:57:12 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:58:27 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+
+t_table	*operate_push(t_table *table)
+{
+	while (table->b)
+		move_top(table);
+	return (table);
+}
 
 t_table	*operate_blocks(t_table *table, int start, int end)
 {

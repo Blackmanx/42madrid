@@ -6,13 +6,13 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 22:07:23 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/01 18:51:43 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:32:57 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static int	rr_util(t_stack *stack)
+static t_stack	*rr_util(t_stack *stack)
 {
 	t_stack	*tail;
 
@@ -33,7 +33,7 @@ static int	rr_util(t_stack *stack)
 	return (tail);
 }
 
-int	rra(t_stack *a)
+t_stack	*rra(t_stack *a)
 {
 	t_stack	*res;
 
@@ -42,7 +42,7 @@ int	rra(t_stack *a)
 	return (res);
 }
 
-int	rrb(t_stack *b)
+t_stack	*rrb(t_stack *b)
 {
 	t_stack	*res;
 
@@ -51,7 +51,7 @@ int	rrb(t_stack *b)
 	return (res);
 }
 
-int	rrr(t_table *table)
+t_stack	*rrr(t_table *table)
 {
 	t_stack	*res;
 

@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 18:55:39 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 17:18:14 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:38:19 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	*sort_table(int	*table, int len)
 		}
 		i++;
 	}
-	return (aux);
+	return (table);
 }
 
 static char	**split_table(int argc, char **argv, char **aux)

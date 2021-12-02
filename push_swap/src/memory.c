@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 20:52:35 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 17:18:54 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:20:05 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	free_stack(t_stack *stack)
 {
 	int		i;
 	int		len;
+	t_stack	*aux;
 
 	i = 0;
 	len = get_stacklen(stack);
@@ -23,10 +24,10 @@ void	free_stack(t_stack *stack)
 		stack = stack->prev;
 	while (i < len)
 	{
-		len = stack;
+		aux = stack;
 		if (stack)
 			stack = stack->next;
-		free(len);
+		free(aux);
 		i++;
 	}
 }

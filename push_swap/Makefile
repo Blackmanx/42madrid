@@ -6,12 +6,9 @@
 #    By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/20 12:59:57 by prodrigo          #+#    #+#              #
-#    Updated: 2021/12/02 17:24:53 by prodrigo         ###   ########.fr        #
+#    Updated: 2021/12/02 18:54:44 by prodrigo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-CC = gcc
-SRCS = src/push_swap.c \
 
 NAME 	= push_swap.a
 OBJF	= push_swap

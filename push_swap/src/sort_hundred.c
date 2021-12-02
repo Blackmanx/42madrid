@@ -6,13 +6,13 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 23:50:25 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 16:49:41 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:36:31 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static int	move_top(t_table *table)
+int	move_top(t_table *table)
 {
 	int	largest;
 	int	median;

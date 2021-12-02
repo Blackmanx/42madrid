@@ -6,15 +6,15 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:40:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 17:29:11 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:59:49 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static int	check_argc(int argc, char *argv[])
+static int	check_argc(int argc)
 {
-	if (argc > 1)
+	if (argc < 2)
 		fd_error("Not enough args.");
 	return (1);
 }
@@ -51,13 +51,13 @@ int	main(int argc, char *argv[])
 	int		len;
 
 	i = 0;
-	if (check_argc(argc, argv) == 1)
+	if (check_argc(argc) == 1)
 	{
 		init_table(argc, argv, &table);
 		table.s_len = get_stacklen(table.a);
 		len = get_stacklen(table.a);
 		if (find_dup(&table, table.sorted, len))
-			return (fd_error("Found duplicates."));
+			fd_error("Found duplicates.");
 		if (check_sort(table.a))
 			choose_sort(&table);
 		free_stack(table.a);

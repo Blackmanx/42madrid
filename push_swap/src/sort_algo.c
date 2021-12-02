@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 21:32:12 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 16:34:30 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:50:08 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_stack	*sort_three(t_stack *stack)
 	return (stack);
 }
 
-static void	under_mid_point(t_table	*table, int median)
+static void	under_mid_point(t_table *table, int median)
 {
 	int	i;
 
@@ -71,7 +71,7 @@ static void	under_mid_point(t_table	*table, int median)
 	}
 }
 
-static void	sorted_b_to_a(t_table	*table)
+static void	sorted_b_to_a(t_table *table)
 {
 	if (table->s_len == 3)
 	{

@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 21:57:42 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 16:02:42 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:21:52 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_stack	*move_stack_b(t_table *table, t_stack *stack)
 	return (stack);
 }
 
-int	pa(t_table *table)
+void	pa(t_table *table)
 {
 	t_stack	*stack;
 
@@ -62,7 +62,7 @@ static t_stack	*move_stack_a(t_table *table, t_stack *stack)
 	return (stack);
 }
 
-int	pb(t_table *table)
+void	pb(t_table *table)
 {
 	t_stack	*stack;
 
