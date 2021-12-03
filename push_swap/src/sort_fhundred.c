@@ -21,24 +21,21 @@ t_table	*operate_push(t_table *table)
 
 t_table	*operate_blocks(t_table *table, int start, int end)
 {
-	int		hold_first_moves;
-	int		hold_second_moves;
+	int		chunk_one_moves;
+	int		chunk_two_moves;
 
-	hold_first_moves = scan_top(table, start, end);
-	hold_second_moves = scan_bottom(table, start, end);
-	if (hold_first_moves <= hold_second_moves)
+	chunk_one_moves = scan_top(table, start, end);
+	chunk_two_moves = scan_bottom(table, start, end);
+	if (chunk_one_moves <= chunk_two_moves)
 	{
-		while (hold_first_moves-- > 0)
+		while (chunk_one_moves-- > 0)
 			table->a = ra(table->a);
 		pb(table);
 	}
 	else
 	{
-		while (hold_second_moves >= 0)
-		{
+		while (chunk_two_moves-- >= 0)
 			table->a = rra(table->a);
-			hold_second_moves--;
-		}
 		pb(table);
 	}
 	return (table);
