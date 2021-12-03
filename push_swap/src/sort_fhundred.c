@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:32:50 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 17:58:27 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/03 14:41:46 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_table	*operate_blocks(t_table *table, int start, int end)
 	int		chunk_two_moves;
 
 	chunk_one_moves = scan_top(table, start, end);
-	chunk_two_moves = scan_bottom(table, start, end);
+	chunk_two_moves = scan_bottom(table, start, end) + 1;
 	if (chunk_one_moves <= chunk_two_moves)
 	{
 		while (chunk_one_moves-- > 0)
@@ -34,7 +34,7 @@ t_table	*operate_blocks(t_table *table, int start, int end)
 	}
 	else
 	{
-		while (chunk_two_moves-- >= 0)
+		while (--chunk_two_moves >= 0)
 			table->a = rra(table->a);
 		pb(table);
 	}
