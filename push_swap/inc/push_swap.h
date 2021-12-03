@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:40:51 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/03 14:22:48 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/03 17:30:38 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_table
 // static int	check_argc(int argc, char *argv[]);
 void			check_argv(char **aux);
 // int			main(int argc, char **argv);
+int				is_empty(char *argv);
 
 // init.c
 void			init_table(int argc, char **argv, t_table *table);

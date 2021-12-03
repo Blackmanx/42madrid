@@ -6,17 +6,33 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:40:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 22:56:52 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/03 17:39:12 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+int	is_empty(char *argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (argv[i] != ' ')
+			return (0);
+		i++;
+	}
+	i = 0;
+	return (1);
+}
+
 static int	check_argc(int argc)
 {
-	if (argc < 2)
-		fd_error("Not enough args.");
-	return (1);
+	if (argc > 1)
+		return (1);
+	else
+		return (0);
 }
 
 void	check_argv(char **aux)
@@ -27,6 +43,8 @@ void	check_argv(char **aux)
 	i = 0;
 	while (aux[i])
 	{
+		if ((ft_strlen(aux[i]) == 0 || is_empty(aux[i])) && i != 1)
+			fd_error("Error");
 		j = 0;
 		while (j < aux[i][j])
 		{
@@ -61,5 +79,5 @@ int	main(int argc, char *argv[])
 		free_stack(table.a);
 		free(table.sorted);
 	}
-	return (0);
+	return (1);
 }
