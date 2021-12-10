@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:40:51 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 18:36:40 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/03 17:30:38 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_table
 // static int	check_argc(int argc, char *argv[]);
 void			check_argv(char **aux);
 // int			main(int argc, char **argv);
+int				is_empty(char *argv);
 
 // init.c
 void			init_table(int argc, char **argv, t_table *table);
@@ -88,7 +89,7 @@ t_table			*operate_push(t_table *table);
 
 // sort_hundred.c
 int				move_top(t_table *table);
-// static t_table	*move_block(t_table *table, int start, int len)
+// static t_table	*move_block(t_table *table, int len, int start)
 int				sort_hundred(t_table *table);
 
 // sort_utils.c

@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 23:50:25 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 18:36:31 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/03 14:45:32 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,26 @@ int	move_top(t_table *table)
 	return (1);
 }
 
-static t_table	*move_block(t_table *table, int start, int len)
+static t_table	*move_block(t_table *table, int len, int start)
 {
 	int	i;
 	int	j;
 	int	sum;
 
-	i = -1;
-	j = -1;
+	i = 0;
+	j = 0;
 	len = get_stacklen(table->a) / 5;
 	sum = len;
-	while (++i < 5)
+	while (i < 5)
 	{
-		while (++j < len)
+		while (j < len)
+		{
 			table = operate_blocks(table, start, len);
+			j++;
+		}
 		start += sum;
 		len += sum;
+		i++;
 	}
 	return (table);
 }

@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 18:55:39 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/02 22:56:21 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/03 17:36:30 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	init_table(int argc, char **argv, t_table *table)
 
 	i = -1;
 	aux = NULL;
+	check_argv(argv);
 	argc = get_tablelen(argv, argc);
 	aux = split_table(argc, argv, aux);
 	check_argv(aux);
