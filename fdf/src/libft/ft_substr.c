@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 19:57:22 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 03:31:05 by prodrigo          #+#    #+#             */
+/*   Updated: 2021/04/21 19:29:37 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int	main(int argc, char *argv[])
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	t_fdf	fdf;
-	char	*file_path;
+	char	*aux;
 
-	if (argc != 2)
-		fd_error("Error: Invalid arguments");
-	file_path = argv[1];
-	fdf.map = init_map(file_path);
-	maplloc(fdf.map);
-	parse_file(fdf.map, file_path);
-	set_peaks(fdf.map);
-	return (0);
+	if (!s)
+		return (NULL);
+	aux = (char *)malloc(sizeof(char) * ((int)len + 1));
+	if (!aux)
+		return (NULL);
+	ft_bzero(aux, len);
+	if (start <= (unsigned int)ft_strlen(s))
+		ft_strlcpy(aux, s + start, len + 1);
+	return (aux);
 }

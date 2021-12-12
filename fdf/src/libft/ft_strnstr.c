@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 19:57:22 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 02:23:23 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/03/03 04:46:54 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+char	*ft_strnstr(const char *haystack, const char *needle, size_t l)
 {
-	t_fdf	fdf;
-	char	*file_path;
+	size_t	len;
+	size_t	n;
 
-	if (argc != 2)
-		fd_error("Error: Invalid arguments");
-	file_path = argv[1];
-	fdf.map = init_map(file_path);
-	maplloc(fdf.map);
-	parse_file(fdf.map, file_path);
-	set_peaks(fdf.map);
-	return (0);
+	n = 0;
+	len = ft_strlen(needle);
+	if (ft_strlen(haystack) < len)
+		return (NULL);
+	if (!needle[0])
+		return ((char *)haystack);
+	while ((n + len) <= l && *haystack)
+	{
+		if (ft_strncmp(haystack, needle, len) == 0)
+			return ((char *)haystack);
+		haystack++;
+		n++;
+	}
+	return (NULL);
 }

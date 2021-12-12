@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 23:34:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/09 23:42:08 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/11 14:30:26 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,27 @@ void	alloc_map(t_fdf *fdf)
 	}
 }
 
-void	free_map(t_fdf *fdf)
+void	free_map(t_map *map)
 {
 	int	i;
 
-	if (!fdf->map)
+	if (!map)
 		return ;
-	if (fdf->map->z)
+	if (map->z)
 	{
 		i = -1;
-		while (++i < fdf->map->h)
-		{
-			if (fdf->map->z[i])
-				free(fdf->map->z[i]);
-		}
-		free(fdf->map->z);
+		while (++i < map->h)
+			if (map->z[i])
+				free(map->z[i]);
+		free(map->z);
 	}
-	if (fdf->map->col)
+	if (map->col)
 	{
 		i = -1;
-		while (++i < fdf->map->h)
-		{
-			if (fdf->map->col[i])
-				free(fdf->map->col[i]);
-		}
-		free(fdf->map->col);
+		while (++i < map->h)
+			if (map->col[i])
+				free(map->col[i]);
+		free(map->col);
 	}
-	free(fdf->map);
+	free(map);
 }

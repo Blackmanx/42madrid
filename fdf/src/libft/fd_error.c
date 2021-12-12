@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   fd_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 19:57:22 by prodrigo         ###   ########.fr       */
+/*   Created: 2021/11/24 12:22:57 by prodrigo          #+#    #+#             */
+/*   Updated: 2021/12/03 16:03:33 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	fd_error(char *str)
 {
-	t_fdf	fdf;
-	char	*file_path;
-
-	if (argc != 2)
-		fd_error("Error: Invalid arguments");
-	file_path = argv[1];
-	fdf.map = init_map(file_path);
-	maplloc(fdf.map);
-	parse_file(fdf.map, file_path);
-	set_peaks(fdf.map);
-	return (0);
+	str = "Error\n";
+	ft_putstr_fd(str, 2);
+	exit(1);
 }

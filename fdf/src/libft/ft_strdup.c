@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 19:57:22 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 03:17:11 by prodrigo          #+#    #+#             */
+/*   Updated: 2021/04/21 19:31:04 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+char	*ft_strdup(const char *s1)
 {
-	t_fdf	fdf;
-	char	*file_path;
+	char	*aux;
+	int		i;
 
-	if (argc != 2)
-		fd_error("Error: Invalid arguments");
-	file_path = argv[1];
-	fdf.map = init_map(file_path);
-	maplloc(fdf.map);
-	parse_file(fdf.map, file_path);
-	set_peaks(fdf.map);
-	return (0);
+	aux = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (!aux)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		aux[i] = s1[i];
+		i++;
+	}
+	aux[i] = '\0';
+	return (aux);
 }

@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 19:57:22 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 02:34:58 by prodrigo          #+#    #+#             */
+/*   Updated: 2021/04/21 19:25:50 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_fdf	fdf;
-	char	*file_path;
+	size_t				i;
+	unsigned char		*aux;
+	unsigned char		*aux2;
 
-	if (argc != 2)
-		fd_error("Error: Invalid arguments");
-	file_path = argv[1];
-	fdf.map = init_map(file_path);
-	maplloc(fdf.map);
-	parse_file(fdf.map, file_path);
-	set_peaks(fdf.map);
-	return (0);
+	i = 0;
+	aux = (unsigned char *)s1;
+	aux2 = (unsigned char *)s2;
+	while (aux[i] && aux2[i] && (i < n - 1) && aux[i] == aux2[i])
+		i++;
+	if (!(n <= 0))
+		return (aux[i] - aux2[i]);
+	else
+		return (0);
 }

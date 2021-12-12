@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 19:57:22 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/02/19 21:28:26 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/03/03 03:23:31 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_fdf	fdf;
-	char	*file_path;
+	char			*aux;
+	unsigned int	n;
 
-	if (argc != 2)
-		fd_error("Error: Invalid arguments");
-	file_path = argv[1];
-	fdf.map = init_map(file_path);
-	maplloc(fdf.map);
-	parse_file(fdf.map, file_path);
-	set_peaks(fdf.map);
-	return (0);
+	if (!s)
+		return (NULL);
+	aux = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!aux)
+		return (NULL);
+	n = 0;
+	while (s[n])
+	{
+		aux[n] = f(n, s[n]);
+		n++;
+	}
+	aux[n] = '\0';
+	return (aux);
 }

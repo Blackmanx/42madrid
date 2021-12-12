@@ -1,28 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 19:57:22 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 03:35:17 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/03/04 16:28:12 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int	main(int argc, char *argv[])
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_fdf	fdf;
-	char	*file_path;
+	char	*s;
+	int		i;
+	int		j;
 
-	if (argc != 2)
-		fd_error("Error: Invalid arguments");
-	file_path = argv[1];
-	fdf.map = init_map(file_path);
-	maplloc(fdf.map);
-	parse_file(fdf.map, file_path);
-	set_peaks(fdf.map);
-	return (0);
+	if (!s1 || !s2)
+		return (NULL);
+	s = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		s[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		s[i] = s2[j];
+		i++;
+		j++;
+	}
+	s[i] = '\0';
+	return (s);
 }

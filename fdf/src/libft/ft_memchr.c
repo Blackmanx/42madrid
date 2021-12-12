@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 19:57:22 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 01:16:51 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/03/03 03:22:24 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	t_fdf	fdf;
-	char	*file_path;
+	unsigned char	*str;
+	unsigned char	aux;
+	size_t			i;
 
-	if (argc != 2)
-		fd_error("Error: Invalid arguments");
-	file_path = argv[1];
-	fdf.map = init_map(file_path);
-	maplloc(fdf.map);
-	parse_file(fdf.map, file_path);
-	set_peaks(fdf.map);
-	return (0);
+	str = (unsigned char *)s;
+	aux = (unsigned char)c;
+	i = 0;
+	while (i < n)
+	{
+		if (str[i] == aux)
+			return (&str[i]);
+		i++;
+	}
+	return (NULL);
 }

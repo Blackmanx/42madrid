@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 19:57:22 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 04:20:43 by prodrigo          #+#    #+#             */
+/*   Updated: 2021/04/21 17:11:08 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	ft_putnbr_fd(int nb, int fd)
 {
-	t_fdf	fdf;
-	char	*file_path;
+	long int	i;
 
-	if (argc != 2)
-		fd_error("Error: Invalid arguments");
-	file_path = argv[1];
-	fdf.map = init_map(file_path);
-	maplloc(fdf.map);
-	parse_file(fdf.map, file_path);
-	set_peaks(fdf.map);
-	return (0);
+	i = nb;
+	if (i < 0)
+	{
+		i = i * (-1);
+		ft_putchar_fd('-', fd);
+	}
+	if (i >= 10)
+	{
+		ft_putnbr_fd((i / 10), fd);
+	}
+	ft_putchar_fd(((i % 10) + '0'), fd);
 }

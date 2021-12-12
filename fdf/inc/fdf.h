@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/09 23:42:27 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/12 20:09:29 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "./colors.h"
 # include "../lib-Linux/mlx.h"
 # include "./keycodes.h"
+# include "../src/libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -86,58 +87,27 @@ typedef struct s_fdf {
 	t_img		*img;
 }	t_fdf;
 
-// utils.c
-void	free_split(char **split);
-void	free_fdf(t_fdf *fdf);
-void	free_all(t_fdf *fdf);
-t_pnt	new_point(int x, int y, t_fdf *fdf);
-t_pnt	get_coords(t_fdf *fdf, t_pnt point);
+// memory.c
+// !void	free_split(char **split);
+// !void	free_fdf(t_fdf *fdf);
+// !void	free_all(t_fdf *fdf);
+void	free_map(t_map *map);
+void	alloc_map(t_fdf *fdf);
+
+// data.c
+void	fill_z_col(t_map *map, int fd);
+void	set_peaks(t_map *map);
 
 // error.c
-void	err_exit(const char *err, const char *msg);
-void	perror_exit(const char *str);
 
-// map_utils.c
+// map.c
+// static int	count_file_nbr(t_map *map, char *l)
 void	get_min_max_z(t_map *map);
-void	free_map(t_fdf *fdf);
-void	alloc_map(t_fdf *fdf);
-t_map	*initialise_map(char *file);
+void	maplloc(t_map *map);
+t_map	*init_map(char *f_path);
 
-// handle_args.c
-void	handle_args(t_map **map, int ac, char **av);
+// parsers.c
+void	parse_file(t_map *map, char *f_path);
+int		parse_color(t_map *map, char *str);
 
-// mlx_main.c
-int		mlx_main(t_map *map);
-
-// mlx_hook.c
-int		close_win(t_fdf *fdf);
-int		key_hook(int keycode, t_fdf *fdf);
-
-// mlx_loop.c
-int		update(t_fdf *fdf);
-
-// mlx_utils.c
-void	reset_fdf(t_fdf *fdf);
-int		initialise_fdf(t_fdf *fdf, t_map *map);
-void	initialise_mlx(t_fdf *fdf);
-
-// draw.c
-void	draw(t_fdf *fdf);
-
-// draw_utils.c
-void	isometric(t_fdf *fdf, int *x, int *y, int z);
-void	rot_x(t_fdf *fdf, int *y, int *z);
-void	rot_y(t_fdf *fdf, int *x, int *z);
-void	rot_z(t_fdf *fdf, int *x, int *y);
-void	img_pixel_put(t_fdf *fdf, int x, int y, int color);
-
-// controls.c
-void	handle_zoom(int keycode, t_fdf *fdf);
-void	handle_move(int keycode, t_fdf *fdf);
-void	handle_rot(int keycode, t_fdf *fdf);
-void	handle_flattening(int keycode, t_fdf *fdf);
-
-// color.c
-int		get_color(t_pnt current, t_pnt start, t_pnt end, t_pnt delta);
-int		get_z_color(t_fdf *fdf, int cur_z);
 #endif

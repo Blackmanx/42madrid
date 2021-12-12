@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 19:57:22 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 01:34:28 by prodrigo          #+#    #+#             */
+/*   Updated: 2021/04/21 19:27:01 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	t_fdf	fdf;
-	char	*file_path;
+	size_t	n;
+	size_t	m;
 
-	if (argc != 2)
-		fd_error("Error: Invalid arguments");
-	file_path = argv[1];
-	fdf.map = init_map(file_path);
-	maplloc(fdf.map);
-	parse_file(fdf.map, file_path);
-	set_peaks(fdf.map);
-	return (0);
+	n = 0;
+	if (dstsize < ft_strlen(dst))
+		return (ft_strlen(src) + dstsize);
+	while (dst[n] && n < dstsize)
+		n++;
+	m = n;
+	while (src[n - m] && (n + 1) < dstsize)
+	{
+		dst[n] = src[n - m];
+		n++;
+	}
+	dst[n] = '\0';
+	return (ft_strlen(src) + m);
 }

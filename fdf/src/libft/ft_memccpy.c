@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 19:57:22 by prodrigo         ###   ########.fr       */
+/*   Created: 2020/03/03 01:07:26 by prodrigo          #+#    #+#             */
+/*   Updated: 2020/03/04 16:24:52 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	t_fdf	fdf;
-	char	*file_path;
+	unsigned char	*daux;
+	unsigned char	*saux;
+	unsigned char	aux;
+	size_t			i;
 
-	if (argc != 2)
-		fd_error("Error: Invalid arguments");
-	file_path = argv[1];
-	fdf.map = init_map(file_path);
-	maplloc(fdf.map);
-	parse_file(fdf.map, file_path);
-	set_peaks(fdf.map);
-	return (0);
+	daux = (unsigned char *)dst;
+	saux = (unsigned char *)src;
+	aux = (unsigned char)c;
+	i = 0;
+	while (i < n)
+	{
+		daux[i] = saux[i];
+		if (saux[i] == aux)
+			return (dst + i + 1);
+		i++;
+	}
+	return (NULL);
 }
