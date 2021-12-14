@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 15:14:24 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 20:05:12 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/14 17:36:44 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	parse_color(t_map *map, char *str)
 	{
 		map->col_f = 1;
 		ft_striter(str + 1, ft_tolower);
-		return (ft_atoi_base(str + 1, "0123456789abcdef"));
+		return (ft_atoib(str + 1, "0123456789abcdef"));
 	}
 	else
 		return (WHITE);

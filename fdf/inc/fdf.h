@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 20:09:29 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/14 17:28:11 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ typedef struct s_fdf {
 }	t_fdf;
 
 // memory.c
-// !void	free_split(char **split);
-// !void	free_fdf(t_fdf *fdf);
-// !void	free_all(t_fdf *fdf);
+void	free_tab(char **tab);
+void	free_fdf(t_fdf *fdf);
+void	free_win(t_fdf *fdf);
 void	free_map(t_map *map);
 void	alloc_map(t_fdf *fdf);
 
@@ -105,6 +105,7 @@ void	set_peaks(t_map *map);
 void	get_min_max_z(t_map *map);
 void	maplloc(t_map *map);
 t_map	*init_map(char *f_path);
+void	map_error(t_map *map, char *str);
 
 // parsers.c
 void	parse_file(t_map *map, char *f_path);

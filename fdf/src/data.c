@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 19:18:10 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/12 19:57:07 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/14 17:39:47 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ void	fill_z_col(t_map *map, int fd)
 	x = -1;
 	while (++y < map->h)
 	{
-		line = ft_get_next_line(fd);
+		line = get_next_line(fd);
 		split = ft_split(line, ' ');
 		if (!split)
-			map_error("Malloc did an oopsie!");
+			map_error(map, "Malloc did an oopsie!");
 		y = -1;
 		while (++y < map->w)
 		{
 			map->z[x][y] = ft_atoi(split[y]);
 			map->col[x][y] = parse_color(map, split[y]);
 		}
-		free_split(split);
+		free_tab(split);
 		free(line);
 	}
 }

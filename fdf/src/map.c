@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 12:58:57 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/11 15:06:42 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/14 17:20:47 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	count_file_nbr(t_map *map, char *l)
 	n = 0;
 	while (split[n])
 		n++;
-	free_split(split);
+	free_tab(split);
 	return (n);
 }
 

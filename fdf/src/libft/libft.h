@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 04:08:40 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/24 12:28:11 by prodrigo         ###   ########.fr       */
+/*   Updated: 2021/12/14 17:37:34 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 void				fd_error(char *str);
+void				ft_striter(char *s, void (*f)(char *));
+int					ft_atoib(const char *str, const char *b);
 
 #endif
