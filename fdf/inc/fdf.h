@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2022/01/11 18:11:35 by prodrigo         ###   ########.fr       */
+/*   Updated: 2022/01/26 18:17:42 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,14 @@
 # define ROT					0.1
 # define ZOOM					0.5
 
+typedef struct s_ren {
+	int			x;
+	int			y;
+}				t_ren;
+
 typedef struct s_pnt {
-	int			axis[3];
-	int			color;
+	int			x;
+	int			y;
 }				t_pnt;
 
 typedef struct s_rgb {
@@ -55,38 +60,39 @@ typedef struct s_lib {
 
 typedef struct s_img {
 	int			*img;
-	char		*data;
-	int			len;
+	char		*addr;
+	int			h;
+	int			w;
+	int			sz;
 	int			endian;
 	int			bpp;
 }				t_img;
 
-typedef struct s_map {
-	int			w;
-	int			h;
-	int			**z;
-	int			**col;
-	int			col_f;
-	int			z_min;
-	int			z_max;
-}	t_map;
+typedef struct s_vars {
+int				x;
+int				y;
+int				d;
+int				dy;
+int				dx;
+int				xi;
+int				yi;
+}	t_vars;
 
-typedef struct s_view {
-	int		shift[2];
-	int		iso;
-	int		rot[3];
-	float	zoom;
-	float	flat;
-	float	rot;
-}	t_view;
+typedef struct s_read {
+	char		*buf;
+	char		*b;
+	char		*l;
+
+}	t_read;
 
 typedef struct s_fdf {
-	t_view		view;
-	t_map		*map;
-	t_pnt		axis;
-	t_rgb		rgb;
-	t_lib		lib;
-	t_img		*img;
+	int			rows;
+	int			cols;
+	char		*line;
+	int			**map;
+	int			color;
+	int			zoom;
+	int			mov;
 }	t_fdf;
 
 // memory.c
