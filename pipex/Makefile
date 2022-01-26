@@ -17,7 +17,7 @@ $(NAME):	${OBJS}
 					@make re -C ./libft
 					@cp ./libft/libft.a ./$(NAME)
 					@ar -rcs ${NAME} ${OBJS}
-					@$(CC) $(NAME) ${MAIN} -o ${OBJF}
+					@$(CC) $(NAME) -o ${OBJF}
 
 all: 		${NAME}
 

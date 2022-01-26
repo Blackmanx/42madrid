@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/14 17:28:11 by prodrigo         ###   ########.fr       */
+/*   Updated: 2022/01/11 18:11:35 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <math.h>
+# include <limits.h>
 
 # define MAX_SIZE			20
 # define GRAY				8355711
@@ -76,6 +77,7 @@ typedef struct s_view {
 	int		rot[3];
 	float	zoom;
 	float	flat;
+	float	rot;
 }	t_view;
 
 typedef struct s_fdf {

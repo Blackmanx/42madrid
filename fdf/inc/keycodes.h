@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 20:01:01 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/09 16:05:47 by prodrigo         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:54:10 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 #  define KEY_LEFT	65361
 #  define KEY_RIGHT	65363
 #  define KEY_SPACE	32
-#  define KEY_ESCAPE	65307
+#  define KEY_ESC	65307
 #  define KEY_UP 65362
 #  define KEY_DOWN 65364
 #  define KEY_W 119
