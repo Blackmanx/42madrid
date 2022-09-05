@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2022/01/26 18:17:42 by prodrigo         ###   ########.fr       */
+/*   Updated: 2022/09/05 21:17:08 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_H
 
 # include "./colors.h"
-# include "../lib-Linux/mlx.h"
+# include "../minilibx_macos/mlx.h"
 # include "./keycodes.h"
 # include "../src/libft/libft.h"
 # include <unistd.h>
@@ -37,7 +37,7 @@
 # define Z						2
 # define SHIFT					10
 # define ROT					0.1
-# define ZOOM					0.5
+# define ZOOM					3
 
 typedef struct s_ren {
 	int			x;
@@ -49,9 +49,27 @@ typedef struct s_pnt {
 	int			y;
 }				t_pnt;
 
-typedef struct s_rgb {
-	float		rgb[3];
-}				t_rgb;
+typedef struct s_algo {
+	int			x;
+	int			y;
+	int			dx;
+	int			dy;
+	int			d;
+	int			xi;
+	int			yi;
+}				t_algo;
+
+typedef struct s_view {
+	float		pangle;
+	float		angle;
+	int			x;
+	int			y;
+	int			zoom;
+	int			iso;
+	int			obl;
+	int			plane;
+	int			rot[3];
+}				t_view;
 
 typedef struct s_lib {
 	void		*mlx;
@@ -69,21 +87,21 @@ typedef struct s_img {
 }				t_img;
 
 typedef struct s_vars {
-int				x;
-int				y;
-int				d;
-int				dy;
-int				dx;
-int				xi;
-int				yi;
-}	t_vars;
+	int				x;
+	int				y;
+	int				d;
+	int				dy;
+	int				dx;
+	int				xi;
+	int				yi;
+}				t_vars;
 
 typedef struct s_read {
-	char		*buf;
+	char		**buf;
 	char		*b;
 	char		*l;
 
-}	t_read;
+}				t_read;
 
 typedef struct s_fdf {
 	int			rows;
@@ -93,7 +111,13 @@ typedef struct s_fdf {
 	int			color;
 	int			zoom;
 	int			mov;
-}	t_fdf;
+	t_read		read;
+	t_ren		ren;
+	t_img		img;
+	t_view		view;
+	t_dist		dist;
+	t_lib		lib;
+}				t_fdf;
 
 // memory.c
 void	free_tab(char **tab);
