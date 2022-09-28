@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2022/09/28 16:22:17 by prodrigo         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:49:35 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ int	main(int argc, char *argv[])
 	fdf = (t_fdf *)ft_calloc(1, sizeof(t_fdf));
 	if (!fdf)
 		ft_error("Error: Malloc failed", -2);
+	init_fdf(argv);
 	return (0);
 }

@@ -120,4 +120,11 @@ typedef struct s_fdf {
 	t_lib		lib;
 }				t_fdf;
 // TODO: Include functions
+
+// map/parser.c
+int	parse_map(char **str);
+
+// init.c
+void	init_fdf(char **argv);
+
 #endif
