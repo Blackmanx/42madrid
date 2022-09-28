@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <prodrigo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2022/09/05 21:17:08 by prodrigo         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:14:57 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include "./colors.h"
+# include "./errors.h"
 # include "../minilibx_macos/mlx.h"
 # include "./keycodes.h"
 # include "../src/libft/libft.h"
@@ -118,29 +119,5 @@ typedef struct s_fdf {
 	t_dist		dist;
 	t_lib		lib;
 }				t_fdf;
-
-// memory.c
-void	free_tab(char **tab);
-void	free_fdf(t_fdf *fdf);
-void	free_win(t_fdf *fdf);
-void	free_map(t_map *map);
-void	alloc_map(t_fdf *fdf);
-
-// data.c
-void	fill_z_col(t_map *map, int fd);
-void	set_peaks(t_map *map);
-
-// error.c
-
-// map.c
-// static int	count_file_nbr(t_map *map, char *l)
-void	get_min_max_z(t_map *map);
-void	maplloc(t_map *map);
-t_map	*init_map(char *f_path);
-void	map_error(t_map *map, char *str);
-
-// parsers.c
-void	parse_file(t_map *map, char *f_path);
-int		parse_color(t_map *map, char *str);
-
+// TODO: Include functions
 #endif
