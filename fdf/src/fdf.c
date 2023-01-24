@@ -37,6 +37,15 @@ int	ft_error(char *error, int code_error)
 ** Exit code (int)
 */
 
+void	check_type(char *filename)
+{
+	int	len;
+
+	len = ft_strlen(filename);
+	if (ft_strncmp(&filename[len - 4], ".fdf", 4) != 0)
+		ft_error("Error: Wrong file extension", BAD_FILE);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_fdf	*fdf;
@@ -44,9 +53,10 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 		ft_error("Error: Invalid arguments", INVALID_ARGS);
+	check_type(argv[1]);
 	fdf = (t_fdf *)ft_calloc(1, sizeof(t_fdf));
 	if (!fdf)
-		ft_error("Error: Malloc failed", -2);
+		ft_error("Error: Malloc failed", ALLOC_FAIL);
 	init_fdf(argv);
 	return (0);
 }
