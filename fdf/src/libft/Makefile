@@ -45,8 +45,7 @@ ft_putstr_fd.c \
 ft_putendl_fd.c \
 fd_error.c \
 ft_putnbr_fd.c \
-ft_striter.c \
-ft_atoib.c
+ft_striter.c 
 
 OBJ = ${SRC:.c=.o}
 
