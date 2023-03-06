@@ -17,5 +17,6 @@
 
 #ifndef ERRORS_H
 # define INVALID_ARGS	-1
-# define FAILED_MALLOC	-2
+# define BAD_ALLOC	-2
+# define BAD_FILE -3
 #endif
