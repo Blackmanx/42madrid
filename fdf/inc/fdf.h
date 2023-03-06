@@ -15,7 +15,7 @@
 
 # include "./colors.h"
 # include "./errors.h"
-# include "../minilibx_macos/mlx.h"
+# include "../mlx/mlx.h"
 # include "./keycodes.h"
 # include "../src/libft/libft.h"
 # include <unistd.h>
@@ -116,7 +116,7 @@ typedef struct s_fdf {
 	t_ren		ren;
 	t_img		img;
 	t_view		view;
-	t_dist		dist;
+	t_vars		vars;
 	t_lib		lib;
 }				t_fdf;
 // TODO: Include functions
