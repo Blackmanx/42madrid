@@ -14,7 +14,8 @@
 
 /*
 ** * DESCRIPTION
-** Whenever an error happens, use this function to print out an error and exit with an error code.
+** Whenever an error happens, use this function to print out an error and exit 
+** with an error code.
 ** * @param myParam
 ** Description of params
 ** * RETURN VALUE
@@ -24,12 +25,12 @@
 int	ft_error(char *error, int code_error)
 {
 	printf("%s,  Error code: %d \n", error, code_error);
-	exit(code_error);
+	exit(EXIT_FAILURE);
 }
 
 /*
 ** * DESCRIPTION
-** main function
+** Main function
 ** * @param myParam
 ** argc : Number of args
 ** argv : args themselves as string.
@@ -49,14 +50,13 @@ void	check_type(char *filename)
 int	main(int argc, char *argv[])
 {
 	t_fdf	*fdf;
-	char	*file_path;
 
 	if (argc != 2)
 		ft_error("Error: Invalid arguments", INVALID_ARGS);
 	check_type(argv[1]);
 	fdf = (t_fdf *)ft_calloc(1, sizeof(t_fdf));
 	if (!fdf)
-		ft_error("Error: Malloc failed", ALLOC_FAIL);
+		ft_error("Error: Malloc failed", BAD_ALLOC);
 	init_fdf(argv);
 	return (0);
 }
