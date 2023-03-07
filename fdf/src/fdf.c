@@ -50,6 +50,7 @@ void	check_type(char *filename)
 int	main(int argc, char *argv[])
 {
 	t_fdf	*fdf;
+	t_lib	lib;
 
 	if (argc != 2)
 		ft_error("Error: Invalid arguments", INVALID_ARGS);
@@ -57,6 +58,7 @@ int	main(int argc, char *argv[])
 	fdf = (t_fdf *)ft_calloc(1, sizeof(t_fdf));
 	if (!fdf)
 		ft_error("Error: Malloc failed", BAD_ALLOC);
-	init_fdf(argv);
+	init_fdf(argv, &lib);
+	mlx_loop(lib.mlx);
 	return (0);
 }

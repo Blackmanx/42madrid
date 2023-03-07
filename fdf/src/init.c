@@ -12,16 +12,16 @@
 
 #include "../inc/fdf.h"
 
-void	init_fdf(char **argv)
+int	close_window(t_lib *lib)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	exit(1);
+	lib = NULL;
+}
 
+void	init_fdf(char **argv, t_lib *lib)
+{
 	argv = NULL;
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 600, 300, "My first window!");
-	write(1, "amogus", 7);
-	mlx_clear_window(mlx_ptr, win_ptr);
-	mlx_destroy_window(mlx_ptr, win_ptr);
-	free(mlx_ptr);
+	lib->mlx = mlx_init();
+	lib->win = mlx_new_window(lib->mlx, 1920, 1080, "Amog Us 2!");
+	mlx_hook(lib->win, 17, 0L, close_window, &lib);
 }

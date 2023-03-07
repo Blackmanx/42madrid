@@ -125,6 +125,6 @@ typedef struct s_fdf {
 int	parse_map(char **str);
 
 // init.c
-void	init_fdf(char **argv);
+void	init_fdf(char **argv, t_lib *lib);
 
 #endif
