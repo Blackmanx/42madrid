@@ -40,18 +40,21 @@ tmp:
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADER)/$(NAME).h
 	@$(CC) $(FLAGS) -c -o $@ $<
+	@cp $(MLX)/libmlx.dylib ./
 	@echo "amogus2"
 
 clean:
 	@echo "Sus clean"
 	@make clean -C $(LIBFT)
 	@rm -rf $(OBJ_PATH)
+	@rm -rf libmlx.dylib
 
 fclean:
 	@echo "Sus fclean"
 	@rm -rf $(OBJ_PATH)
 	@rm -f $(NAME)
 	@make fclean -C $(LIBFT)
+	@rm -rf libmlx.dylib
 
 re: fclean
 	@$(MAKE) all -j
