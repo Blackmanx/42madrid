@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2022/09/28 17:49:35 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:02:12 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 /*
 ** * DESCRIPTION
-** Whenever an error happens, use this function to print out an error and exit 
-** with an error code.
-** * @param myParam
-** Description of params
+** Checks if name of file submitted complies with our rules.
+** * @param char *filename
+** filename: First argument of main program. Name of file submitted.
 ** * RETURN VALUE
-** Explain what do you return
+** None. Can exit program with error if extension isn't valid.
 */
 
-int	ft_error(char *error, int code_error)
+void	check_type(char *filename)
 {
-	printf("%s,  Error code: %d \n", error, code_error);
-	exit(EXIT_FAILURE);
+	int	len;
+
+	len = ft_strlen(filename);
+	if (ft_strncmp(&filename[len - 4], ".fdf", 4) != 0)
+		exit_error("Error: Wrong file extension", BAD_FILE);
 }
 
 /*
@@ -38,27 +40,17 @@ int	ft_error(char *error, int code_error)
 ** Exit code (int)
 */
 
-void	check_type(char *filename)
-{
-	int	len;
-
-	len = ft_strlen(filename);
-	if (ft_strncmp(&filename[len - 4], ".fdf", 4) != 0)
-		ft_error("Error: Wrong file extension", BAD_FILE);
-}
-
 int	main(int argc, char *argv[])
 {
 	t_fdf	*fdf;
-	t_lib	lib;
 
 	if (argc != 2)
-		ft_error("Error: Invalid arguments", INVALID_ARGS);
+		exit_error("Error: Invalid arguments", INVALID_ARGS);
 	check_type(argv[1]);
 	fdf = (t_fdf *)ft_calloc(1, sizeof(t_fdf));
 	if (!fdf)
-		ft_error("Error: Malloc failed", BAD_ALLOC);
-	init_fdf(argv, &lib);
-	mlx_loop(lib.mlx);
+		exit_error("Error: Malloc failed", BAD_ALLOC);
+	init_fdf(argv, fdf);
+	mlx_loop(fdf->lib.mlx);
 	return (0);
 }
