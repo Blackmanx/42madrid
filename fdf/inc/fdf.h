@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2022/09/28 16:14:57 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/03/13 21:37:26 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_img {
 	int			h;
 	int			w;
 	int			sz;
+	int			len;
 	int			endian;
 	int			bpp;
 }				t_img;
@@ -122,9 +123,15 @@ typedef struct s_fdf {
 // TODO: Include functions
 
 // map/parser.c
-int	parse_map(char **str);
+int		parse_map(char **str);
 
 // init.c
-void	init_fdf(char **argv, t_lib *lib);
+void	init_fdf(char **argv, t_fdf *fdf);
 
+// exit.c
+int		close_window(t_fdf *fdf);
+void	exit_error(char *error, int errcode);
+
+// draw.c
+void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color);
 #endif
