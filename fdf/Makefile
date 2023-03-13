@@ -15,7 +15,9 @@ MLX = mlx
 
 ### SOURCE FILES ###
 SOURCES = fdf.c \
-		  init.c 
+		  init.c \
+		  draw.c \
+		  exit.c
 
 ### OBJECTS ###
 
@@ -57,6 +59,6 @@ fclean:
 	@rm -rf libmlx.dylib
 
 re: fclean
-	@$(MAKE) all -j
+	@$(MAKE) all
 
-.PHONY: temporary, re, fclean, clean
+.PHONY: all, re, fclean, clean
