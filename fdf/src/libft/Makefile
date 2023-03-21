@@ -3,12 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/03 04:22:05 by prodrigo          #+#    #+#              #
-#    Updated: 2021/12/14 17:37:44 by prodrigo         ###   ########.fr        #
+#    Updated: 2023/03/21 20:10:54 by prodrigo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
+INCLUDES = libft.h
+NAME = libft.a
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -I. -c
+RM	= rm -f
 
 SRC = ft_bzero.c \
 ft_bzero.c \
@@ -45,22 +52,18 @@ ft_putstr_fd.c \
 ft_putendl_fd.c \
 fd_error.c \
 ft_putnbr_fd.c \
-ft_striter.c 
+ft_striter.c
 
 OBJ = ${SRC:.c=.o}
 
-INCLUDES = ./
-NAME = libft.a
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I. -c
-RM	= rm -f
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+all:  libft $(NAME)
 
-$(NAME): ${OBJ}
-			ar rc ${NAME} ${OBJ}
+libft:
+$(NAME): $(OBJ) $(INCLUDES)
+	ar rc $(NAME) $(OBJ)
 
-all: $(NAME)
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 		${RM} ${OBJ}

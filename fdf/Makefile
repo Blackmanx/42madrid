@@ -26,39 +26,42 @@ OBJS = $(addprefix $(OBJ_PATH)/,$(SOURCES:.c=.o))
 
 ### RULES ###
 
-all: lib tmp $(NAME)
+all: lib tmp copylib $(NAME)
 
 lib:
-	@echo "$(GREEN)Creating lib files$(CYAN)"
+	@echo "Creating lib files."
 	@make -C $(LIBFT)
 	@make -C $(MLX)
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) -L $(LIBFT) -L $(MLX) -o $@ $^ $(MLX_FLAGS)
-	@echo "amogus1"
+	@echo "FDF has been compiled successfully."
 
 tmp:
 	@mkdir -p objs
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADER)/$(NAME).h
 	@$(CC) $(FLAGS) -c -o $@ $<
+
+copylib:
 	@cp $(MLX)/libmlx.dylib ./
-	@echo "amogus2"
+	@echo "Copied MLX lib to folder."
 
 clean:
-	@echo "Sus clean"
+	@echo "Cleaning everything except compiled FDF."
 	@make clean -C $(LIBFT)
+	@make clean -C $(MLX)
 	@rm -rf $(OBJ_PATH)
-	@rm -rf libmlx.dylib
 
 fclean:
-	@echo "Sus fclean"
+	@echo "Cleaning everything."
 	@rm -rf $(OBJ_PATH)
 	@rm -f $(NAME)
+	@make clean -C $(MLX)
+	@rm -rf $(MLX)/libmlx.dylib
 	@make fclean -C $(LIBFT)
 	@rm -rf libmlx.dylib
 
-re: fclean
-	@$(MAKE) all
+re: fclean all
 
 .PHONY: all, re, fclean, clean
