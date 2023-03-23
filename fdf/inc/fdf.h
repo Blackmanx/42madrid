@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/03/21 19:36:11 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/03/23 18:03:24 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 # define SHIFT					10
 # define ROT					0.1
 # define ZOOM					3
+# define WINDOW_W				1920
+# define WINDOW_H				1080
 
 typedef struct s_ren {
 	int			x;
