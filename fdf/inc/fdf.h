@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/05 03:22:10 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/05 11:58:52 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define WINDOW_H				1080
 # define TRUE					1
 # define FALSE					0
+# define BUFFER_SIZE				32
 
 typedef struct s_scr {
 	int			x;

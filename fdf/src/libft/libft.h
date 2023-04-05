@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 04:08:40 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/12/14 17:37:34 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:06:59 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 void				fd_error(char *str);
 void				ft_striter(char *s, void (*f)(char *));
 int					ft_atoib(const char *str, const char *b);
+char				*ft_swap(char *l, char *buf);
+int					get_next_line(int fd, char **line, char **b, char **l);
 
 #endif
