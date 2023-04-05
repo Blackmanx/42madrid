@@ -6,13 +6,13 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:24:27 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/05 03:22:03 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:10:21 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-static void	handle_size(fdf *fdf)
+static void	handle_size(t_fdf *fdf)
 {
 	if (fdf->img.w >= fdf->scr.x)
 		fdf->img.w = fdf->scr.x;
@@ -74,22 +74,22 @@ static void	declare_data(t_fdf *fdf)
 	fdf->mov = 0;
 }
 
-void	init_fdf((t_fdf *fdf)
+void	init_fdf(t_fdf *fdf)
 {
 	declare_data(fdf);
 	fdf->lib.mlx = mlx_init();
 	if (!fdf->lib.mlx)
-		exit_error("Error: MLX was not initialized", 1);
+		exit_error("Error: MLX was not initialized", NO_MLX);
 	handle_size(fdf);
 	fdf->lib.win = mlx_new_window(fdf->lib.mlx, fdf->img.w,
 			fdf->img.h, "Amogus");
 	if (!fdf->lib.win)
-		exit_error("Error: When opening a new window", 1);
+		exit_error("Error: Failed to create window", NO_WINDOW);
 	fdf->img.img = mlx_new_image(fdf->lib.mlx, fdf->img.w,
 			fdf->img.h);
 	if (!fdf->img.img)
-		exit_error("Error: When creating a new image", 1);
-	fdf->img.addr = (int *)mlx_get_data_addr(fdf->img.img, &fdf->img.bpp,
+		exit_error("Error: Failed to create image", NO_IMG);
+	fdf->img.addr = mlx_get_data_addr(fdf->img.img, &fdf->img.bpp,
 			&fdf->img.sz, &fdf->img.endian);
 	mlx_do_key_autorepeatoff(fdf->lib.mlx);
 }
