@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/05 12:11:48 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:30:40 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int argc, char *argv[])
 		exit_error("Error: Invalid arguments", INVALID_ARGS);
 	check_type(argv[1]);
 	init_fdf(&fdf);
-	//mlx_hook(fdf.lib.win, 2, 1, key_press, &fdf);
+	mlx_hook(fdf.lib.win, 2, 1, key_press, &fdf);
 	mlx_hook(fdf.lib.win, 17, (1U << 17), close_window, &fdf);
 	mlx_loop(fdf.lib.mlx);
 	return (0);

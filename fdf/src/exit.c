@@ -6,11 +6,29 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:04:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/05 03:18:28 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:10:37 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+void	free_map(t_fdf *fdf)
+{
+	int	i;
+
+	i = fdf->rows - 1;
+	if (fdf->map)
+	{
+		while (i >= 0)
+		{
+			free(fdf->map[i]);
+			fdf->map[i] = NULL;
+			i--;
+		}
+		free(fdf->map);
+		fdf->map = NULL;
+	}
+}
 
 /*
 ** * DESCRIPTION
@@ -23,9 +41,44 @@
 
 int	close_window(t_fdf *fdf)
 {
-	fdf = NULL;
+	if (fdf != NULL)
+	{
+		if (fdf->lib.win && fdf->lib.mlx)
+		{
+			free(fdf->lib.win);
+			free(fdf->lib.mlx);
+			mlx_destroy_window(fdf->lib.win, fdf->lib.mlx);
+		}
+		if (fdf->img.img)
+			mlx_destroy_image(fdf->lib.mlx, fdf->img.img);
+		if (fdf->map)
+			free_map(fdf);
+		if (fdf->line)
+			free(fdf->line);
+		if (fdf->read.l)
+			free(fdf->read.l);
+		if (fdf->read.b)
+			free(fdf->read.b);
+	}
 	exit(EXIT_SUCCESS);
 	return (0);
+}
+
+/*
+** * DESCRIPTION
+** Exit the window properly when pressing ESC.
+** * @param int key, t_fdf fdf
+** fdf: Fdf struct
+** key: int which sends key ID
+** * RETURN VALUE
+** None
+*/
+
+int	key_press(int key, t_fdf *fdf)
+{
+	if (key == (int)KEY_ESC)
+		close_window(fdf);
+	return (1);
 }
 
 /*

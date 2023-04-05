@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/05 11:58:52 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:30:57 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ void	init_fdf(t_fdf *fdf);
 // exit.c
 int		close_window(t_fdf *fdf);
 void	exit_error(char *error, int errcode);
+int		key_press(int key, t_fdf *fdf);
 
 // draw.c
 void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color);
