@@ -60,6 +60,7 @@ fclean:
 	@rm -f $(NAME)
 	@make clean -C $(MLX)
 	@rm -rf $(MLX)/libmlx.dylib
+	@rm -rf $(MLX)/*.swiftsourceinfo
 	@make fclean -C $(LIBFT)
 	@rm -rf libmlx.dylib
 
