@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/03/23 18:03:24 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/05 02:59:17 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define MAX_SIZE			20
 # define GRAY				8355711
 # define PI					3.14159265359
-# define HEIGHT					1920
-# define WIDTH					1080
+# define MAX_HEIGHT					5120
+# define MAX_WIDTH					2880
 # define X						0
 # define Y						1
 # define Z						2
@@ -41,26 +41,13 @@
 # define ZOOM					3
 # define WINDOW_W				1920
 # define WINDOW_H				1080
+# define TRUE					1
+# define FALSE					0
 
-typedef struct s_ren {
+typedef struct s_scr {
 	int			x;
 	int			y;
-}				t_ren;
-
-typedef struct s_pnt {
-	int			x;
-	int			y;
-}				t_pnt;
-
-typedef struct s_algo {
-	int			x;
-	int			y;
-	int			dx;
-	int			dy;
-	int			d;
-	int			xi;
-	int			yi;
-}				t_algo;
+}				t_scr;
 
 typedef struct s_view {
 	float		pangle;
@@ -116,16 +103,16 @@ typedef struct s_fdf {
 	int			zoom;
 	int			mov;
 	t_read		read;
-	t_ren		ren;
 	t_img		img;
 	t_view		view;
 	t_vars		vars;
 	t_lib		lib;
+	t_scr		scr;
 }				t_fdf;
 // TODO: Include functions
 
 // map/parser.c
-int		parse_map(char **str);
+void	parse_map(t_fdf *fdf, int *flag, char *line);
 
 // init.c
 void	init_fdf(char **argv, t_fdf *fdf);
@@ -140,4 +127,7 @@ void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color);
 // key_handling.c
 int		key_press(int key, t_fdf *fdf);
 int		key_release(int key, t_fdf *fdf);
+
+// parser.c
+int		read_map(t_fdf *fdf, char *argv);
 #endif
