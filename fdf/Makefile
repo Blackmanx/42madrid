@@ -17,7 +17,8 @@ MLX = mlx
 SOURCES = fdf.c \
 		  init.c \
 		  draw.c \
-		  exit.c
+		  exit.c \
+		  parser.c
 
 ### OBJECTS ###
 
