@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:13:42 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/05 11:23:33 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:06:59 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@
 # define NO_IMG	-5
 # define NO_WINDOW	-6
 # define NO_MLX	-7
+# define FILE_OPEN	-8
 #endif
