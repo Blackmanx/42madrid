@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/03/13 22:02:12 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/05 03:09:44 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,9 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		exit_error("Error: Invalid arguments", INVALID_ARGS);
 	check_type(argv[1]);
-	fdf = (t_fdf *)ft_calloc(1, sizeof(t_fdf));
-	if (!fdf)
-		exit_error("Error: Malloc failed", BAD_ALLOC);
 	init_fdf(argv, fdf);
+	mlx_hook(fdf->lib.win, 2, 1, key_press, fdf);
+	mlx_hook(fdf->lib.win, 17, (1U << 17), close_window, fdf);
 	mlx_loop(fdf->lib.mlx);
 	return (0);
 }
