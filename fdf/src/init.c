@@ -6,36 +6,90 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:24:27 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/03/23 18:04:16 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/05 03:22:03 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-void	init_fdf(char **argv, t_fdf *fdf)
+static void	handle_size(fdf *fdf)
 {
-	int	x;
-	int	y;
+	if (fdf->img.w >= fdf->scr.x)
+		fdf->img.w = fdf->scr.x;
+	if (fdf->img.h >= fdf->scr.y)
+		fdf->img.h = fdf->scr.y;
+}
 
-	x = 0;
-	y = 0;
-	argv = NULL;
+static void	init_imgview(t_fdf *fdf)
+{
+	fdf->img.img = NULL;
+	fdf->img.addr = NULL;
+	fdf->img.h = WINDOW_H;
+	fdf->img.w = WINDOW_W;
+	fdf->img.sz = 0;
+	fdf->img.len = 0;
+	fdf->img.endian = 0;
+	fdf->img.bpp = 0;
+	fdf->view.pangle = 0.0;
+	fdf->view.angle = 0.0;
+	fdf->view.x = 0;
+	fdf->view.y = 0;
+	fdf->view.zoom = 0;
+	fdf->view.iso = 0;
+	fdf->view.obl = 0;
+	fdf->view.plane = 0;
+	fdf->view.rot[0] = 0;
+	fdf->view.rot[1] = 0;
+	fdf->view.rot[2] = 0;
+}
+
+static void	init_structs(t_fdf *fdf)
+{
+	init_imgview(fdf);
+	fdf->read.buf = NULL;
+	fdf->read.b = NULL;
+	fdf->read.l = NULL;
+	fdf->lib.mlx = NULL;
+	fdf->lib.win = NULL;
+	fdf->vars.x = 0;
+	fdf->vars.y = 0;
+	fdf->vars.d = 0;
+	fdf->vars.dy = 0;
+	fdf->vars.dx = 0;
+	fdf->vars.xi = 0;
+	fdf->vars.yi = 0;
+	fdf->scr.x = MAX_HEIGHT;
+	fdf->scr.y = MAX_WIDTH;
+}
+
+static void	declare_data(t_fdf *fdf)
+{
+	init_structs(fdf);
+	fdf->rows = 0;
+	fdf->cols = 0;
+	fdf->line = NULL;
+	fdf->map = NULL;
+	fdf->color = 0;
+	fdf->zoom = 0;
+	fdf->mov = 0;
+}
+
+void	init_fdf((t_fdf *fdf)
+{
+	declare_data(fdf);
 	fdf->lib.mlx = mlx_init();
-	fdf->lib.win = mlx_new_window(fdf->lib.mlx,
-			WINDOW_W, WINDOW_H, "Amog Us 2!");
-	fdf->img.img = mlx_new_image(fdf->lib.mlx, WINDOW_W, WINDOW_H);
-	fdf->img.addr = mlx_get_data_addr(fdf->img.img, &fdf->img.bpp,
-			&fdf->img.len, &fdf->img.endian);
-	while (x < WINDOW_W)
-	{
-		while (y < WINDOW_H)
-		{
-			my_mlx_pixel_put(fdf, x, y, WHITE);
-			y += rand() % 30;
-		}
-		x += rand() % 50;
-		y = 0;
-	}
-	mlx_put_image_to_window(fdf->lib.mlx, fdf->lib.win, fdf->img.img, 0, 0);
-	mlx_hook(fdf->lib.win, 17, 0L, close_window, &fdf);
+	if (!fdf->lib.mlx)
+		exit_error("Error: MLX was not initialized", 1);
+	handle_size(fdf);
+	fdf->lib.win = mlx_new_window(fdf->lib.mlx, fdf->img.w,
+			fdf->img.h, "Amogus");
+	if (!fdf->lib.win)
+		exit_error("Error: When opening a new window", 1);
+	fdf->img.img = mlx_new_image(fdf->lib.mlx, fdf->img.w,
+			fdf->img.h);
+	if (!fdf->img.img)
+		exit_error("Error: When creating a new image", 1);
+	fdf->img.addr = (int *)mlx_get_data_addr(fdf->img.img, &fdf->img.bpp,
+			&fdf->img.sz, &fdf->img.endian);
+	mlx_do_key_autorepeatoff(fdf->lib.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/05 03:17:30 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/05 03:22:10 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ typedef struct s_fdf {
 void	parse_map(t_fdf *fdf, int *flag, char *line);
 
 // init.c
-void	init_fdf(char **argv, t_fdf *fdf);
+void	init_fdf(t_fdf *fdf);
 
 // exit.c
 int		close_window(t_fdf *fdf);
