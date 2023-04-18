@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/03 04:22:05 by prodrigo          #+#    #+#              #
-#    Updated: 2023/04/05 12:05:20 by prodrigo         ###   ########.fr        #
+#    Updated: 2023/04/18 23:05:03 by prodrigo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ fd_error.c \
 ft_putnbr_fd.c \
 ft_striter.c \
 ft_swap.c \
+ft_getlen.c \
 get_next_line.c
 
 OBJ = ${SRC:.c=.o}

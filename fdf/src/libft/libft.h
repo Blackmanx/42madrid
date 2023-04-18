@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 04:08:40 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/05 12:06:59 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/18 23:05:59 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,9 @@ void				ft_striter(char *s, void (*f)(char *));
 int					ft_atoib(const char *str, const char *b);
 char				*ft_swap(char *l, char *buf);
 int					get_next_line(int fd, char **line, char **b, char **l);
+int					ft_getlen(int *array);
+int					ft_getlen(int **array);
+int					ft_getlen(char *array);
+int					ft_getlen(char **array);
 
 #endif
