@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_getlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 23:02:25 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/18 23:04:33 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:29:07 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_getlen(char **array)
+int	ft_map_getlen(char **array)
 {
 	int	i;
 
@@ -36,7 +36,7 @@ int	ft_getlen(char *array)
 	return (i);
 }
 
-int	ft_getlen(int **array)
+int	ft_matrix_getlen(int **array)
 {
 	int	i;
 
@@ -48,7 +48,7 @@ int	ft_getlen(int **array)
 	return (i);
 }
 
-int	ft_getlen(int *array)
+int	ft_num_getlen(int *array)
 {
 	int	i;
 

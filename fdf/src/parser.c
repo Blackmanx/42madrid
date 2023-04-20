@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:50:26 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/20 03:46:29 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:56:38 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	parse_dim(t_fdf *fdf, char *argv)
 	while (get_next_line(fd, &fdf->line, &fdf->read.b, &fdf->read.l))
 	{
 		ft_split_fdf(fdf->line, ' ', fdf);
-		fdf->cols = ft_getlen(fdf->read.buf);
+		fdf->cols = ft_map_getlen(fdf->read.buf);
 		fdf->rows++;
 		free_buf(fdf);
 		free(fdf->line);
@@ -82,7 +82,8 @@ int	read_map(t_fdf *fdf, char *argv)
 	while (++i < fdf->rows)
 		fdf->map[i] = (int *)malloc(sizeof(int) * fdf->cols);
 	i = 0;
-	while (get_next_line(fd, &map->line, &map->read.b, &map->read.l) > 0)
+	while (get_next_line(fd, &fdf->line, &fdf->read.b,
+			&fdf->read.l) > 0)
 	{
 		fill_map(fdf->line, fdf->map[i++], fdf);
 		free(fdf->line);

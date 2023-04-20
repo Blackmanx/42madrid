@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 03:43:21 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/20 03:43:48 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:58:29 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FDF_STRUCTS_H
 # define FDF_STRUCTS_H
@@ -68,7 +67,7 @@ typedef struct s_svg
 	int			d1;
 	int			d2;
 	int			len;
-}
+}				t_svg;
 
 typedef struct s_coord {
 	int			x;

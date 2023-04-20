@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/20 03:19:07 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:35:10 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	create_img(t_fdf *fdf)
 		spot.x = 0;
 		while (spot.x < fdf->cols)
 		{
-			fdf->color = set_color(spot.x, spot.y, fdf);
+			fdf->color = set_color(fdf, spot.x, spot.y);
 			if (spot.x < fdf->cols - 1)
 				draw_line(fdf, spot, spot.x + 1, spot.y);
 			if (spot.y < fdf->rows - 1)
@@ -31,7 +31,7 @@ static int	create_img(t_fdf *fdf)
 		}
 		spot.y++;
 	}
-	mlx_put_image_to_window(fdf->lib.mlx, fdf->lib.win, fdf->win.img, 0, 0);
+	mlx_put_image_to_window(fdf->lib.mlx, fdf->lib.win, fdf->img.img, 0, 0);
 	return (1);
 }
 

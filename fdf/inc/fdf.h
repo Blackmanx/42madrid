@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/20 03:43:13 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:57:16 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define ISO					1
 # define PLANE					0
 # define PERSPECTIVE			0.53
+# define ANGLE					0.1
 # define TANGENT				0
 # define TRUE					1
 # define FALSE					0
@@ -64,6 +65,7 @@ void	exit_error(char *error, int errcode);
 int		key_press(int key, t_fdf *fdf);
 
 // draw.c
+int		set_color(t_fdf *fdf, int x, int y);
 void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color);
 
 // key_handling.c

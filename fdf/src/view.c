@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   view.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 23:16:08 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/20 03:21:09 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:57:27 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static void	create_vector(t_fdf *fdf)
 	int		y;
 
 	y = 0;
-	fdf->svg.d2 = __INT_MIN__;
-	fdf->svg.d1 = __INT_MAX__;
+	fdf->svg.d2 = INT_MIN;
+	fdf->svg.d1 = INT_MAX;
 	while (y < fdf->rows)
 	{
 		x = 0;

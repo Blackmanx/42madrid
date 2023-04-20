@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_fdf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 03:40:41 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/20 03:44:30 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:58:45 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
-#include "../../include/fdf_structs.h"
 
 static int	cont_char(char const *s, char c)
 {

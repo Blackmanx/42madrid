@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:24:27 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/05 12:10:21 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:36:02 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ static void	init_imgview(t_fdf *fdf)
 	fdf->img.len = 0;
 	fdf->img.endian = 0;
 	fdf->img.bpp = 0;
-	fdf->view.pangle = 0.0;
+	fdf->view.perspective = 0.0;
 	fdf->view.angle = 0.0;
 	fdf->view.x = 0;
 	fdf->view.y = 0;
 	fdf->view.zoom = 0;
 	fdf->view.iso = 0;
-	fdf->view.obl = 0;
+	fdf->view.tan = 0;
 	fdf->view.plane = 0;
 	fdf->view.rot[0] = 0;
 	fdf->view.rot[1] = 0;
@@ -51,13 +51,6 @@ static void	init_structs(t_fdf *fdf)
 	fdf->read.l = NULL;
 	fdf->lib.mlx = NULL;
 	fdf->lib.win = NULL;
-	fdf->vars.x = 0;
-	fdf->vars.y = 0;
-	fdf->vars.d = 0;
-	fdf->vars.dy = 0;
-	fdf->vars.dx = 0;
-	fdf->vars.xi = 0;
-	fdf->vars.yi = 0;
 	fdf->scr.x = MAX_HEIGHT;
 	fdf->scr.y = MAX_WIDTH;
 }
