@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:50:26 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/18 23:07:55 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:46:29 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	fill_map(char *line, int *map, t_fdf *fdf)
 	int		i;
 
 	i = 0;
-	ft_split(line, ' ', fdf);
+	ft_split_fdf(line, ' ', fdf);
 	while (fdf->read.buf[i])
 	{
 		map[i] = ft_atoi(fdf->read.buf[i]);
@@ -54,7 +54,7 @@ static void	parse_dim(t_fdf *fdf, char *argv)
 		exit_error("Fdf file could not be opened\n", FILE_OPEN);
 	while (get_next_line(fd, &fdf->line, &fdf->read.b, &fdf->read.l))
 	{
-		ft_split(fdf->line, ' ', fdf);
+		ft_split_fdf(fdf->line, ' ', fdf);
 		fdf->cols = ft_getlen(fdf->read.buf);
 		fdf->rows++;
 		free_buf(fdf);

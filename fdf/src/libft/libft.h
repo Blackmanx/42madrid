@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 04:08:40 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/18 23:05:59 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:44:51 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include "../../inc/fdf_structs.h"
 
 typedef struct s_list
 {
@@ -77,5 +78,6 @@ int					ft_getlen(int *array);
 int					ft_getlen(int **array);
 int					ft_getlen(char *array);
 int					ft_getlen(char **array);
+void				ft_split_fdf(char const *s1, char c, t_fdf *d);
 
 #endif

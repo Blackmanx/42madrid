@@ -6,7 +6,7 @@
 #    By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/03 04:22:05 by prodrigo          #+#    #+#              #
-#    Updated: 2023/04/18 23:05:03 by prodrigo         ###   ########.fr        #
+#    Updated: 2023/04/20 03:45:10 by prodrigo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ ft_putnbr_fd.c \
 ft_striter.c \
 ft_swap.c \
 ft_getlen.c \
+ft_split_fdf \
 get_next_line.c
 
 OBJ = ${SRC:.c=.o}
