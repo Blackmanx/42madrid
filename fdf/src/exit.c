@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:04:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/05 13:10:37 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/20 02:43:48 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,14 @@ int	key_press(int key, t_fdf *fdf)
 {
 	if (key == (int)KEY_ESC)
 		close_window(fdf);
+	if (key == KEY_W)
+		fdf->view.y -= 20;
+	if (key == KEY_A)
+		fdf->view.x -= 20;
+	if (key == KEY_D)
+		fdf->view.x += 20;
+	if (key == KEY_S)
+		fdf->view.y += 20;
 	return (1);
 }
 

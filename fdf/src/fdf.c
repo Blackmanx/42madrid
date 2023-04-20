@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/05 17:05:30 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:19:07 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+static int	create_img(t_fdf *fdf)
+{
+	t_coord	spot;
+
+	spot.y = 0;
+	while (spot.y < fdf->rows)
+	{
+		spot.x = 0;
+		while (spot.x < fdf->cols)
+		{
+			fdf->color = set_color(spot.x, spot.y, fdf);
+			if (spot.x < fdf->cols - 1)
+				draw_line(fdf, spot, spot.x + 1, spot.y);
+			if (spot.y < fdf->rows - 1)
+				draw_line(fdf, spot, spot.x, spot.y + 1);
+			spot.x++;
+		}
+		spot.y++;
+	}
+	mlx_put_image_to_window(fdf->lib.mlx, fdf->lib.win, fdf->win.img, 0, 0);
+	return (1);
+}
 
 /*
 ** * DESCRIPTION
@@ -49,8 +72,10 @@ int	main(int argc, char *argv[])
 	check_type(argv[1]);
 	init_fdf(&fdf);
 	read_map(&fdf, argv[1]);
+	view_init(&fdf);
 	mlx_hook(fdf.lib.win, 2, 1, key_press, &fdf);
 	mlx_hook(fdf.lib.win, 17, (1U << 17), close_window, &fdf);
+	create_img(&fdf);
 	mlx_loop(fdf.lib.mlx);
 	return (0);
 }

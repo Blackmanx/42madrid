@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/05 12:30:57 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:24:50 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@
 # include <math.h>
 # include <limits.h>
 
-# define MAX_SIZE			20
-# define GRAY				8355711
-# define PI					3.14159265359
-# define MAX_HEIGHT					2880
-# define MAX_WIDTH					5120
+# define MAX_SIZE				20
+# define GRAY					8355711
+# define PI						3.14159265359
+# define MAX_HEIGHT				2880
+# define MAX_WIDTH				5120
 # define X						0
 # define Y						1
 # define Z						2
@@ -41,9 +41,13 @@
 # define ZOOM					3
 # define WINDOW_W				1920
 # define WINDOW_H				1080
+# define ISO					1
+# define PLANE					0
+# define PERSPECTIVE			0.53
+# define TANGENT				0
 # define TRUE					1
 # define FALSE					0
-# define BUFFER_SIZE				32
+# define BUFFER_SIZE			32
 
 typedef struct s_scr {
 	int			x;
@@ -51,13 +55,13 @@ typedef struct s_scr {
 }				t_scr;
 
 typedef struct s_view {
-	float		pangle;
+	float		perspective;
 	float		angle;
 	int			x;
 	int			y;
 	int			zoom;
 	int			iso;
-	int			obl;
+	int			tan;
 	int			plane;
 	int			rot[3];
 }				t_view;
@@ -92,8 +96,19 @@ typedef struct s_read {
 	char		**buf;
 	char		*b;
 	char		*l;
-
 }				t_read;
+
+typedef struct s_svg
+{
+	int			d1;
+	int			d2;
+	int			len;
+}
+
+typedef struct s_coord {
+	int			x;
+	int			y;
+}				t_coord;
 
 typedef struct s_fdf {
 	int			rows;
@@ -107,6 +122,7 @@ typedef struct s_fdf {
 	t_img		img;
 	t_view		view;
 	t_vars		vars;
+	t_svg		svg;
 	t_lib		lib;
 	t_scr		scr;
 }				t_fdf;
@@ -130,6 +146,17 @@ void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color);
 int		key_press(int key, t_fdf *fdf);
 int		key_release(int key, t_fdf *fdf);
 
+// line.c
+void	vector_descend(t_fdf *fdf, t_coord a1, t_coord a2);
+void	vector_ascend(t_fdf *fdf, t_coord a1, t_coord a2);
+void	draw_line(t_fdf *fdf, t_coord a1, int x1, int y1);
+
 // parser.c
 int		read_map(t_fdf *fdf, char *argv);
+
+// view.c
+void	zoom_view(t_fdf *fdf, t_coord *a1, t_coord *a2, int z[2]);
+void	position_view(t_fdf *fdf, t_coord *a1, t_coord *a2);
+void	view_init(t_fdf *fdf);
+
 #endif

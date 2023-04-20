@@ -18,7 +18,9 @@ SOURCES = fdf.c \
 		  init.c \
 		  draw.c \
 		  exit.c \
-		  parser.c
+		  parser.c \
+		  view.c \
+		  line.c
 
 ### OBJECTS ###
 
