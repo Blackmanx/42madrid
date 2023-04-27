@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:24:27 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/20 03:36:02 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/27 20:36:07 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	init_structs(t_fdf *fdf)
 	fdf->scr.y = MAX_WIDTH;
 }
 
-static void	declare_data(t_fdf *fdf)
+void	declare_data(t_fdf *fdf)
 {
 	init_structs(fdf);
 	fdf->rows = 0;

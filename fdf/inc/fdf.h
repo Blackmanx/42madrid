@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/20 03:57:16 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/27 20:36:26 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@
 void	parse_map(t_fdf *fdf, int *flag, char *line);
 
 // init.c
+void	declare_data(t_fdf *fdf);
 void	init_fdf(t_fdf *fdf);
 
 // exit.c

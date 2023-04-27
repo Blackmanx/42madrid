@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/20 03:35:10 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/27 20:37:18 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,10 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		exit_error("Error: Invalid arguments", INVALID_ARGS);
 	check_type(argv[1]);
-	init_fdf(&fdf);
+	declare_data(&fdf);
 	read_map(&fdf, argv[1]);
 	view_init(&fdf);
+	init_fdf(&fdf);
 	mlx_hook(fdf.lib.win, 2, 1, key_press, &fdf);
 	mlx_hook(fdf.lib.win, 17, (1U << 17), close_window, &fdf);
 	create_img(&fdf);
