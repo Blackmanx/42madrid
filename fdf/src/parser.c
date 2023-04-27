@@ -6,11 +6,23 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:50:26 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 01:41:14 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 01:56:50 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+static int	arr_getlen(char **arr)
+{
+	int	i;
+
+	i = 0;
+	if (!arr)
+		return (-1);
+	while (arr[i])
+		i++;
+	return (i);
+}
 
 static int	free_buf(t_fdf *fdf)
 {
@@ -34,13 +46,10 @@ static void	fill_map(char *line, int *map, t_fdf *fdf)
 {
 	int		i;
 
-	i = 0;
+	i = -1;
 	ft_split_fdf(line, ' ', fdf);
-	while (fdf->read.buf[i])
-	{
+	while (fdf->read.buf[++i])
 		map[i] = ft_atoi(fdf->read.buf[i]);
-		i++;
-	}
 	free_buf(fdf);
 }
 
@@ -55,7 +64,7 @@ static void	parse_dim(t_fdf *fdf, char *argv)
 	while (get_next_line(fd, &fdf->line, &fdf->read.b, &fdf->read.l))
 	{
 		ft_split_fdf(fdf->line, ' ', fdf);
-		fdf->cols = ft_map_getlen(fdf->read.buf);
+		fdf->cols = arr_getlen(fdf->read.buf);
 		fdf->rows++;
 		free_buf(fdf);
 		free(fdf->line);
@@ -68,7 +77,7 @@ static void	parse_dim(t_fdf *fdf, char *argv)
 		exit_error("Fdf file could not be opened", INVALID_MAP);
 }
 
-int	read_map(t_fdf *fdf, char *argv)
+void	read_map(t_fdf *fdf, char *argv)
 {
 	int	i;
 	int	fd;
@@ -89,5 +98,5 @@ int	read_map(t_fdf *fdf, char *argv)
 		free(fdf->line);
 		fdf->line = NULL;
 	}
-	return (0);
+	close(fd);
 }

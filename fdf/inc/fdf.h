@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/27 20:36:26 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 01:57:46 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define MAX_SIZE				20
 # define GRAY					8355711
 # define PI						3.14159265359
-# define MAX_HEIGHT				2880
-# define MAX_WIDTH				5120
+# define MAX_HEIGHT				1800
+# define MAX_WIDTH				1000
 # define X						0
 # define Y						1
 # define Z						2
@@ -79,7 +79,7 @@ void	vector_ascend(t_fdf *fdf, t_coord a1, t_coord a2);
 void	draw_line(t_fdf *fdf, t_coord a1, int x1, int y1);
 
 // parser.c
-int		read_map(t_fdf *fdf, char *argv);
+void	read_map(t_fdf *fdf, char *argv);
 
 // view.c
 void	zoom_view(t_fdf *fdf, t_coord *a1, t_coord *a2, int z[2]);
