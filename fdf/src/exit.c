@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:04:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/20 02:43:48 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 01:41:36 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,6 @@ int	key_press(int key, t_fdf *fdf)
 
 void	exit_error(char *error, int errcode)
 {
-	printf("%s, err_code: %d \n", error, errcode);
+	printf("%s, ERR_CODE: %d \n", error, errcode);
 	exit(errcode);
 }
