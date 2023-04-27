@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:24:27 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/27 20:36:07 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 01:36:00 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	declare_data(t_fdf *fdf)
 
 void	init_fdf(t_fdf *fdf)
 {
-	declare_data(fdf);
 	fdf->lib.mlx = mlx_init();
 	if (!fdf->lib.mlx)
 		exit_error("Error: MLX was not initialized", NO_MLX);
