@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:04:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 05:03:30 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 05:04:18 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	close_window(t_fdf *fdf)
 	exit(EXIT_SUCCESS);
 	return (0);
 }
-
 
 /*
 ** * DESCRIPTION
