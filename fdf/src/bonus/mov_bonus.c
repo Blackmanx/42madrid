@@ -55,7 +55,7 @@ void	hooks_perspective(t_fdf *fdf, int key)
 		fdf->view.iso = ISO;
 		fdf->view.plane = PLANE;
 		fdf->view.obl = OBLIQUE;
-		fdf->view.pangle = PERSPECTIVE;
+		fdf->view.angle = PERSPECTIVE;
 	}
 	if (key == KEY_P)
 	{
@@ -68,7 +68,7 @@ void	hooks_perspective(t_fdf *fdf, int key)
 		fdf->view.plane = PLANE;
 		fdf->view.iso = ISO0;
 		fdf->view.obl = OBLIQUE1;
-		fdf->view.pangle = PERSPECTIVE_ALT;
+		fdf->view.angle = PERSPECTIVE_ALT;
 	}
 	if (key == KEY_P || key == KEY_O || key == KEY_I)
 		fdf->mov = 1;
@@ -81,7 +81,7 @@ static void	rotation(int *a1, int *b1, double angle, int plane)
 
 	a0 = *a1;
 	b0 = *b1;
-	if (plane == ROT_Z)
+	if (plane == Z)
 	{
 		*a1 = a0 * cos(angle) - b0 * sin(angle);
 		*b1 = -a0 * sin(angle) + b0 * cos(angle);
@@ -96,9 +96,9 @@ static void	rotation(int *a1, int *b1, double angle, int plane)
 void	rotate(int *x, int *y, int *z, t_fdf *fdf)
 {
 	if (fdf->view.rot[0])
-		rotation(y, z, fdf->view.angle, ROT_X);
+		rotation(y, z, fdf->view.angle, X);
 	if (fdf->view.rot[1])
-		rotation(x, z, fdf->view.angle, ROT_Y);
+		rotation(x, z, fdf->view.angle, Y);
 	if (fdf->view.rot[2])
-		rotation(x, y, fdf->view.angle, ROT_Z);
+		rotation(x, y, fdf->view.angle, Z);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 15:23:24 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 15:43:03 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 19:52:04 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	close_window(t_fdf *fdf)
 		if (fdf->img.img)
 			mlx_destroy_image(fdf->lib.mlx, fdf->img.img);
 		if (fdf->lib.win && fdf->lib.mlx)
-			mlx_destroy_window(fdf->lib.mlx, fdf->lib.img);
+			mlx_destroy_window(fdf->lib.mlx, fdf->lib.win);
 		if (fdf->map)
 			free_map(fdf);
 		if (fdf->line)

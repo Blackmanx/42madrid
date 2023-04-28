@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 18:19:00 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 19:52:49 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@
 # define MAX_SIZE				20
 # define GRAY					8355711
 # define PI						3.14159265359
-# define X						0
-# define Y						1
-# define Z						2
+# define MAX_WIDTH				5120
+# define MAX_HEIGHT				2180
+# define X						1
+# define Y						2
+# define Z						3
 # define SHIFT					10
 # define ROT					0.1
 # define ZOOM					8

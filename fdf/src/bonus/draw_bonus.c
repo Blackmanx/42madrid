@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 21:34:34 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 15:44:02 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 19:51:43 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	regen_img(t_fdf *fdf)
 	if (!fdf->img.img)
 		exit_error("Error: Failed to create image", NO_IMG);
 	fdf->img.addr = (int *)mlx_get_data_addr(fdf->img.img, &fdf->img.bpp,
-		&fdf->img.sz, &fdf->img.endian);
+			&fdf->img.sz, &fdf->img.endian);
 	create_img(fdf);
 }
 
@@ -100,7 +100,7 @@ int	create_img(t_fdf *fdf)
 		spot.y++;
 	}
 	mlx_put_image_to_window(fdf->lib.mlx, fdf->lib.win, fdf->img.img, 0, 0);
-	put_controls(d->libx.mlx, d->libx.window);
-	mlx_mouse_hook(d->libx.window, zoom_bonus, d);
+	put_controls(fdf->lib.mlx, fdf->lib.win);
+	mlx_mouse_hook(fdf->lib.win, zoom_bonus, fdf);
 	return (1);
 }
