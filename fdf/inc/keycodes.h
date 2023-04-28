@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 20:01:01 by prodrigo          #+#    #+#             */
-/*   Updated: 2022/01/11 17:54:10 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 17:00:37 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@
 # define KEY_K 40
 # define KEY_O 31
 # define KEY_L 37
+# define M_SCR_U			4
+# define M_SCR_D			5
 
 #endif

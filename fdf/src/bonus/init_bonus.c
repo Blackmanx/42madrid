@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:24:27 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 05:03:27 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:35:11 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "../../inc/fdf.h"
+
 
 static void	handle_size(t_fdf *fdf)
 {

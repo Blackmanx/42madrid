@@ -6,34 +6,11 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:12:53 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/27 20:37:18 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:06:49 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-static int	create_img(t_fdf *fdf)
-{
-	t_coord	spot;
-
-	spot.y = 0;
-	while (spot.y < fdf->rows)
-	{
-		spot.x = 0;
-		while (spot.x < fdf->cols)
-		{
-			fdf->color = set_color(fdf, spot.x, spot.y);
-			if (spot.x < fdf->cols - 1)
-				draw_line(fdf, spot, spot.x + 1, spot.y);
-			if (spot.y < fdf->rows - 1)
-				draw_line(fdf, spot, spot.x, spot.y + 1);
-			spot.x++;
-		}
-		spot.y++;
-	}
-	mlx_put_image_to_window(fdf->lib.mlx, fdf->lib.win, fdf->img.img, 0, 0);
-	return (1);
-}
 
 /*
 ** * DESCRIPTION

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   line_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 23:27:11 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 05:03:26 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:35:11 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "../../inc/fdf.h"
+
 
 void	iso_view(int *x, int *y, int z, double angle)
 {

@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 14:57:47 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 18:19:00 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@
 # define MAX_SIZE				20
 # define GRAY					8355711
 # define PI						3.14159265359
-# define MAX_HEIGHT				5120
-# define MAX_WIDTH				2880
 # define X						0
 # define Y						1
 # define Z						2
@@ -43,10 +41,14 @@
 # define WINDOW_W				1920
 # define WINDOW_H				1080
 # define ISO					1
+# define ISO0					0
 # define PLANE					0
+# define PLANE_ALT				1
 # define PERSPECTIVE			0.53
+# define PERSPECTIVE_ALT		0.2
 # define ANGLE					0.1
 # define OBLIQUE				0
+# define OBLIQUE1				1
 # define TRUE					1
 # define FALSE					0
 # define BUFFER_SIZE			32
@@ -66,8 +68,10 @@ void	exit_error(char *error, int errcode);
 int		key_press(int key, t_fdf *fdf);
 
 // draw.c
+void	regen_img(t_fdf *fdf);
 int		set_color(t_fdf *fdf, int x, int y);
 void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color);
+int		create_img(t_fdf *fdf);
 
 // key_handling.c
 int		key_press(int key, t_fdf *fdf);
@@ -85,5 +89,11 @@ void	read_map(t_fdf *fdf, char *argv);
 void	zoom_view(t_fdf *fdf, t_coord *a1, t_coord *a2, int z[2]);
 void	position_view(t_fdf *fdf, t_coord *a1, t_coord *a2);
 void	view_init(t_fdf *fdf);
+
+// bonus
+void	rotate(int *x, int *y, int *z, t_fdf *fdf);
+void	hooks_perspective(t_fdf *fdf, int key);
+int		zoom_bonus(t_fdf *fdf, int key, int x, int y);
+void	cam_mov(t_fdf *fdf, int key);
 
 #endif
