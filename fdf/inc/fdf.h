@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 04:29:37 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 14:57:47 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define Z						2
 # define SHIFT					10
 # define ROT					0.1
-# define ZOOM					3
+# define ZOOM					8
 # define WINDOW_W				1920
 # define WINDOW_H				1080
 # define ISO					1
