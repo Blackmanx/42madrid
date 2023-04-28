@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 21:34:34 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/20 03:36:43 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 03:29:44 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ int	set_color(t_fdf *fdf, int x, int y)
 
 void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color)
 {
-	char	*dst;
-
 	if (x >= WINDOW_W || x < 0 || y >= WINDOW_H || y < 0)
 		return ;
-	dst = fdf->img.addr + (y * fdf->img.len + x * (fdf->img.bpp / 8));
-	*(unsigned int *)dst = color;
+	fdf->img.addr[fdf->img.w * y + x] = color;
 }

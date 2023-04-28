@@ -1,7 +1,7 @@
 ### COMPILATION ###
 CC      = gcc -O2
 FLAGS  = -Wall -Wextra -Werror
-MLX_FLAGS = -lft -lmlx -lm -framework OpenGL -framework AppKit
+MLX_FLAGS = -lft -lmlx libmlx.a -framework OpenGL -framework AppKit
 
 ### EXECUTABLE ###
 NAME   = fdf
@@ -47,7 +47,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADER)/$(NAME).h
 	@$(CC) $(FLAGS) -c -o $@ $<
 
 copylib:
-	@cp $(MLX)/libmlx.dylib ./
+	@cp $(MLX)/libmlx.a ./
 	@echo "Copied MLX lib to folder."
 
 clean:
@@ -61,10 +61,10 @@ fclean:
 	@rm -rf $(OBJ_PATH)
 	@rm -f $(NAME)
 	@make clean -C $(MLX)
-	@rm -rf $(MLX)/libmlx.dylib
+	@rm -rf $(MLX)/libmlx.a
 	@rm -rf $(MLX)/*.swiftsourceinfo
 	@make fclean -C $(LIBFT)
-	@rm -rf libmlx.dylib
+	@rm -rf libmlx.a
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 02:10:10 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 04:29:37 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define MAX_SIZE				20
 # define GRAY					8355711
 # define PI						3.14159265359
-# define MAX_HEIGHT				1800
-# define MAX_WIDTH				1000
+# define MAX_HEIGHT				5120
+# define MAX_WIDTH				2880
 # define X						0
 # define Y						1
 # define Z						2

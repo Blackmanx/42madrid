@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:04:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 01:41:36 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 03:57:01 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,10 @@ int	close_window(t_fdf *fdf)
 {
 	if (fdf != NULL)
 	{
-		if (fdf->lib.win && fdf->lib.mlx)
-		{
-			free(fdf->lib.win);
-			free(fdf->lib.mlx);
-			mlx_destroy_window(fdf->lib.win, fdf->lib.mlx);
-		}
 		if (fdf->img.img)
 			mlx_destroy_image(fdf->lib.mlx, fdf->img.img);
+		if (fdf->lib.win && fdf->lib.mlx)
+			mlx_destroy_window(fdf->lib.mlx, fdf->lib.win);
 		if (fdf->map)
 			free_map(fdf);
 		if (fdf->line)
@@ -63,6 +59,7 @@ int	close_window(t_fdf *fdf)
 	exit(EXIT_SUCCESS);
 	return (0);
 }
+
 
 /*
 ** * DESCRIPTION

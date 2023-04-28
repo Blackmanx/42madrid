@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:24:27 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 02:10:47 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 04:14:23 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ void	init_fdf(t_fdf *fdf)
 		exit_error("Error: MLX was not initialized", NO_MLX);
 	handle_size(fdf);
 	fdf->lib.win = mlx_new_window(fdf->lib.mlx, fdf->img.w,
-			fdf->img.h, "Amogus");
+			fdf->img.h, "FdF");
 	if (!fdf->lib.win)
 		exit_error("Error: Failed to create window", NO_WINDOW);
 	fdf->img.img = mlx_new_image(fdf->lib.mlx, fdf->img.w,
 			fdf->img.h);
 	if (!fdf->img.img)
 		exit_error("Error: Failed to create image", NO_IMG);
-	fdf->img.addr = mlx_get_data_addr(fdf->img.img, &fdf->img.bpp,
+	fdf->img.addr = (int *)mlx_get_data_addr(fdf->img.img, &fdf->img.bpp,
 			&fdf->img.sz, &fdf->img.endian);
 	mlx_do_key_autorepeatoff(fdf->lib.mlx);
 }

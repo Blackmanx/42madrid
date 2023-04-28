@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 03:43:21 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 02:11:02 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 03:27:31 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_lib {
 
 typedef struct s_img {
 	int			*img;
-	char		*addr;
+	int			*addr;
 	int			h;
 	int			w;
 	int			sz;
