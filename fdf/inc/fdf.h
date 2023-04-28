@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:15:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 01:57:46 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 02:10:10 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 # define PLANE					0
 # define PERSPECTIVE			0.53
 # define ANGLE					0.1
-# define TANGENT				0
+# define OBLIQUE				0
 # define TRUE					1
 # define FALSE					0
 # define BUFFER_SIZE			32

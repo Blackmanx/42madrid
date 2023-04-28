@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:24:27 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/28 01:36:00 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 02:10:47 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	init_imgview(t_fdf *fdf)
 	fdf->view.y = 0;
 	fdf->view.zoom = 0;
 	fdf->view.iso = 0;
-	fdf->view.tan = 0;
+	fdf->view.obl = 0;
 	fdf->view.plane = 0;
 	fdf->view.rot[0] = 0;
 	fdf->view.rot[1] = 0;

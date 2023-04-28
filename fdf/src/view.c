@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 23:16:08 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/20 03:57:27 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/28 02:10:50 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static void	create_vector(t_fdf *fdf)
 	int		y;
 
 	y = 0;
-	fdf->svg.d2 = INT_MIN;
-	fdf->svg.d1 = INT_MAX;
+	fdf->svg.d2 = __INT_MAX__ * -1;
+	fdf->svg.d1 = __INT_MAX__;
 	while (y < fdf->rows)
 	{
 		x = 0;
@@ -73,7 +73,7 @@ void	view_init(t_fdf *fdf)
 	fdf->view.perspective = PERSPECTIVE;
 	fdf->view.iso = ISO;
 	fdf->view.plane = PLANE;
-	fdf->view.tan = TANGENT;
+	fdf->view.obl = OBLIQUE;
 	fdf->view.zoom = zoom(fdf->cols);
 	fdf->view.x = WINDOW_W / 3 + 100;
 	fdf->view.y = WINDOW_H / 2;
