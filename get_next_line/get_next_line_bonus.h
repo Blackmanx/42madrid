@@ -1,13 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/29 02:58:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/29 03:09:08 by prodrigo         ###   ########.fr       */
+/*   Created: 2023/04/29 02:58:24 by prodrigo          #+#    #+#             */
+/*   Updated: 2023/04/29 03:10:32 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+
+char	*get_next_line(int fd);
+
+#endif
