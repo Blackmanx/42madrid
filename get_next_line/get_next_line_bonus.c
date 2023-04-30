@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 02:58:27 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/30 15:40:22 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/30 16:25:53 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 char	*read_file(int fd, char *str)
 {
-	char	*buffer;
+	char	*buf;
 	int		read_bytes;
 
 	if (ft_strchr(str, '\n'))
 		return (str);
-	buffer = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
+	buf = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	read_bytes = 1;
 	while (!ft_strchr(str, '\n') && read_bytes > 0)
 	{
-		read_bytes = read(fd, buffer, BUFFER_SIZE);
+		read_bytes = read(fd, buf, BUFFER_SIZE);
 		if (read_bytes == -1)
 		{
-			free(buffer);
+			free(buf);
 			return (NULL);
 		}
-		buffer[read_bytes] = '\0';
-		str = ft_strjoin(str, buffer);
+		buf[read_bytes] = '\0';
+		str = ft_strjoin(str, buf);
 	}
-	free(buffer);
+	free(buf);
 	return (str);
 }
 
@@ -86,7 +86,7 @@ char	*get_next_line(int fd)
 	char		*l;
 	static char	*str[FOPEN_MAX];
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
 		return (0);
 	str[fd] = read_file(fd, str[fd]);
 	if (!str[fd])

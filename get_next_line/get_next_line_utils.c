@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 02:58:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/30 15:33:27 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/30 15:58:03 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ void	*ft_calloc(size_t count, size_t size)
 	new_size = count * size;
 	new = malloc(new_size);
 	if (!new)
+	{
+		free(new);
 		return (NULL);
+	}
 	while (new_size > 0)
 	{
 		new[i] = 0;
