@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 02:58:24 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/30 12:53:21 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/30 15:27:19 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 
 char	*get_next_line(int fd);
 
-char	*ft_strrchr(char *s, int c);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(char *str, int c);
+char	*ft_strjoin(char *s1, char *s2);
 void	*ft_calloc(size_t count, size_t size);
 size_t	ft_strlen(char *str);
 
