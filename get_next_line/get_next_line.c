@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 02:58:27 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/30 16:28:04 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/30 16:32:55 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ char	*read_file(int fd, char *str)
 	char	*buf;
 	int		read_bytes;
 
-	if (ft_strchr(str, '\n'))
+	if (ft_strchr(str, NEW_LINE))
 		return (str);
 	buf = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	read_bytes = 1;
-	while (!ft_strchr(str, '\n') && read_bytes > 0)
+	while (!ft_strchr(str, NEW_LINE) && read_bytes > 0)
 	{
 		read_bytes = read(fd, buf, BUFFER_SIZE);
 		if (read_bytes == -1)
@@ -44,17 +44,17 @@ char	*next_line(char *str)
 	i = 0;
 	if (!str[i])
 		return (NULL);
-	while (str[i] && str[i] != '\n')
+	while (str[i] && str[i] != NEW_LINE)
 		i++;
 	l = ft_calloc((i + 2), sizeof(char));
 	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (str[i] && str[i] != NEW_LINE)
 	{
 		l[i] = str[i];
 		i++;
 	}
-	if (str[i] == '\n')
-		l[i] = '\n';
+	if (str[i] == NEW_LINE)
+		l[i] = NEW_LINE;
 	return (l);
 }
 
@@ -63,16 +63,18 @@ char	*remove_line(char *str)
 	int		i;
 	int		j;
 	char	*aux;
+	size_t	new_size;
 
 	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (str[i] && str[i] != NEW_LINE)
 		i++;
 	if (!str[i])
 	{
 		free(str);
 		return (NULL);
 	}
-	aux = ft_calloc((ft_strlen(str) - i + 1), sizeof(char));
+	new_size = ft_strlen(str) - i + 1;
+	aux = ft_calloc(new_size, sizeof(char));
 	i++;
 	j = 0;
 	while (str[i])
