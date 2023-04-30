@@ -6,13 +6,13 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 02:58:27 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/30 16:32:24 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:14:31 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*read_file(int fd, char *str)
+static char	*read_file(int fd, char *str)
 {
 	char	*buf;
 	int		read_bytes;
@@ -26,6 +26,7 @@ char	*read_file(int fd, char *str)
 		read_bytes = read(fd, buf, BUFFER_SIZE);
 		if (read_bytes == -1)
 		{
+			free(str);
 			free(buf);
 			return (NULL);
 		}
@@ -36,7 +37,7 @@ char	*read_file(int fd, char *str)
 	return (str);
 }
 
-char	*next_line(char *str)
+static char	*next_line(char *str)
 {
 	int		i;
 	char	*l;
@@ -58,7 +59,7 @@ char	*next_line(char *str)
 	return (l);
 }
 
-char	*remove_line(char *str)
+static char	*remove_line(char *str)
 {
 	int		i;
 	int		j;
@@ -89,10 +90,13 @@ char	*get_next_line(int fd)
 	static char	*str[FOPEN_MAX];
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
-		return (0);
+		return (NULL);
 	str[fd] = read_file(fd, str[fd]);
 	if (!str[fd])
+	{
+		free(str[fd]);
 		return (NULL);
+	}
 	l = next_line(str[fd]);
 	str[fd] = remove_line(str[fd]);
 	return (l);

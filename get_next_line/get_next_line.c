@@ -6,7 +6,7 @@
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 02:58:27 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/04/30 16:32:55 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:14:43 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*read_file(int fd, char *str)
 		read_bytes = read(fd, buf, BUFFER_SIZE);
 		if (read_bytes == -1)
 		{
+			free(str);
 			free(buf);
 			return (NULL);
 		}
@@ -89,7 +90,7 @@ char	*get_next_line(int fd)
 	static char	*str;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
+		return (NULL);
 	str = read_file(fd, str);
 	if (!str)
 	{
