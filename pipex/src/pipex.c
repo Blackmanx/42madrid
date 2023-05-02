@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:53:07 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/16 00:38:08 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:26:52 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	args_error(void)
 {
 	ft_putstr_fd("Error: Bad arguments\n", 2);
 	ft_putstr_fd("Args: ./pipex <file1> <cmd1> <cmd2> file2\n", 1);
+	exit(EXIT_FAILURE);
 }
 
 void	pipex(int argc, char **argv, char **envp)

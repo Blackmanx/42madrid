@@ -6,7 +6,7 @@
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:51:52 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/15 23:45:18 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:44:54 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,8 @@ void	error(char *str);
 char	*parse_path(char *cmd, char **envp);
 void	exec(char *argv, char **envp);
 
+// Bonus
+int		get_next_line(char **line);
+void	process_child(char *argv, char **envp);
+int		open_file(char *argv, int i);
 #endif

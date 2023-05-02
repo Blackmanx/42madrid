@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path_utils.c                                       :+:      :+:    :+:   */
+/*   path_utils_bonus.character                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 18:52:13 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/05/02 15:06:59 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:42:50 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,31 @@ void	exec(char *argv, char **envp)
 	cmd = ft_split(argv, ' ');
 	if (execve(parse_path(cmd[0], envp), cmd, envp) == -1)
 		error("Error while executing command.");
+}
+
+int	get_next_line(char **line)
+{
+	char	*buf;
+	int		i;
+	int		stdin;
+	char	character;
+
+	i = 0;
+	stdin = 0;
+	buf = (char *)malloc(10000);
+	if (!buf)
+		return (-1);
+	stdin = read(0, &character, 1);
+	while (stdin && character != '\n' && character != '\0')
+	{
+		if (character != '\n' && character != '\0')
+			buf[i] = character;
+		i++;
+		stdin = read(0, &character, 1);
+	}
+	buf[i] = '\n';
+	buf[++i] = '\0';
+	*line = buf;
+	free(buf);
+	return (stdin);
 }
