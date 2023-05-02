@@ -7,6 +7,9 @@ MAIN	= src/pipex.c
 
 HEADER	= -I./inc/
 
+INFILE = infile
+OUTFILE = outfile
+
 CC 		= gcc
 CFLAGS 	= -Wall -Wextra -Werror -g
 
@@ -18,6 +21,7 @@ $(NAME):	${OBJS}
 					@cp ./libft/libft.a ./$(NAME)
 					@ar -rcs ${NAME} ${OBJS}
 					@$(CC) $(NAME) -o ${OBJF}
+					@touch infile
 
 all: 		${NAME}
 
@@ -29,6 +33,8 @@ fclean: 	clean
 					@make fclean -C ./libft
 					@rm -f $(NAME)
 					@rm -f ${OBJF}
+					@rm -f ${INFILE} || true
+					@rm -f ${OUTFILE} || true
 
 re:			fclean all
 
