@@ -30,7 +30,7 @@ bonus:		${BONUS_OUT}
 ${BONUS_OUT}:	${OBJS_BONUS}
 					@make re -C ./libft
 					@echo "Compiled libft"
-					@$(CC) ${OBJS_BONUS} -Llibft -lft -o ${BONUS_OUT}
+					@$(CC) ${OBJS_BONUS} -Llibft -lft -o ${OUT}
 					@echo "Compiled bonus: usage: pipex_bonus"
 					@touch infile
 
@@ -41,7 +41,6 @@ clean:
 fclean: 	clean
 					@make fclean -C ./libft
 					@rm -f $(OUT)
-					@rm -f ${BONUS_OUT} || true
 					@rm -f infile || true
 					@echo "Cleaning all files"
 					@ls | grep -vw -E "Makefile|src|inc|libft" | tr '\n' '\0' | xargs -I{} rm {}
