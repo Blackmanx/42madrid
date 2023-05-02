@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   process_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 17:51:26 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/05/02 15:32:07 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/05/02 17:01:33 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
-
-// argv: Argument of main(). String pointer that contains program parameters.
-// envp: Pointer matrix that points to env paths. It's an argument of main().
-// fd: File Descriptor
-//
 
 int	open_file(char *argv, int i)
 {
@@ -29,9 +24,12 @@ int	open_file(char *argv, int i)
 	else if (i == 2)
 		fd = open(argv, O_RDONLY, 0777);
 	if (fd == -1)
-		error();
+		error("Error: Failed to open file");
 	return (fd);
 }
+
+// argv: Argument of main(). String pointer that contains program parameters.
+// envp: Pointer matrix that points to env paths. It's an argument of main().
 
 void	process_child(char *argv, char **envp)
 {
@@ -39,10 +37,10 @@ void	process_child(char *argv, char **envp)
 	int		fd[2];
 
 	if (pipe(fd) == -1)
-		error();
+		error("Error: Failed to pipe file descriptor");
 	pid = fork();
 	if (pid == -1)
-		error();
+		error("Error: Failed to obtain pid");
 	if (pid == 0)
 	{
 		close(fd[0]);

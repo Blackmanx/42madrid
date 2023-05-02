@@ -1,14 +1,13 @@
-NAME 	= pipex.a
-OBJF	= pipex
+OUT	= pipex
+BONUS_OUT  = pipex_bonus
 
-SRCS 	= src/pipex.c src/path_utils.c src/process.c
+SRCS 	= src/pipex.c src/process.c src/path_utils.c
 OBJS 	= ${SRCS:.c=.o}
-MAIN	= src/pipex.c
 
-HEADER	= -I./inc/
+SRCS_B	= src/pipex_bonus.c src/process_bonus.c src/path_utils_bonus.c
+OBJS_BONUS	= ${SRCS_B:.c=.o}
 
-INFILE = infile
-OUTFILE = outfile
+HEADER	= -Iincludes
 
 CC 		= gcc
 CFLAGS 	= -Wall -Wextra -Werror -g
@@ -16,27 +15,39 @@ CFLAGS 	= -Wall -Wextra -Werror -g
 .c.o:		%.o : %.c
 					@gcc ${CFLAGS} ${HEADER} -c $< -o $(<:.c=.o)
 
-$(NAME):	${OBJS}
+all: 		${OUT}
+
+${OUT}:	${OBJS}
 					@make re -C ./libft
-					@cp ./libft/libft.a ./$(NAME)
-					@ar -rcs ${NAME} ${OBJS}
-					@$(CC) $(NAME) -o ${OBJF}
+					@echo "Compiled libft"
+					@$(CC) ${OBJS} -Llibft -lft -o ${OUT}
+					@echo "Compiled pipex"
 					@touch infile
 
-all: 		${NAME}
+
+bonus:		${BONUS_OUT}
+
+${BONUS_OUT}:	${OBJS_BONUS}
+					@make re -C ./libft
+					@echo "Compiled libft"
+					@$(CC) ${OBJS_BONUS} -Llibft -lft -o ${BONUS_OUT}
+					@echo "Compiled bonus: usage: pipex_bonus"
+					@touch infile
 
 clean:
 					@make clean -C ./libft
-					@rm -f ${OBJS} ${OBJS_B}
+					@rm -f ${OBJS} ${OBJS_BONUS}
 
 fclean: 	clean
 					@make fclean -C ./libft
-					@rm -f $(NAME)
-					@rm -f ${OBJF}
-					@rm -f ${INFILE} || true
-					@rm -f ${OUTFILE} || true
+					@rm -f $(OUT)
+					@rm -f ${BONUS_OUT} || true
+					@rm -f infile || true
+					@echo "Cleaning all files"
+					@ls | grep -vw -E "Makefile|src|inc|libft" | tr '\n' '\0' | xargs -I{} rm {}
 
 re:			fclean all
 
+re_bonus:	fclean bonus
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re re_bonus bonus

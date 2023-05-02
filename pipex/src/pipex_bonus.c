@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 12:48:22 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/05/02 15:35:50 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/05/02 17:06:38 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	args_error(void)
 	exit(EXIT_FAILURE);
 }
 
+// Handle appending, if there's no limiter
+
 void	here_doc(char *argv, int argc)
 {
 	pid_t	processes;
@@ -30,7 +32,7 @@ void	here_doc(char *argv, int argc)
 	if (argc < 6)
 		args_error();
 	if (pipe(fd) == -1)
-		error();
+		error("Error: Failed to pipe file descriptor");
 	processes = fork();
 	if (processes == 0)
 	{
@@ -49,6 +51,8 @@ void	here_doc(char *argv, int argc)
 		wait(NULL);
 	}
 }
+
+// Check if using here_doc or just regular pipes without appending
 
 void	pipex(int argc, char **argv, char **envp)
 {
