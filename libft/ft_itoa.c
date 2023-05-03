@@ -3,63 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 04:00:59 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/11/15 15:29:30 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/05/02 23:38:37 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	void	boolneg(int *n, int *neg)
+static int	ft_digits(int n)
 {
-	if (*n < 0)
+	int	digits;
+
+	digits = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+		digits = 1;
+	while (n)
 	{
-		*n *= -1;
-		*neg = 1;
+		n /= 10;
+		digits++;
 	}
+	return (digits);
 }
 
-void	assign_vars(int *aux, int *len, int *neg, int *n)
+static int	ft_abs(int n)
 {
-	*aux = *n;
-	*len = 1;
-	*neg = 0;
-}
-
-void	aux_handler(int *aux, int *len)
-{
-	while (*aux > 0)
-	{
-		*aux /= 10;
-		*len += 1;
-	}
+	if (n < 0)
+		n *= -1;
+	return (n);
 }
 
 char	*ft_itoa(int n)
 {
-	int		aux;
-	int		len;
-	int		neg;
 	char	*str;
+	int		len;
+	int		module;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	assign_vars(&aux, &len, &neg, &n);
-	boolneg(&n, &neg);
-	aux_handler(&aux, &len);
-	len += neg;
-	str = (char *)malloc(sizeof(char) * len + 1);
+	module = 0;
+	len = ft_digits(n);
+	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
 	str[len] = '\0';
-	while (len--)
-	{
-		str[len] = n % 10 + '0';
-		n = n / 10;
-	}
-	if (neg)
+	if (n == 0)
+		str[0] = '0';
+	else if (n < 0)
 		str[0] = '-';
+	while (n)
+	{
+		len--;
+		module = ft_abs(n % 10);
+		str[len] = module + '0';
+		n /= 10;
+	}
 	return (str);
 }

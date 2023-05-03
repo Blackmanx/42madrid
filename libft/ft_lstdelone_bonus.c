@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/03 03:16:06 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/05/02 23:38:10 by prodrigo         ###   ########.fr       */
+/*   Created: 2023/05/02 22:38:50 by prodrigo          #+#    #+#             */
+/*   Updated: 2023/05/02 23:38:32 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libft.h"
+
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if (c >= 65 && c <= 90)
-		return (c += 32);
-	return (c);
+	if (lst)
+	{
+		del(lst->content);
+		free(lst);
+	}
 }

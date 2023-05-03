@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:59:00 by prodrigo          #+#    #+#             */
-/*   Updated: 2020/03/03 03:22:18 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/05/03 00:30:30 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,23 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*s;
+	char			*new;
+	size_t			i;
+	unsigned int	new_size;
 
-	s = malloc(count * size);
-	if (s)
+	i = 0;
+	new_size = count * size;
+	new = malloc(new_size);
+	if (!new)
 	{
-		ft_bzero(s, count * size);
-		return (s);
+		free(new);
+		return (NULL);
 	}
-	return (NULL);
+	while (new_size > 0)
+	{
+		new[i] = 0;
+		new_size--;
+		i++;
+	}
+	return ((void *)new);
 }

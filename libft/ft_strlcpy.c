@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 01:29:14 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/04/21 19:30:19 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/05/02 23:38:15 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 
 	i = 0;
-	if (!dst || !src)
-		return (0);
 	if (dstsize == 0)
 		return (ft_strlen(src));
 	while (i < dstsize - 1 && src[i])

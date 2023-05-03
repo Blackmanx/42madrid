@@ -3,73 +3,97 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prodrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 03:54:35 by prodrigo          #+#    #+#             */
-/*   Updated: 2021/04/27 18:35:22 by prodrigo         ###   ########.fr       */
+/*   Updated: 2023/05/03 01:19:03 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**resmem(char const *s, char c)
+static void	freeall(char **str, int j)
 {
-	char	*tab;
-	char	**aux;
-	int		i;
+	int	i;
 
-	i = 0;
-	tab = (char *)s;
-	while (*tab)
-	{
-		while (*tab == c)
-			tab++;
-		if (*tab != '\0')
-			i++;
-		while (*tab != c && *tab)
-			tab++;
-	}
-	aux = (char **)malloc((i + 1) * sizeof(char *));
-	if (aux == NULL)
-		return (NULL);
-	aux[i] = NULL;
-	return (aux);
+	i = -1;
+	while (++i <= j)
+		free(str[i]);
+	free(str);
 }
 
-static char	**copydata(const char *s, char c)
+static char	*alloc_mem(char c, char const *s)
 {
-	size_t	len;
-	char	**aux;
 	int		i;
+	char	*str;
 
 	i = 0;
-	len = 0;
-	aux = resmem(s, c);
-	if (aux == NULL)
+	while (s[i] && c != s[i])
+		i++;
+	str = malloc(sizeof(char) * (i + 1));
+	if (!str)
 		return (NULL);
-	while (*s)
+	i = -1;
+	while (s[++i] && c != s[i])
+		str[i] = s[i];
+	str[i] = '\0';
+	return (str);
+}
+
+static int	get_num_words(char const *s, char c)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (s[i])
 	{
-		while (*s == c)
-			s++;
-		if (*s != '\0')
-		{
-			while (s[len] != c && s[len])
-				len++;
-			aux[i++] = ft_substr(s, 0, len);
-			s += len;
-		}
-		len = 0;
+		while (s[i] && c == s[i])
+			i++;
+		if (s[i] && c != s[i])
+			count++;
+		while (s[i] && c != s[i])
+			i++;
 	}
-	aux[i] = NULL;
-	return (aux);
+	return (count);
+}
+
+static char	**check_overflow(char **str, int j)
+{
+	if (str[j - 1] == NULL)
+	{
+		freeall(str, j - 1);
+		return (NULL);
+	}
+	return (str);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**res;
+	int		i;
+	int		j;
+	char	**str;
 
-	if (!s)
+	i = get_num_words(s, c);
+	j = 0;
+	str = malloc(sizeof(char *) * (i + 1));
+	if (!s || !str)
 		return (NULL);
-	res = copydata(s, c);
-	return (res);
+	i = 0;
+	while (s[i])
+	{
+		while (s[i] && c == s[i])
+			i++;
+		if (s[i] && c != s[i])
+		{
+			str[j++] = alloc_mem(c, &s[i]);
+			if (check_overflow(str, j) == NULL)
+				return (NULL);
+			while (s[i] && c != s[i])
+				i++;
+		}
+	}
+	str[j] = 0;
+	return (str);
 }

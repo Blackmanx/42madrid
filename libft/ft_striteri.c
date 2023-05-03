@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prodrigo <prodrigo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/03 03:16:06 by prodrigo          #+#    #+#             */
-/*   Updated: 2023/05/02 23:38:10 by prodrigo         ###   ########.fr       */
+/*   Created: 2023/05/02 22:49:49 by prodrigo          #+#    #+#             */
+/*   Updated: 2023/05/02 23:38:17 by prodrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libft.h"
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	if (c >= 65 && c <= 90)
-		return (c += 32);
-	return (c);
+	size_t	index;
+
+	if (s && f)
+	{
+		index = -1;
+		while (s[++index])
+			f(index, &s[index]);
+	}
 }
